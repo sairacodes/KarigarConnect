@@ -1,0 +1,6 @@
+{
+  "name": "KARIGAR CONNECT",
+  "description": "Make practical skills easier to prove. Pakistan's verified home & skilled services platform combining assessor-verified competencies, real customer ratings, and customer-confirmed work proof.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
