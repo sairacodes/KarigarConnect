@@ -259,7 +259,7 @@ export function WorkerJobsPage() {
               className={`rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
                 tab === t.id
                   ? 'bg-[#176B4A] text-white'
-                  : 'border border-[#E5EEE8] bg-white text-[#17251E] hover:bg-[#DDF3E4]/50'
+                  : 'border border-[#E6E0D2] bg-white text-[#17251E] hover:bg-[#ECE6D7]/50'
               }`}
             >
               {t.label}
@@ -290,7 +290,7 @@ export function WorkerJobsPage() {
                         <span
                           className={`rounded-md px-2 py-0.5 text-[11px] font-bold ${
                             job.priceStatus === 'WITHIN_GUIDE'
-                              ? 'bg-[#DDF3E4] text-[#176B4A]'
+                              ? 'bg-[#ECE6D7] text-[#176B4A]'
                               : job.priceStatus === 'BELOW_GUIDE'
                                 ? 'bg-sky-50 text-sky-800'
                                 : 'bg-amber-50 text-amber-800'
@@ -304,7 +304,7 @@ export function WorkerJobsPage() {
                         </span>
                       )}
                     </div>
-                    <p className="mt-1 text-xs text-[#78857D]">
+                    <p className="mt-1 text-xs text-[#69726B]">
                       {isUr && job.tradeUrduName ? job.tradeUrduName : job.tradeName} ·{' '}
                       <span className="font-semibold text-[#17251E]">{job.customerName}</span>
                       {job.customerCompanyName ? ` (${job.customerCompanyName})` : ''} ·{' '}
@@ -313,7 +313,7 @@ export function WorkerJobsPage() {
                   </div>
 
                   <div className="text-xs text-end space-y-1">
-                    <p className="text-[#78857D] flex items-center sm:justify-end gap-1">
+                    <p className="text-[#69726B] flex items-center sm:justify-end gap-1">
                       <Calendar className="h-3.5 w-3.5" />
                       <span>
                         {job.scheduledDateTime
@@ -335,8 +335,8 @@ export function WorkerJobsPage() {
                 {(job.problemPhotos?.length > 0 || job.beforePhotos?.length > 0 || job.afterPhotos?.length > 0) && (
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {job.problemPhotos?.length > 0 && (
-                      <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
-                        <p className="text-[11px] font-bold text-[#78857D] mb-2">
+                      <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
+                        <p className="text-[11px] font-bold text-[#69726B] mb-2">
                           {bi('Customer Problem Photos', 'مسئلے کی تصاویر')}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -345,29 +345,29 @@ export function WorkerJobsPage() {
                               key={p.id}
                               src={p.signedUrl}
                               alt={p.originalName}
-                              className="h-16 w-16 rounded-lg object-cover border border-[#E5EEE8]"
+                              className="h-16 w-16 rounded-lg object-cover border border-[#E6E0D2]"
                             />
                           ))}
                         </div>
                       </div>
                     )}
                     {job.beforePhotos?.length > 0 && (
-                      <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
-                        <p className="text-[11px] font-bold text-[#78857D] mb-2">{bi('Before Work', 'کام سے پہلے')}</p>
+                      <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
+                        <p className="text-[11px] font-bold text-[#69726B] mb-2">{bi('Before Work', 'کام سے پہلے')}</p>
                         <div className="flex flex-wrap gap-2">
                           {job.beforePhotos.map((p: any) => (
                             <img
                               key={p.id}
                               src={p.signedUrl}
                               alt={p.originalName}
-                              className="h-16 w-16 rounded-lg object-cover border border-[#E5EEE8]"
+                              className="h-16 w-16 rounded-lg object-cover border border-[#E6E0D2]"
                             />
                           ))}
                         </div>
                       </div>
                     )}
                     {job.afterPhotos?.length > 0 && (
-                      <div className="rounded-xl border border-[#B8E4C7] bg-[#DDF3E4]/35 p-3">
+                      <div className="rounded-xl border border-[#D8D0BE] bg-[#ECE6D7]/35 p-3">
                         <p className="text-[11px] font-bold text-[#176B4A] mb-2">{bi('After Work Proof', 'کام کے بعد ثبوت')}</p>
                         <div className="flex flex-wrap gap-2">
                           {job.afterPhotos.map((p: any) => (
@@ -375,7 +375,7 @@ export function WorkerJobsPage() {
                               key={p.id}
                               src={p.signedUrl}
                               alt={p.originalName}
-                              className="h-16 w-16 rounded-lg object-cover border border-[#B8E4C7]"
+                              className="h-16 w-16 rounded-lg object-cover border border-[#D8D0BE]"
                             />
                           ))}
                         </div>
@@ -386,7 +386,7 @@ export function WorkerJobsPage() {
 
                 {/* Contact Gating */}
                 {job.contactUnlocked && job.customerContact ? (
-                  <div className="rounded-xl border border-[#73C99B] bg-[#DDF3E4]/55 p-3 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#176B4A]">
+                  <div className="rounded-xl border border-[#C9973A] bg-[#ECE6D7]/55 p-3 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#176B4A]">
                     <div className="flex flex-wrap gap-5">
                       <span className="inline-flex items-center gap-1.5">
                         <Phone className="h-3.5 w-3.5" />
@@ -400,14 +400,14 @@ export function WorkerJobsPage() {
                     <button
                       type="button"
                       onClick={() => shareSafeVisit(job)}
-                      className="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1 text-[11px] font-semibold text-[#176B4A] border border-[#B8E4C7] hover:bg-[#F7FAF8]"
+                      className="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1 text-[11px] font-semibold text-[#176B4A] border border-[#D8D0BE] hover:bg-[#F7F4EC]"
                     >
                       <Share2 className="h-3 w-3" />
                       {bi('Share Check-in Summary', 'محفوظ وزٹ تفصیل کاپی')}
                     </button>
                   </div>
                 ) : (
-                  <p className="text-xs text-[#78857D] flex items-center gap-1.5">
+                  <p className="text-xs text-[#69726B] flex items-center gap-1.5">
                     <Lock className="h-3.5 w-3.5 text-[#399B6B]" />
                     <span>
                       {bi(
@@ -430,7 +430,7 @@ export function WorkerJobsPage() {
                     </div>
                     <p className="text-xs text-[#17251E]">{job.dispute.details}</p>
                     {job.dispute.workerResponse ? (
-                      <p className="text-xs text-[#176B4A] bg-white rounded-lg p-2.5 border border-[#E5EEE8]">
+                      <p className="text-xs text-[#176B4A] bg-white rounded-lg p-2.5 border border-[#E6E0D2]">
                         <strong>{bi('Your Response:', 'آپ کا جواب:')}</strong> {job.dispute.workerResponse}
                       </p>
                     ) : (
@@ -454,7 +454,7 @@ export function WorkerJobsPage() {
                       </div>
                     )}
                     {job.dispute.adminResolutionNotes && (
-                      <p className="text-xs text-[#78857D]">
+                      <p className="text-xs text-[#69726B]">
                         <strong>{bi('Admin Resolution:', 'ایڈمن فیصلہ:')}</strong> {job.dispute.adminResolutionNotes}
                       </p>
                     )}
@@ -462,7 +462,7 @@ export function WorkerJobsPage() {
                 )}
 
                 {/* Action Buttons */}
-                <div className="border-t border-[#E5EEE8] pt-3 flex flex-wrap items-center justify-between gap-2">
+                <div className="border-t border-[#E6E0D2] pt-3 flex flex-wrap items-center justify-between gap-2">
                   <div className="flex flex-wrap gap-2">
                     {job.status === 'REQUESTED' && (
                       <>
@@ -505,7 +505,7 @@ export function WorkerJobsPage() {
                             setSchedulingJob(job);
                             setScheduleInput(job.scheduledDateTime || `${job.preferredDate} 11:00 AM`);
                           }}
-                          className="rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50"
+                          className="rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50"
                         >
                           {bi('Set Visit Time', 'وقت مقرر کریں')}
                         </button>
@@ -519,7 +519,7 @@ export function WorkerJobsPage() {
                           setCompletingJob(job);
                           setFinalPkr(String(job.quotedPkr || 1500));
                         }}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[#73C99B] bg-[#DDF3E4]/75 px-4 py-2 text-xs font-semibold text-[#176B4A] hover:bg-[#DDF3E4]"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-[#C9973A] bg-[#ECE6D7]/75 px-4 py-2 text-xs font-semibold text-[#176B4A] hover:bg-[#ECE6D7]"
                       >
                         <Camera className="h-3.5 w-3.5" />
                         {bi('Complete & Upload Before/After Proof', 'کام مکمل کریں اور ثبوت اپ لوڈ کریں')}
@@ -556,21 +556,21 @@ export function WorkerJobsPage() {
       {/* Accept & Quote Modal */}
       {acceptingJob && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 backdrop-blur-[2px] p-4">
-          <div className="w-full max-w-lg rounded-2xl border border-[#E5EEE8] bg-white p-6 shadow-xl space-y-4">
+          <div className="w-full max-w-lg rounded-2xl border border-[#E6E0D2] bg-white p-6 shadow-xl space-y-4">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-lg font-bold text-[#17251E]">
                   {bi('Accept Job & Send Fair Quote', 'کام قبول کریں اور تخمینہ بھیجیں')}
                 </h3>
-                <p className="text-xs text-[#78857D] mt-0.5">{acceptingJob.title}</p>
+                <p className="text-xs text-[#69726B] mt-0.5">{acceptingJob.title}</p>
               </div>
-              <button type="button" onClick={() => setAcceptingJob(null)} className="text-[#78857D] hover:text-[#17251E]">
+              <button type="button" onClick={() => setAcceptingJob(null)} className="text-[#69726B] hover:text-[#17251E]">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {acceptingJob.priceGuide?.length > 0 && (
-              <div className="rounded-xl border border-[#B8E4C7] bg-[#F7FAF8] p-3 text-xs space-y-1">
+              <div className="rounded-xl border border-[#D8D0BE] bg-[#F7F4EC] p-3 text-xs space-y-1">
                 <p className="font-bold text-[#176B4A]">
                   {bi('Karigar Connect Fair Price Guide (PKR):', 'کاریگر کنیکٹ مناسب قیمت نامہ (PKR):')}
                 </p>
@@ -613,7 +613,7 @@ export function WorkerJobsPage() {
                   required
                   value={quotedPkr}
                   onChange={(e) => setQuotedPkr(e.target.value)}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 />
               </div>
               <div>
@@ -625,7 +625,7 @@ export function WorkerJobsPage() {
                   value={scheduledDt}
                   onChange={(e) => setScheduledDt(e.target.value)}
                   placeholder="e.g. Tomorrow 11:00 AM"
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 />
               </div>
               <div>
@@ -637,14 +637,14 @@ export function WorkerJobsPage() {
                   value={workerNotes}
                   onChange={(e) => setWorkerNotes(e.target.value)}
                   placeholder={bi('Includes inspection & standard labour...', 'معائنہ اور معیاری مزدوری شامل ہے...')}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setAcceptingJob(null)}
-                  className="rounded-xl border border-[#E5EEE8] px-4 py-2 text-xs font-semibold"
+                  className="rounded-xl border border-[#E6E0D2] px-4 py-2 text-xs font-semibold"
                 >
                   {bi('Cancel', 'منسوخ')}
                 </button>
@@ -664,7 +664,7 @@ export function WorkerJobsPage() {
       {/* Schedule Modal */}
       {schedulingJob && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 p-4">
-          <div className="w-full max-w-md rounded-2xl border border-[#E5EEE8] bg-white p-6 shadow-xl space-y-4">
+          <div className="w-full max-w-md rounded-2xl border border-[#E6E0D2] bg-white p-6 shadow-xl space-y-4">
             <h3 className="text-base font-bold text-[#17251E]">{bi('Schedule Job Visit', 'وزٹ کا وقت طے کریں')}</h3>
             <form onSubmit={handleSchedule} className="space-y-3">
               <input
@@ -673,7 +673,7 @@ export function WorkerJobsPage() {
                 value={scheduleInput}
                 onChange={(e) => setScheduleInput(e.target.value)}
                 placeholder="2026-11-24 10:30 AM"
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
               />
               <div className="flex justify-end gap-2">
                 <button type="button" onClick={() => setSchedulingJob(null)} className="rounded-xl border px-4 py-2 text-xs font-semibold">
@@ -691,15 +691,15 @@ export function WorkerJobsPage() {
       {/* Complete Job & Upload Proof Modal */}
       {completingJob && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 backdrop-blur-[2px] p-4">
-          <div className="w-full max-w-lg rounded-2xl border border-[#E5EEE8] bg-white p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
+          <div className="w-full max-w-lg rounded-2xl border border-[#E6E0D2] bg-white p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-lg font-bold text-[#17251E]">
                   {bi('Complete Job & Upload Work Proof', 'کام مکمل کریں اور ثبوت اپ لوڈ کریں')}
                 </h3>
-                <p className="text-xs text-[#78857D] mt-0.5">{completingJob.title}</p>
+                <p className="text-xs text-[#69726B] mt-0.5">{completingJob.title}</p>
               </div>
-              <button type="button" onClick={() => setCompletingJob(null)} className="text-[#78857D]">
+              <button type="button" onClick={() => setCompletingJob(null)} className="text-[#69726B]">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -714,7 +714,7 @@ export function WorkerJobsPage() {
                   required
                   value={finalPkr}
                   onChange={(e) => setFinalPkr(e.target.value)}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 />
               </div>
               <div>
@@ -726,11 +726,11 @@ export function WorkerJobsPage() {
                   value={completionNotes}
                   onChange={(e) => setCompletionNotes(e.target.value)}
                   placeholder={bi('Describe work completed, parts installed, and safety checks...', 'مکمل کیے گئے کام اور حفاظتی جانچ کی تفصیل لکھیں...')}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
+                <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
                   <label className="block text-xs font-semibold text-[#17251E] mb-1.5">
                     {bi('Before Photos (Optional)', 'پہلے کی تصاویر (اختیاری)')}
                   </label>
@@ -742,7 +742,7 @@ export function WorkerJobsPage() {
                     className="w-full text-xs"
                   />
                 </div>
-                <div className="rounded-xl border border-[#B8E4C7] bg-[#DDF3E4]/35 p-3">
+                <div className="rounded-xl border border-[#D8D0BE] bg-[#ECE6D7]/35 p-3">
                   <label className="block text-xs font-semibold text-[#176B4A] mb-1.5">
                     {bi('After Photos (Work Proof)', 'بعد کی تصاویر (کام کا ثبوت)')}
                   </label>
@@ -781,11 +781,11 @@ export function WorkerJobsPage() {
                 <AlertTriangle className="h-5 w-5" />
                 <h3>{bi('Urgent Safety / SOS Alert', 'ہنگامی حفاظتی الرٹ')}</h3>
               </div>
-              <button type="button" onClick={() => setSosJob(null)} className="text-[#78857D]">
+              <button type="button" onClick={() => setSosJob(null)} className="text-[#69726B]">
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <p className="text-xs text-[#78857D]">
+            <p className="text-xs text-[#69726B]">
               {bi(
                 'This immediately creates a high-priority safety alert for Karigar Connect platform administrators.',
                 'یہ فوری طور پر کاریگر کنیکٹ ایڈمنز کو ہنگامی حفاظتی اطلاع بھیجتا ہے۔'
@@ -901,44 +901,44 @@ export function WorkerGrowthPage() {
           {/* KPI Strip */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 print:hidden">
             <div className="rounded-2xl kc-glass-card p-5">
-              <p className="text-xs font-semibold text-[#78857D] flex items-center gap-1.5">
+              <p className="text-xs font-semibold text-[#69726B] flex items-center gap-1.5">
                 <Coins className="h-4 w-4 text-[#176B4A]" />
                 {bi('Total Tracked Earnings', 'کل درج شدہ آمدنی')}
               </p>
               <p className="mt-2 text-2xl font-extrabold text-[#17251E] tabular-nums">
                 PKR {growth.totalEarningsPkr.toLocaleString()}
               </p>
-              <p className="mt-1 text-xs text-[#78857D]">
+              <p className="mt-1 text-xs text-[#69726B]">
                 {growth.totalJobsLogged} {bi('job entries logged', 'کام درج شدہ')}
               </p>
             </div>
             <div className="rounded-2xl kc-glass-card p-5">
-              <p className="text-xs font-semibold text-[#78857D] flex items-center gap-1.5">
+              <p className="text-xs font-semibold text-[#69726B] flex items-center gap-1.5">
                 <TrendingUp className="h-4 w-4 text-[#176B4A]" />
                 {bi('This Month', 'اس ماہ کی آمدنی')}
               </p>
               <p className="mt-2 text-2xl font-extrabold text-[#176B4A] tabular-nums">
                 PKR {growth.thisMonthPkr.toLocaleString()}
               </p>
-              <p className="mt-1 text-xs text-[#78857D]">
+              <p className="mt-1 text-xs text-[#69726B]">
                 {bi('Auto-logged from completed platform jobs', 'مکمل کاموں سے خودکار اندراج')}
               </p>
             </div>
             <div className="rounded-2xl kc-glass-card p-5">
-              <p className="text-xs font-semibold text-[#78857D] flex items-center gap-1.5">
+              <p className="text-xs font-semibold text-[#69726B] flex items-center gap-1.5">
                 <Award className="h-4 w-4 text-[#176B4A]" />
                 {bi(`${user?.city || profile.city} Leaderboard Rank`, `${user?.city || profile.city} میں درجہ`)}
               </p>
               <p className="mt-2 text-2xl font-extrabold text-[#17251E] tabular-nums">
                 {growth.cityRank ? `#${growth.cityRank}` : '—'}
-                <span className="text-sm font-normal text-[#78857D]">
+                <span className="text-sm font-normal text-[#69726B]">
                   {growth.cityPeersTotal ? ` / ${growth.cityPeersTotal}` : ''}
                 </span>
               </p>
               <div className="mt-1 flex items-center gap-2">
                 <TierPill tier={profile.tier} compact />
                 {growth.tierProgress?.nextTier && (
-                  <span className="text-xs text-[#78857D]">
+                  <span className="text-xs text-[#69726B]">
                     {bi(`Next: ${tierText(growth.tierProgress.nextTier)}`, `اگلا: ${tierText(growth.tierProgress.nextTier)}`)}
                   </span>
                 )}
@@ -953,14 +953,14 @@ export function WorkerGrowthPage() {
                 {bi('Earnings Tracker (PKR)', 'آمدنی کا ریکارڈ (PKR)')}
               </h3>
 
-              <form onSubmit={addEntry} className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-4 grid grid-cols-1 sm:grid-cols-12 gap-2.5">
+              <form onSubmit={addEntry} className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-4 grid grid-cols-1 sm:grid-cols-12 gap-2.5">
                 <input
                   type="text"
                   required
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder={bi('Job or site description', 'کام یا سائٹ کی تفصیل')}
-                  className="sm:col-span-5 rounded-xl border border-[#E5EEE8] bg-white px-3 py-2 text-xs"
+                  className="sm:col-span-5 rounded-xl border border-[#E6E0D2] bg-white px-3 py-2 text-xs"
                 />
                 <input
                   type="number"
@@ -969,14 +969,14 @@ export function WorkerGrowthPage() {
                   value={amountPkr}
                   onChange={(e) => setAmountPkr(e.target.value)}
                   placeholder={bi('Amount (PKR)', 'رقم (PKR)')}
-                  className="sm:col-span-3 rounded-xl border border-[#E5EEE8] bg-white px-3 py-2 text-xs"
+                  className="sm:col-span-3 rounded-xl border border-[#E6E0D2] bg-white px-3 py-2 text-xs"
                 />
                 <input
                   type="date"
                   required
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="sm:col-span-2 rounded-xl border border-[#E5EEE8] bg-white px-2 py-2 text-xs"
+                  className="sm:col-span-2 rounded-xl border border-[#E6E0D2] bg-white px-2 py-2 text-xs"
                 />
                 <button
                   type="submit"
@@ -991,26 +991,26 @@ export function WorkerGrowthPage() {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder={bi('Optional area / note...', 'اختیاری علاقہ / نوٹ...')}
-                  className="sm:col-span-12 rounded-xl border border-[#E5EEE8] bg-white px-3 py-1.5 text-xs"
+                  className="sm:col-span-12 rounded-xl border border-[#E6E0D2] bg-white px-3 py-1.5 text-xs"
                 />
               </form>
 
               {growth.logs.length === 0 ? (
-                <p className="text-sm text-[#78857D]">{bi('No earnings logged yet.', 'ابھی کوئی آمدنی درج نہیں ہوئی۔')}</p>
+                <p className="text-sm text-[#69726B]">{bi('No earnings logged yet.', 'ابھی کوئی آمدنی درج نہیں ہوئی۔')}</p>
               ) : (
-                <div className="divide-y divide-[#E5EEE8]">
+                <div className="divide-y divide-[#E6E0D2]">
                   {growth.logs.map((l: any) => (
                     <div key={l.id} className="py-3 flex items-center justify-between gap-3 text-sm">
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="font-semibold text-[#17251E]">{l.title}</span>
                           {l.jobId && (
-                            <span className="rounded bg-[#DDF3E4] px-1.5 py-0.5 text-[10px] font-bold text-[#176B4A]">
+                            <span className="rounded bg-[#ECE6D7] px-1.5 py-0.5 text-[10px] font-bold text-[#176B4A]">
                               {bi('Platform Job', 'پلیٹ فارم کام')}
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-[#78857D]">
+                        <p className="text-xs text-[#69726B]">
                           {formatDate(l.date, lang)} {l.notes ? `· ${l.notes}` : ''}
                         </p>
                       </div>
@@ -1041,7 +1041,7 @@ export function WorkerGrowthPage() {
                 {bi('Recommended Skills to Unlock Next Tier', 'اگلے درجے کے لیے تجویز کردہ مہارتیں')}
               </h3>
               {growth.recommendedSkills.length === 0 ? (
-                <p className="text-sm text-[#78857D]">
+                <p className="text-sm text-[#69726B]">
                   {bi(
                     'All active competencies in your selected category are verified! Keep completing jobs with 5★ customer care.',
                     'آپ کے منتخب شعبے کی تمام فعال مہارتیں تصدیق شدہ ہیں! بہترین کسٹمر سروس جاری رکھیں۔'
@@ -1050,12 +1050,12 @@ export function WorkerGrowthPage() {
               ) : (
                 <div className="space-y-3">
                   {growth.recommendedSkills.map((comp: any) => (
-                    <div key={comp.id} className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3.5 flex items-start justify-between gap-3">
+                    <div key={comp.id} className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3.5 flex items-start justify-between gap-3">
                       <div>
                         <p className="text-sm font-bold text-[#17251E]">
                           {isUr && comp.urduTitle ? comp.urduTitle : comp.title}
                         </p>
-                        <p className="text-xs text-[#78857D] mt-0.5 line-clamp-2">{comp.description}</p>
+                        <p className="text-xs text-[#69726B] mt-0.5 line-clamp-2">{comp.description}</p>
                       </div>
                       <Link
                         to="/worker/evidence"

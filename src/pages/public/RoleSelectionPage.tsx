@@ -51,7 +51,7 @@ export function RoleSelectionPage({ defaultMode = 'register' }: RoleSelectionPag
     <PublicLayout>
       <PageTransition className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
         {user && (
-          <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-[#73C99B]/60 bg-[#DDF3E4] px-5 py-4 text-sm">
+          <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-[#C9973A]/60 bg-[#ECE6D7] px-5 py-4 text-sm">
             <div>
               <p className="font-bold text-[#11221B]">
                 {bi(`Signed in as ${user.fullName}`, `آپ بطور ${user.fullName} سائن ان ہیں`)}
@@ -72,7 +72,7 @@ export function RoleSelectionPage({ defaultMode = 'register' }: RoleSelectionPag
 
         {/* Header & Mode Switcher */}
         <div className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center rounded-full bg-[#F2FBF6] p-1 border border-[#CFE9D8]">
+          <div className="inline-flex items-center rounded-full bg-[#F3EFE4] p-1 border border-[#E2DBCB]">
             <button
               type="button"
               onClick={() => setMode('register')}
@@ -128,14 +128,14 @@ export function RoleSelectionPage({ defaultMode = 'register' }: RoleSelectionPag
                 navigate(karigarTarget);
               }
             }}
-            className="group cursor-pointer rounded-3xl bg-white border border-[#CFE9D8] p-7 sm:p-9 shadow-[0_18px_48px_-24px_rgba(17,34,27,0.16)] hover:border-[#176B4A] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-7 focus:outline-none focus:ring-2 focus:ring-[#176B4A]"
+            className="group cursor-pointer rounded-3xl bg-white border border-[#E2DBCB] p-7 sm:p-9 shadow-[0_18px_48px_-24px_rgba(17,34,27,0.16)] hover:border-[#176B4A] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-7 focus:outline-none focus:ring-2 focus:ring-[#176B4A]"
           >
             <div>
               <div className="flex items-center justify-between gap-3">
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#DDF3E4] text-[#176B4A] group-hover:bg-[#176B4A] group-hover:text-white transition-colors">
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ECE6D7] text-[#176B4A] group-hover:bg-[#176B4A] group-hover:text-white transition-colors">
                   <Hammer className="h-6 w-6" />
                 </span>
-                <span className="rounded-full bg-[#F2FBF6] border border-[#CFE9D8] px-3.5 py-1 text-xs font-bold text-[#176B4A]">
+                <span className="rounded-full bg-[#F3EFE4] border border-[#E2DBCB] px-3.5 py-1 text-xs font-bold text-[#176B4A]">
                   {bi('01 · Karigar Account', '۰۱ · کاریگر اکاؤنٹ')}
                 </span>
               </div>
@@ -150,7 +150,7 @@ export function RoleSelectionPage({ defaultMode = 'register' }: RoleSelectionPag
                 )}
               </p>
 
-              <ul className="mt-6 space-y-2.5 border-t border-[#E4F2EA] pt-5 text-xs sm:text-sm text-[#17251E]">
+              <ul className="mt-6 space-y-2.5 border-t border-[#ECE6D7] pt-5 text-xs sm:text-sm text-[#17251E]">
                 <li className="flex items-center gap-2.5">
                   <Award className="h-4 w-4 text-[#176B4A] shrink-0" />
                   <span>{bi('Earn assessor-verified skill badges & Trust Score', 'ماہرین سے تصدیق شدہ مہارتی بیج اور ٹرسٹ اسکور')}</span>
@@ -209,14 +209,14 @@ export function RoleSelectionPage({ defaultMode = 'register' }: RoleSelectionPag
                 navigate(hirerTarget);
               }
             }}
-            className="group cursor-pointer rounded-3xl kc-dark-surface text-white border border-[#1F3A2E] p-7 sm:p-9 shadow-[0_18px_48px_-24px_rgba(17,34,27,0.35)] hover:border-[#73C99B] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-7 focus:outline-none focus:ring-2 focus:ring-[#73C99B]"
+            className="group cursor-pointer rounded-3xl kc-dark-surface text-white border border-[#1F3A2E] p-7 sm:p-9 shadow-[0_18px_48px_-24px_rgba(17,34,27,0.35)] hover:border-[#C9973A] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-7 focus:outline-none focus:ring-2 focus:ring-[#C9973A]"
           >
             <div>
               <div className="flex items-center justify-between gap-3">
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#399B6B]/25 text-[#B8E4C7] group-hover:bg-[#B8E4C7] group-hover:text-[#11221B] transition-colors">
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#399B6B]/25 text-[#D8D0BE] group-hover:bg-[#D8D0BE] group-hover:text-[#11221B] transition-colors">
                   <Briefcase className="h-6 w-6" />
                 </span>
-                <span className="rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold text-[#B8E4C7]">
+                <span className="rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold text-[#D8D0BE]">
                   {bi('02 · Hirer Account', '۰۲ · ہائرر / صارف اکاؤنٹ')}
                 </span>
               </div>
@@ -224,31 +224,31 @@ export function RoleSelectionPage({ defaultMode = 'register' }: RoleSelectionPag
               <h2 className="mt-6 text-2xl font-extrabold tracking-tight text-white">
                 {bi('Join as a Hirer', 'بطور ہائرر شامل ہوں')}
               </h2>
-              <p className="mt-2.5 text-sm sm:text-base text-[#DDF3E4]/85 leading-relaxed">
+              <p className="mt-2.5 text-sm sm:text-base text-[#ECE6D7]/85 leading-relaxed">
                 {bi(
                   'I want to discover and hire skilled Karigars.',
                   'میں ماہر کاریگروں کو تلاش کرنا اور کام پر رکھنا چاہتا ہوں۔'
                 )}
               </p>
 
-              <ul className="mt-6 space-y-2.5 border-t border-white/12 pt-5 text-xs sm:text-sm text-[#DDF3E4]">
+              <ul className="mt-6 space-y-2.5 border-t border-white/12 pt-5 text-xs sm:text-sm text-[#ECE6D7]">
                 <li className="flex items-center gap-2.5">
-                  <Search className="h-4 w-4 text-[#73C99B] shrink-0" />
+                  <Search className="h-4 w-4 text-[#C9973A] shrink-0" />
                   <span>{bi('Filter by verified badges, trade & city across Pakistan', 'تصدیق شدہ بیج، پیشے اور شہر کے لحاظ سے تلاش کریں')}</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <ShieldCheck className="h-4 w-4 text-[#73C99B] shrink-0" />
+                  <ShieldCheck className="h-4 w-4 text-[#C9973A] shrink-0" />
                   <span>{bi('Compare PKR Fair Price Guides before booking jobs', 'بکنگ سے پہلے مناسب نرخ نامے کا موازنہ کریں')}</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-[#73C99B] shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-[#C9973A] shrink-0" />
                   <span>{bi('7-Day Karigar Guarantee & before/after work proof', '۷ دن کی گارنٹی اور مکمل کام کا تصویری ثبوت')}</span>
                 </li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <div className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#DDF3E4] px-6 py-3.5 text-sm font-bold text-[#11221B] group-hover:bg-[#B8E4C7] transition-colors shadow-xs">
+              <div className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#ECE6D7] px-6 py-3.5 text-sm font-bold text-[#11221B] group-hover:bg-[#D8D0BE] transition-colors shadow-xs">
                 <span>
                   {mode === 'login'
                     ? bi('Continue to Hirer Login', 'ہائرر لاگ ان پر جائیں')
@@ -257,7 +257,7 @@ export function RoleSelectionPage({ defaultMode = 'register' }: RoleSelectionPag
                 <ArrowRight className="h-4 w-4 rtl:rotate-180 transition-transform group-hover:translate-x-0.5" />
               </div>
               <p
-                className="text-center text-xs text-[#B8E4C7]/85"
+                className="text-center text-xs text-[#D8D0BE]/85"
                 onClick={(e) => e.stopPropagation()}
               >
                 {mode === 'login' ? (

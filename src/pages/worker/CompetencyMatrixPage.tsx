@@ -83,16 +83,16 @@ export function CompetencyMatrixPage() {
         />
       ) : (
         <div className="space-y-6">
-          <div className="rounded-2xl border border-[#B8E4C7] bg-gradient-to-r from-white/95 to-[#DDF3E4]/70 backdrop-blur-md p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 kc-card-shadow">
+          <div className="rounded-2xl border border-[#D8D0BE] bg-gradient-to-r from-white/95 to-[#ECE6D7]/70 backdrop-blur-md p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 kc-card-shadow">
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[#399B6B]">
                 {bi('Active Trade Checklist', 'فعال پیشے کی فہرست')}
               </p>
               <h2 className="mt-1 text-xl font-extrabold text-[#17251E]">
                 {isUr && trade.urduName ? trade.urduName : trade.name}{' '}
-                {!isUr && trade.urduName ? <span className="font-normal text-[#78857D]">· {trade.urduName}</span> : null}
+                {!isUr && trade.urduName ? <span className="font-normal text-[#69726B]">· {trade.urduName}</span> : null}
               </h2>
-              <p className="mt-1 text-sm text-[#78857D]">{trade.description}</p>
+              <p className="mt-1 text-sm text-[#69726B]">{trade.description}</p>
             </div>
             <Link
               to="/worker/evidence"
@@ -120,21 +120,21 @@ export function CompetencyMatrixPage() {
                         <h3 className="text-base font-bold text-[#17251E]">
                           {isUr && comp.urduTitle ? comp.urduTitle : comp.title}
                         </h3>
-                        {!isUr && comp.urduTitle && <p className="text-xs text-[#78857D]">{comp.urduTitle}</p>}
+                        {!isUr && comp.urduTitle && <p className="text-xs text-[#69726B]">{comp.urduTitle}</p>}
                       </div>
                       <StatusLabel status={comp.matrixStatus} />
                     </div>
-                    <p className="mt-2 text-sm text-[#78857D]">{comp.description}</p>
+                    <p className="mt-2 text-sm text-[#69726B]">{comp.description}</p>
 
-                    <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[#E5EEE8] pt-3 text-xs">
+                    <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[#E6E0D2] pt-3 text-xs">
                       <div>
-                        <span className="text-[#78857D]">{bi('Private Evidence', 'نجی ثبوت')}</span>
+                        <span className="text-[#69726B]">{bi('Private Evidence', 'نجی ثبوت')}</span>
                         <p className="font-mono font-semibold text-[#17251E] tabular-nums">
                           {comp.evidenceCount} {bi('file(s)', 'فائل')}
                         </p>
                       </div>
                       <div>
-                        <span className="text-[#78857D]">{bi('Verification Level', 'تصدیقی درجہ')}</span>
+                        <span className="text-[#69726B]">{bi('Verification Level', 'تصدیقی درجہ')}</span>
                         <p className="font-semibold text-[#17251E]">
                           {comp.badge
                             ? formatLevelLabel(comp.badge.level, lang)
@@ -145,24 +145,24 @@ export function CompetencyMatrixPage() {
                       </div>
                       {comp.badge && (
                         <div className="col-span-2">
-                          <span className="text-[#78857D]">{bi('Badge Expiry:', 'بیج کی معیاد:')} </span>
+                          <span className="text-[#69726B]">{bi('Badge Expiry:', 'بیج کی معیاد:')} </span>
                           <span className="font-mono text-[#176B4A] font-medium">{formatDate(comp.badge.expiresAt, lang)}</span>
                         </div>
                       )}
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-[#E5EEE8] flex flex-wrap items-center gap-2">
+                  <div className="mt-4 pt-3 border-t border-[#E6E0D2] flex flex-wrap items-center gap-2">
                     <button
                       type="button"
                       onClick={() => setSelectedComp(comp)}
-                      className="rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-3.5 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50"
+                      className="rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-3.5 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50"
                     >
                       {bi('View Details', 'تفصیل دیکھیں')}
                     </button>
                     <Link
                       to={`/worker/evidence?competencyId=${comp.id}`}
-                      className="rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-3.5 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50"
+                      className="rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-3.5 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50"
                     >
                       {bi('Add Evidence', 'ثبوت شامل کریں')}
                     </Link>
@@ -193,22 +193,22 @@ export function CompetencyMatrixPage() {
                 <h3 className="text-lg font-bold text-[#17251E]">
                   {isUr && selectedComp.urduTitle ? selectedComp.urduTitle : selectedComp.title}
                 </h3>
-                {!isUr && selectedComp.urduTitle && <p className="text-xs text-[#78857D]">{selectedComp.urduTitle}</p>}
+                {!isUr && selectedComp.urduTitle && <p className="text-xs text-[#69726B]">{selectedComp.urduTitle}</p>}
               </div>
               <StatusLabel status={selectedComp.matrixStatus} />
             </div>
-            <p className="mt-3 text-sm text-[#78857D]">{selectedComp.description}</p>
+            <p className="mt-3 text-sm text-[#69726B]">{selectedComp.description}</p>
 
             {selectedComp.latestAssessment && (
-              <div className="mt-4 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-4 text-sm space-y-1.5">
+              <div className="mt-4 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-4 text-sm space-y-1.5">
                 <p className="font-bold text-[#17251E]">{bi('Latest Assessment Result', 'تازہ ترین جائزے کا نتیجہ')}</p>
-                <p className="text-xs text-[#78857D]">
+                <p className="text-xs text-[#69726B]">
                   {bi('Outcome:', 'نتیجہ:')}{' '}
                   <span className="font-semibold text-[#17251E]">{statusText(selectedComp.latestAssessment.status)}</span>
                   {selectedComp.latestAssessment.percentage != null && ` · ${bi('Score:', 'اسکور:')} ${selectedComp.latestAssessment.percentage}%`}
                 </p>
                 {selectedComp.latestAssessment.assessorName && (
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {bi('Assessor:', 'ماہرِ جائزہ:')} {selectedComp.latestAssessment.assessorName}
                   </p>
                 )}
@@ -224,7 +224,7 @@ export function CompetencyMatrixPage() {
               <button
                 type="button"
                 onClick={() => setSelectedComp(null)}
-                className="rounded-full border border-[#E5EEE8] px-4 py-2 text-sm font-semibold text-[#17251E] hover:bg-[#F7FAF8]"
+                className="rounded-full border border-[#E6E0D2] px-4 py-2 text-sm font-semibold text-[#17251E] hover:bg-[#F7F4EC]"
               >
                 {bi('Close', 'بند کریں')}
               </button>

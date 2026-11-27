@@ -246,7 +246,7 @@ export function CustomerJobsPage() {
                 className={`rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
                   tab === t.id
                     ? 'bg-[#176B4A] text-white'
-                    : 'border border-[#E5EEE8] bg-white text-[#17251E] hover:bg-[#DDF3E4]/50'
+                    : 'border border-[#E6E0D2] bg-white text-[#17251E] hover:bg-[#ECE6D7]/50'
                 }`}
               >
                 {t.label}
@@ -292,7 +292,7 @@ export function CustomerJobsPage() {
                         <span
                           className={`rounded-md px-2 py-0.5 text-[11px] font-bold ${
                             job.priceStatus === 'WITHIN_GUIDE'
-                              ? 'bg-[#DDF3E4] text-[#176B4A]'
+                              ? 'bg-[#ECE6D7] text-[#176B4A]'
                               : job.priceStatus === 'BELOW_GUIDE'
                                 ? 'bg-sky-50 text-sky-800'
                                 : 'bg-amber-50 text-amber-800'
@@ -306,7 +306,7 @@ export function CustomerJobsPage() {
                         </span>
                       )}
                     </div>
-                    <p className="mt-1 text-xs text-[#78857D]">
+                    <p className="mt-1 text-xs text-[#69726B]">
                       <Link
                         to={`/employer/workers/${job.workerPublicId}`}
                         className="font-bold text-[#176B4A] hover:underline"
@@ -319,7 +319,7 @@ export function CustomerJobsPage() {
                   </div>
 
                   <div className="text-xs sm:text-end space-y-1">
-                    <p className="text-[#78857D] flex items-center sm:justify-end gap-1">
+                    <p className="text-[#69726B] flex items-center sm:justify-end gap-1">
                       <Calendar className="h-3.5 w-3.5" />
                       <span>
                         {job.scheduledDateTime
@@ -337,7 +337,7 @@ export function CustomerJobsPage() {
 
                 <p className="text-sm text-[#17251E]">{job.description}</p>
                 {job.workerNotes && (
-                  <p className="text-xs text-[#78857D] bg-[#F7FAF8] rounded-xl p-2.5 border border-[#E5EEE8]">
+                  <p className="text-xs text-[#69726B] bg-[#F7F4EC] rounded-xl p-2.5 border border-[#E6E0D2]">
                     <strong className="text-[#17251E]">{bi('Worker Quote Note:', 'ہنرمند کا نوٹ:')}</strong> {job.workerNotes}
                   </p>
                 )}
@@ -346,31 +346,31 @@ export function CustomerJobsPage() {
                 {(job.problemPhotos?.length > 0 || job.beforePhotos?.length > 0 || job.afterPhotos?.length > 0) && (
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {job.problemPhotos?.length > 0 && (
-                      <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
-                        <p className="text-[11px] font-bold text-[#78857D] mb-2">{bi('Your Problem Photos', 'آپ کی تصاویر')}</p>
+                      <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
+                        <p className="text-[11px] font-bold text-[#69726B] mb-2">{bi('Your Problem Photos', 'آپ کی تصاویر')}</p>
                         <div className="flex flex-wrap gap-2">
                           {job.problemPhotos.map((p: any) => (
-                            <img key={p.id} src={p.signedUrl} alt={p.originalName} className="h-16 w-16 rounded-lg object-cover border border-[#E5EEE8]" />
+                            <img key={p.id} src={p.signedUrl} alt={p.originalName} className="h-16 w-16 rounded-lg object-cover border border-[#E6E0D2]" />
                           ))}
                         </div>
                       </div>
                     )}
                     {job.beforePhotos?.length > 0 && (
-                      <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
-                        <p className="text-[11px] font-bold text-[#78857D] mb-2">{bi('Before Work', 'کام سے پہلے')}</p>
+                      <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
+                        <p className="text-[11px] font-bold text-[#69726B] mb-2">{bi('Before Work', 'کام سے پہلے')}</p>
                         <div className="flex flex-wrap gap-2">
                           {job.beforePhotos.map((p: any) => (
-                            <img key={p.id} src={p.signedUrl} alt={p.originalName} className="h-16 w-16 rounded-lg object-cover border border-[#E5EEE8]" />
+                            <img key={p.id} src={p.signedUrl} alt={p.originalName} className="h-16 w-16 rounded-lg object-cover border border-[#E6E0D2]" />
                           ))}
                         </div>
                       </div>
                     )}
                     {job.afterPhotos?.length > 0 && (
-                      <div className="rounded-xl border border-[#B8E4C7] bg-[#DDF3E4]/35 p-3">
+                      <div className="rounded-xl border border-[#D8D0BE] bg-[#ECE6D7]/35 p-3">
                         <p className="text-[11px] font-bold text-[#176B4A] mb-2">{bi('After Work Proof', 'کام کے بعد ثبوت')}</p>
                         <div className="flex flex-wrap gap-2">
                           {job.afterPhotos.map((p: any) => (
-                            <img key={p.id} src={p.signedUrl} alt={p.originalName} className="h-16 w-16 rounded-lg object-cover border border-[#B8E4C7]" />
+                            <img key={p.id} src={p.signedUrl} alt={p.originalName} className="h-16 w-16 rounded-lg object-cover border border-[#D8D0BE]" />
                           ))}
                         </div>
                       </div>
@@ -380,7 +380,7 @@ export function CustomerJobsPage() {
 
                 {/* Worker Contact Gating */}
                 {job.contactUnlocked && job.workerContact ? (
-                  <div className="rounded-xl border border-[#73C99B] bg-[#DDF3E4]/55 p-3 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#176B4A]">
+                  <div className="rounded-xl border border-[#C9973A] bg-[#ECE6D7]/55 p-3 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#176B4A]">
                     <div className="flex flex-wrap gap-5">
                       <span className="inline-flex items-center gap-1.5">
                         <Phone className="h-3.5 w-3.5" />
@@ -394,14 +394,14 @@ export function CustomerJobsPage() {
                     <button
                       type="button"
                       onClick={() => shareWithTrustedContact(job)}
-                      className="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1 text-[11px] font-semibold text-[#176B4A] border border-[#B8E4C7] hover:bg-[#F7FAF8]"
+                      className="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1 text-[11px] font-semibold text-[#176B4A] border border-[#D8D0BE] hover:bg-[#F7F4EC]"
                     >
                       <Share2 className="h-3 w-3" />
                       {bi('Share with Trusted Contact', 'معتمد رابطے کو تفصیل بھیجیں')}
                     </button>
                   </div>
                 ) : (
-                  <p className="text-xs text-[#78857D] flex items-center gap-1.5">
+                  <p className="text-xs text-[#69726B] flex items-center gap-1.5">
                     <Lock className="h-3.5 w-3.5 text-[#399B6B]" />
                     <span>
                       {bi(
@@ -414,7 +414,7 @@ export function CustomerJobsPage() {
 
                 {/* Existing Review summary */}
                 {job.review && (
-                  <div className="rounded-xl border border-[#B8E4C7] bg-[#F7FAF8] p-3.5 text-xs space-y-1">
+                  <div className="rounded-xl border border-[#D8D0BE] bg-[#F7F4EC] p-3.5 text-xs space-y-1">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-[#176B4A]">
                         {bi('Your Verified Hire Review:', 'آپ کا تصدیق شدہ ریویو:')} {job.review.overallRating}★
@@ -450,7 +450,7 @@ export function CustomerJobsPage() {
                       </p>
                     )}
                     {job.dispute.adminResolutionNotes && (
-                      <p className="text-[#78857D]">
+                      <p className="text-[#69726B]">
                         <strong>{bi('Admin Resolution:', 'ایڈمن فیصلہ:')}</strong> {job.dispute.adminResolutionNotes}
                       </p>
                     )}
@@ -458,7 +458,7 @@ export function CustomerJobsPage() {
                 )}
 
                 {/* Action Row */}
-                <div className="border-t border-[#E5EEE8] pt-3 flex flex-wrap items-center justify-between gap-2">
+                <div className="border-t border-[#E6E0D2] pt-3 flex flex-wrap items-center justify-between gap-2">
                   <div className="flex flex-wrap gap-2">
                     {['REQUESTED', 'ACCEPTED', 'SCHEDULED'].includes(job.status) && (
                       <button
@@ -474,7 +474,7 @@ export function CustomerJobsPage() {
                       <button
                         type="button"
                         onClick={() => handleConfirmProof(job.id)}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[#73C99B] bg-[#DDF3E4]/75 px-4 py-1.5 text-xs font-semibold text-[#176B4A] hover:bg-[#DDF3E4]"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-[#C9973A] bg-[#ECE6D7]/75 px-4 py-1.5 text-xs font-semibold text-[#176B4A] hover:bg-[#ECE6D7]"
                       >
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         {bi('Confirm Completion & Proof', 'تکمیل اور ثبوت کی تصدیق کریں')}
@@ -524,7 +524,7 @@ export function CustomerJobsPage() {
       {/* Review Modal */}
       {reviewJob && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 backdrop-blur-[2px] p-4">
-          <div className="w-full max-w-lg rounded-2xl border border-[#E5EEE8] bg-white p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
+          <div className="w-full max-w-lg rounded-2xl border border-[#E6E0D2] bg-white p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-lg font-bold text-[#17251E]">
@@ -532,9 +532,9 @@ export function CustomerJobsPage() {
                     ? bi('Edit Verified Hire Review', 'تصدیق شدہ ریویو میں ترمیم')
                     : bi(`Rate ${reviewJob.workerName}`, `${reviewJob.workerName} کی کارکردگی کی درجہ بندی`)}
                 </h3>
-                <p className="text-xs text-[#78857D]">{reviewJob.title}</p>
+                <p className="text-xs text-[#69726B]">{reviewJob.title}</p>
               </div>
-              <button type="button" onClick={() => setReviewJob(null)} className="text-[#78857D]">
+              <button type="button" onClick={() => setReviewJob(null)} className="text-[#69726B]">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -553,7 +553,7 @@ export function CustomerJobsPage() {
                       className={`flex-1 rounded-xl border py-2 text-sm font-bold flex items-center justify-center gap-1 ${
                         overallRating >= s
                           ? 'border-amber-300 bg-amber-50 text-amber-800'
-                          : 'border-[#E5EEE8] bg-[#F7FAF8] text-[#78857D]'
+                          : 'border-[#E6E0D2] bg-[#F7F4EC] text-[#69726B]'
                       }`}
                     >
                       <Star className={`h-4 w-4 ${overallRating >= s ? 'fill-amber-400 text-amber-500' : ''}`} />
@@ -570,7 +570,7 @@ export function CustomerJobsPage() {
                   { label: bi('Behaviour', 'رویہ اور اخلاق'), val: behaviourRating, set: setBehaviourRating },
                   { label: bi('Value for Money', 'مناسب قیمت'), val: valueRating, set: setValueRating },
                 ].map((sub) => (
-                  <div key={String(sub.label)} className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-2.5">
+                  <div key={String(sub.label)} className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-2.5">
                     <div className="flex justify-between font-semibold text-[#17251E] mb-1">
                       <span>{sub.label}</span>
                       <span>{sub.val}★</span>
@@ -605,8 +605,8 @@ export function CustomerJobsPage() {
                         }
                         className={`rounded-lg border px-2.5 py-1 text-xs font-semibold ${
                           checked
-                            ? 'border-[#176B4A] bg-[#DDF3E4] text-[#176B4A]'
-                            : 'border-[#E5EEE8] bg-[#F7FAF8] text-[#78857D]'
+                            ? 'border-[#176B4A] bg-[#ECE6D7] text-[#176B4A]'
+                            : 'border-[#E6E0D2] bg-[#F7F4EC] text-[#69726B]'
                         }`}
                       >
                         {isUr ? tag.ur : tag.en}
@@ -625,12 +625,12 @@ export function CustomerJobsPage() {
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   placeholder={bi('Share how the job went for future homeowners...', 'آئندہ گاہکوں کے لیے اپنا تجربہ بیان کریں...')}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 />
               </div>
 
               {!editingReviewId && (
-                <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
+                <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
                   <label className="block text-xs font-semibold text-[#17251E] mb-1">
                     <Camera className="inline h-3.5 w-3.5 me-1" />
                     {bi('Completed Work Photos (Optional)', 'مکمل کام کی تصاویر (اختیاری)')}
@@ -665,15 +665,15 @@ export function CustomerJobsPage() {
       {/* Guarantee Dispute Modal */}
       {disputeJob && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 p-4">
-          <div className="w-full max-w-md rounded-2xl border border-[#E5EEE8] bg-white p-6 shadow-xl space-y-4">
+          <div className="w-full max-w-md rounded-2xl border border-[#E6E0D2] bg-white p-6 shadow-xl space-y-4">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-base font-bold text-[#17251E]">
                   {bi('7-Day Karigar Guarantee Request', '۷ روزہ کاریگر گارنٹی درخواست')}
                 </h3>
-                <p className="text-xs text-[#78857D]">{disputeJob.title}</p>
+                <p className="text-xs text-[#69726B]">{disputeJob.title}</p>
               </div>
-              <button type="button" onClick={() => setDisputeJob(null)} className="text-[#78857D]">
+              <button type="button" onClick={() => setDisputeJob(null)} className="text-[#69726B]">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -683,7 +683,7 @@ export function CustomerJobsPage() {
                 <select
                   value={disputeReason}
                   onChange={(e) => setDisputeReason(e.target.value)}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 >
                   <option value="Work issue returned within 7 days">{bi('Work issue returned within 7 days', '۷ دن میں دوبارہ خرابی آ گئی')}</option>
                   <option value="Incomplete workmanship or unfinished finish">{bi('Incomplete workmanship or unfinished finish', 'ادھورا یا غیر معیاری کام')}</option>
@@ -698,7 +698,7 @@ export function CustomerJobsPage() {
                   value={disputeDetails}
                   onChange={(e) => setDisputeDetails(e.target.value)}
                   placeholder={bi('Describe the rework needed...', 'مطلوبہ دوبارہ کام کی تفصیل لکھیں...')}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 />
               </div>
               <div className="flex justify-end gap-2">
@@ -723,7 +723,7 @@ export function CustomerJobsPage() {
                 <AlertTriangle className="h-5 w-5" />
                 <h3>{bi('Urgent Safety / SOS Alert', 'ہنگامی حفاظتی الرٹ')}</h3>
               </div>
-              <button type="button" onClick={() => setSosJob(null)} className="text-[#78857D]">
+              <button type="button" onClick={() => setSosJob(null)} className="text-[#69726B]">
                 <X className="h-5 w-5" />
               </button>
             </div>

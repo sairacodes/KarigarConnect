@@ -38,10 +38,10 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             role="status"
             className={`pointer-events-auto flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm shadow-md bg-white ${
               t.variant === 'success'
-                ? 'border-[#73C99B] text-[#17251E]'
+                ? 'border-[#C9973A] text-[#17251E]'
                 : t.variant === 'error'
                   ? 'border-red-200 text-[#17251E]'
-                  : 'border-[#E5EEE8] text-[#17251E]'
+                  : 'border-[#E6E0D2] text-[#17251E]'
             }`}
           >
             {t.variant === 'success' && <CheckCircle2 className="h-4 w-4 text-[#176B4A] shrink-0 mt-0.5" />}
@@ -52,7 +52,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               type="button"
               onClick={() => dismiss(t.id)}
               aria-label="Close notification"
-              className="text-[#78857D] hover:text-[#17251E]"
+              className="text-[#69726B] hover:text-[#17251E]"
             >
               <X className="h-4 w-4" />
             </button>

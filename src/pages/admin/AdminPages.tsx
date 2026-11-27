@@ -68,7 +68,7 @@ export function AdminDashboard() {
               <h2 className="text-xl sm:text-2xl font-extrabold text-[#17251E]">
                 {bi('Platform Overview & Governance', 'پلیٹ فارم کا جائزہ اور نگرانی')}
               </h2>
-              <p className="mt-1 text-sm text-[#78857D]">
+              <p className="mt-1 text-sm text-[#69726B]">
                 {bi(
                   'Monitor verified badges, Karigar tier upgrades, guarantee disputes, assessor approvals, and audit logs.',
                   'تصدیق شدہ بیجز، کاریگر درجے، گارنٹی تنازعات، ماہرین کی منظوری اور آڈٹ لاگز کی نگرانی کریں۔'
@@ -84,13 +84,13 @@ export function AdminDashboard() {
               </Link>
               <Link
                 to="/admin/disputes"
-                className="rounded-full border border-[#B8E4C7] bg-[#DDF3E4]/65 px-4 py-2.5 text-xs font-semibold text-[#176B4A] hover:bg-[#DDF3E4] whitespace-nowrap"
+                className="rounded-full border border-[#D8D0BE] bg-[#ECE6D7]/65 px-4 py-2.5 text-xs font-semibold text-[#176B4A] hover:bg-[#ECE6D7] whitespace-nowrap"
               >
                 {bi('Guarantee Disputes', 'گارنٹی تنازعات')} ({data.stats.pendingDisputes || 0})
               </Link>
               <Link
                 to="/admin/assessors"
-                className="rounded-full border border-[#E5EEE8] kc-glass-card px-4 py-2.5 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50 whitespace-nowrap"
+                className="rounded-full border border-[#E6E0D2] kc-glass-card px-4 py-2.5 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50 whitespace-nowrap"
               >
                 {bi('Assessors', 'ماہرین')} ({data.stats.pendingAssessors})
               </Link>
@@ -165,9 +165,9 @@ export function AdminDashboard() {
 
             <div className="lg:col-span-3 kc-dark-surface rounded-2xl p-5 sm:p-6 text-white flex flex-col justify-between kc-hover-lift">
               <div>
-                <p className="text-xs font-semibold text-[#73C99B]">{bi('Governance Queue', 'انتظامی قطار')}</p>
+                <p className="text-xs font-semibold text-[#C9973A]">{bi('Governance Queue', 'انتظامی قطار')}</p>
                 <p className="mt-2 text-3xl font-extrabold tabular-nums">{totalPendingGovernance}</p>
-                <p className="mt-1.5 text-xs text-[#B8E4C7]/85 leading-relaxed">
+                <p className="mt-1.5 text-xs text-[#D8D0BE]/85 leading-relaxed">
                   {bi(
                     'Open governance items across tier upgrades, guarantee disputes, assessors, and safety/moderation reports.',
                     'درجہ ترقی، گارنٹی تنازعات، ماہرین اور شکایات کے لیے کھلے معاملات۔'
@@ -215,14 +215,14 @@ export function AdminDashboard() {
                   {bi('Full Log →', 'مکمل لاگ ←')}
                 </Link>
               </div>
-              <div className="divide-y divide-[#E5EEE8]">
+              <div className="divide-y divide-[#E6E0D2]">
                 {data.recentActivity.map((act: any) => (
                   <div key={act.id} className="py-2.5 flex items-start justify-between gap-4 text-xs">
                     <div>
                       <p className="font-bold text-[#17251E]">{act.action.replace(/_/g, ' ')}</p>
-                      <p className="text-[#78857D]">{act.description}</p>
+                      <p className="text-[#69726B]">{act.description}</p>
                     </div>
-                    <span className="font-mono text-[#78857D] whitespace-nowrap">{formatDate(act.createdAt, lang)}</span>
+                    <span className="font-mono text-[#69726B] whitespace-nowrap">{formatDate(act.createdAt, lang)}</span>
                   </div>
                 ))}
               </div>
@@ -293,19 +293,19 @@ export function UserManagementPage() {
           className="rounded-2xl kc-glass-card p-4 flex flex-col sm:flex-row gap-3"
         >
           <div className="relative flex-1">
-            <Search className="absolute start-3.5 top-2.5 h-4 w-4 text-[#78857D]" />
+            <Search className="absolute start-3.5 top-2.5 h-4 w-4 text-[#69726B]" />
             <input
               type="text"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder={bi('Search user name, email, or city...', 'صارف کا نام، ای میل یا شہر تلاش کریں...')}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] ps-9 pe-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] ps-9 pe-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
           </div>
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+            className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
           >
             <option value="">{bi('All Roles', 'تمام کردار')}</option>
             <option value="WORKER">{bi('Workers', 'ہنرمند')}</option>
@@ -324,7 +324,7 @@ export function UserManagementPage() {
           <div className="rounded-2xl kc-glass-card overflow-x-auto">
             <table className="w-full text-start text-sm">
               <thead>
-                <tr className="border-b border-[#E5EEE8] bg-[#F7FAF8] text-xs font-semibold text-[#78857D]">
+                <tr className="border-b border-[#E6E0D2] bg-[#F7F4EC] text-xs font-semibold text-[#69726B]">
                   <th className="px-4 py-3">{bi('User', 'صارف')}</th>
                   <th className="px-4 py-3">{bi('Role', 'کردار')}</th>
                   <th className="px-4 py-3">{bi('City', 'شہر')}</th>
@@ -332,15 +332,15 @@ export function UserManagementPage() {
                   <th className="px-4 py-3 text-end">{bi('Actions', 'اقدامات')}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E5EEE8]">
+              <tbody className="divide-y divide-[#E6E0D2]">
                 {users.map((u) => (
-                  <tr key={u.id} className="hover:bg-[#F7FAF8]/60">
+                  <tr key={u.id} className="hover:bg-[#F7F4EC]/60">
                     <td className="px-4 py-3">
                       <p className="font-semibold text-[#17251E]">{u.fullName}</p>
-                      <p className="text-xs text-[#78857D]">{u.email}</p>
+                      <p className="text-xs text-[#69726B]">{u.email}</p>
                     </td>
                     <td className="px-4 py-3 text-xs font-semibold text-[#17251E]">{roleText(u.role)}</td>
-                    <td className="px-4 py-3 text-xs text-[#78857D]">{u.city}</td>
+                    <td className="px-4 py-3 text-xs text-[#69726B]">{u.city}</td>
                     <td className="px-4 py-3">
                       <StatusLabel status={u.status} />
                     </td>
@@ -361,7 +361,7 @@ export function UserManagementPage() {
                             className={`rounded-full border px-3 py-1 text-xs font-semibold ${
                               u.status === 'ACTIVE'
                                 ? 'border-red-200 text-red-700 hover:bg-red-50'
-                                : 'border-[#B8E4C7] text-[#176B4A] hover:bg-[#DDF3E4]/60'
+                                : 'border-[#D8D0BE] text-[#176B4A] hover:bg-[#ECE6D7]/60'
                             }`}
                           >
                             {u.status === 'ACTIVE' ? bi('Suspend', 'معطل کریں') : bi('Reactivate', 'بحال کریں')}
@@ -473,14 +473,14 @@ export function AssessorApplicationsPage() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <h3 className="text-lg font-bold text-[#17251E]">{a.fullName}</h3>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {a.email} · {a.city} · {a.yearsExperience} {bi('yrs experience', 'سال تجربہ')}
                   </p>
                 </div>
                 <StatusLabel status={a.approvalStatus} />
               </div>
 
-              <div className="text-sm text-[#78857D] space-y-1">
+              <div className="text-sm text-[#69726B] space-y-1">
                 <p>
                   <strong className="text-[#17251E]">{bi('Qualifications:', 'اسناد و قابلیت:')}</strong>{' '}
                   {a.qualifications || bi('Not provided yet', 'درج نہیں کی گئیں')}
@@ -491,11 +491,11 @@ export function AssessorApplicationsPage() {
                 </p>
               </div>
 
-              <div className="border-t border-[#E5EEE8] pt-3">
+              <div className="border-t border-[#E6E0D2] pt-3">
                 <p className="text-xs font-bold text-[#17251E] mb-2">
                   {bi('Assign Approved Categories:', 'منظور شدہ شعبے تفویض کریں:')} ({(selectedTradeMap[a.id] || []).length})
                 </p>
-                <div className="max-h-56 overflow-y-auto rounded-xl border border-[#E5EEE8] bg-[#F7FAF8]/70 p-3 space-y-3">
+                <div className="max-h-56 overflow-y-auto rounded-xl border border-[#E6E0D2] bg-[#F7F4EC]/70 p-3 space-y-3">
                   {SERVICE_GROUPS.map((grp) => {
                     const grpTrades = trades.filter((t) => (t.group || 'Home Repair & Maintenance') === grp.group);
                     if (grpTrades.length === 0) return null;
@@ -512,8 +512,8 @@ export function AssessorApplicationsPage() {
                                 key={t.id}
                                 className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs cursor-pointer transition-colors ${
                                   checked
-                                    ? 'border-[#176B4A] bg-[#DDF3E4]/80 text-[#176B4A] font-semibold'
-                                    : 'border-[#E5EEE8] bg-white text-[#78857D]'
+                                    ? 'border-[#176B4A] bg-[#ECE6D7]/80 text-[#176B4A] font-semibold'
+                                    : 'border-[#E6E0D2] bg-white text-[#69726B]'
                                 }`}
                               >
                                 <input
@@ -678,7 +678,7 @@ export function TradeManagementPage() {
             <select
               value={form.group}
               onChange={(e) => setForm({ ...form, group: e.target.value })}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
             >
               {SERVICE_GROUPS.map((g) => (
                 <option key={g.group} value={g.group}>
@@ -695,7 +695,7 @@ export function TradeManagementPage() {
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
               />
             </div>
             <div>
@@ -704,7 +704,7 @@ export function TradeManagementPage() {
                 type="text"
                 value={form.urduName}
                 onChange={(e) => setForm({ ...form, urduName: e.target.value })}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
               />
             </div>
           </div>
@@ -715,11 +715,11 @@ export function TradeManagementPage() {
               required
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
             />
           </div>
 
-          <div className="border-t border-[#E5EEE8] pt-3 space-y-2.5">
+          <div className="border-t border-[#E6E0D2] pt-3 space-y-2.5">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#17251E]">
                 {bi('Fair Price Guide Benchmarks (PKR)', 'مناسب قیمت نامہ (PKR)')}
@@ -742,7 +742,7 @@ export function TradeManagementPage() {
               </button>
             </div>
             {form.priceGuide.map((pg, idx) => (
-              <div key={pg.id} className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-2.5 space-y-1.5 text-xs">
+              <div key={pg.id} className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-2.5 space-y-1.5 text-xs">
                 <div className="flex gap-1.5">
                   <input
                     type="text"
@@ -753,7 +753,7 @@ export function TradeManagementPage() {
                       next[idx].serviceLabel = e.target.value;
                       setForm({ ...form, priceGuide: next });
                     }}
-                    className="flex-1 rounded-lg border border-[#E5EEE8] bg-white px-2 py-1"
+                    className="flex-1 rounded-lg border border-[#E6E0D2] bg-white px-2 py-1"
                   />
                   <input
                     type="text"
@@ -764,7 +764,7 @@ export function TradeManagementPage() {
                       next[idx].serviceUrduLabel = e.target.value;
                       setForm({ ...form, priceGuide: next });
                     }}
-                    className="flex-1 rounded-lg border border-[#E5EEE8] bg-white px-2 py-1"
+                    className="flex-1 rounded-lg border border-[#E6E0D2] bg-white px-2 py-1"
                   />
                   <button
                     type="button"
@@ -785,7 +785,7 @@ export function TradeManagementPage() {
                       next[idx].minPkr = Number(e.target.value);
                       setForm({ ...form, priceGuide: next });
                     }}
-                    className="rounded-lg border border-[#E5EEE8] bg-white px-2 py-1"
+                    className="rounded-lg border border-[#E6E0D2] bg-white px-2 py-1"
                   />
                   <input
                     type="number"
@@ -797,7 +797,7 @@ export function TradeManagementPage() {
                       next[idx].maxPkr = Number(e.target.value);
                       setForm({ ...form, priceGuide: next });
                     }}
-                    className="rounded-lg border border-[#E5EEE8] bg-white px-2 py-1"
+                    className="rounded-lg border border-[#E6E0D2] bg-white px-2 py-1"
                   />
                   <input
                     type="text"
@@ -808,7 +808,7 @@ export function TradeManagementPage() {
                       next[idx].unit = e.target.value;
                       setForm({ ...form, priceGuide: next });
                     }}
-                    className="rounded-lg border border-[#E5EEE8] bg-white px-2 py-1"
+                    className="rounded-lg border border-[#E6E0D2] bg-white px-2 py-1"
                   />
                 </div>
               </div>
@@ -832,7 +832,7 @@ export function TradeManagementPage() {
               <button
                 type="button"
                 onClick={resetForm}
-                className="rounded-full border border-[#E5EEE8] px-4 py-2 text-sm"
+                className="rounded-full border border-[#E6E0D2] px-4 py-2 text-sm"
               >
                 {bi('Cancel', 'منسوخ')}
               </button>
@@ -848,7 +848,7 @@ export function TradeManagementPage() {
             <select
               value={groupFilter}
               onChange={(e) => setGroupFilter(e.target.value)}
-              className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-1.5 text-xs"
+              className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-1.5 text-xs"
             >
               <option value="">{bi('All 8 Service Groups', 'تمام ۸ گروپس')}</option>
               {SERVICE_GROUPS.map((g) => (
@@ -875,7 +875,7 @@ export function TradeManagementPage() {
                       </h3>
                       <StatusLabel status={t.isActive ? 'ACTIVE' : 'SUSPENDED'} />
                     </div>
-                    <p className="mt-1 text-xs text-[#78857D]">{t.description}</p>
+                    <p className="mt-1 text-xs text-[#69726B]">{t.description}</p>
                     <p className="mt-1 text-xs font-medium text-[#176B4A]">
                       {t.competencies?.length || 0} {bi('competencies', 'مہارتیں')} · {t.priceGuide?.length || 0}{' '}
                       {bi('price benchmarks', 'قیمت نامہ')}
@@ -896,14 +896,14 @@ export function TradeManagementPage() {
                           priceGuide: t.priceGuide || [],
                         });
                       }}
-                      className="rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-3.5 py-1.5 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50"
+                      className="rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-3.5 py-1.5 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50"
                     >
                       {bi('Edit & Prices', 'ترمیم و قیمت')}
                     </button>
                     <button
                       type="button"
                       onClick={() => toggleActive(t)}
-                      className="rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-3.5 py-1.5 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50"
+                      className="rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-3.5 py-1.5 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50"
                     >
                       {t.isActive ? bi('Deactivate', 'غیر فعال') : bi('Activate', 'فعال')}
                     </button>
@@ -1023,7 +1023,7 @@ export function CompetencyManagementPage() {
                 className={`rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
                   selectedTradeId === t.id
                     ? 'bg-[#176B4A] text-white'
-                    : 'border border-[#E5EEE8] bg-[#F7FAF8] text-[#17251E] hover:bg-[#DDF3E4]/50'
+                    : 'border border-[#E6E0D2] bg-[#F7F4EC] text-[#17251E] hover:bg-[#ECE6D7]/50'
                 }`}
               >
                 {isUr && t.urduName ? t.urduName : t.name}
@@ -1043,19 +1043,19 @@ export function CompetencyManagementPage() {
                       <h3 className="text-sm font-bold text-[#17251E]">
                         {isUr && c.urduTitle ? c.urduTitle : c.title}
                       </h3>
-                      <p className="text-xs text-[#78857D]">{c.description}</p>
+                      <p className="text-xs text-[#69726B]">{c.description}</p>
                     </div>
                     <button
                       type="button"
                       onClick={() => startEdit(c)}
-                      className="rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-1 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50"
+                      className="rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-1 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50"
                     >
                       {bi('Edit', 'ترمیم')}
                     </button>
                   </div>
-                  <div className="border-t border-[#E5EEE8] pt-2 space-y-1">
+                  <div className="border-t border-[#E6E0D2] pt-2 space-y-1">
                     {(c.criteria || []).map((r: any) => (
-                      <p key={r.id} className="text-xs text-[#78857D] flex items-center gap-1.5">
+                      <p key={r.id} className="text-xs text-[#69726B] flex items-center gap-1.5">
                         {r.isSafetyCritical && <AlertTriangle className="h-3 w-3 text-red-600 shrink-0" />}
                         <span className="font-semibold text-[#17251E]">{r.title}</span>
                         <span>(0–{r.maxScore})</span>
@@ -1082,7 +1082,7 @@ export function CompetencyManagementPage() {
                     required
                     value={compForm.title}
                     onChange={(e) => setCompForm({ ...compForm, title: e.target.value })}
-                    className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                    className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                   />
                 </div>
                 <div>
@@ -1091,7 +1091,7 @@ export function CompetencyManagementPage() {
                     type="text"
                     value={compForm.urduTitle}
                     onChange={(e) => setCompForm({ ...compForm, urduTitle: e.target.value })}
-                    className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                    className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                   />
                 </div>
               </div>
@@ -1103,11 +1103,11 @@ export function CompetencyManagementPage() {
                   required
                   value={compForm.description}
                   onChange={(e) => setCompForm({ ...compForm, description: e.target.value })}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                 />
               </div>
 
-              <div className="border-t border-[#E5EEE8] pt-3 space-y-3">
+              <div className="border-t border-[#E6E0D2] pt-3 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#17251E]">
                     {bi('Rubric Criteria (3–4 recommended)', 'جانچ کے معیارات (۳ تا ۴ تجویز کردہ)')}
@@ -1129,7 +1129,7 @@ export function CompetencyManagementPage() {
                   </button>
                 </div>
                 {compForm.criteria.map((crit, idx) => (
-                  <div key={idx} className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3 space-y-2">
+                  <div key={idx} className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3 space-y-2">
                     <div className="flex items-center justify-between gap-2">
                       <input
                         type="text"
@@ -1141,7 +1141,7 @@ export function CompetencyManagementPage() {
                           next[idx].title = e.target.value;
                           setCompForm({ ...compForm, criteria: next });
                         }}
-                        className="flex-1 rounded-lg border border-[#E5EEE8] bg-white px-2.5 py-1.5 text-xs"
+                        className="flex-1 rounded-lg border border-[#E6E0D2] bg-white px-2.5 py-1.5 text-xs"
                       />
                       {compForm.criteria.length > 1 && (
                         <button
@@ -1168,7 +1168,7 @@ export function CompetencyManagementPage() {
                         next[idx].description = e.target.value;
                         setCompForm({ ...compForm, criteria: next });
                       }}
-                      className="w-full rounded-lg border border-[#E5EEE8] bg-white px-2.5 py-1.5 text-xs"
+                      className="w-full rounded-lg border border-[#E6E0D2] bg-white px-2.5 py-1.5 text-xs"
                     />
                     <label className="inline-flex items-center gap-2 text-xs text-[#17251E] cursor-pointer">
                       <input
@@ -1195,7 +1195,7 @@ export function CompetencyManagementPage() {
                   <button
                     type="button"
                     onClick={() => setEditingCompId(null)}
-                    className="rounded-full border border-[#E5EEE8] px-4 py-2 text-sm"
+                    className="rounded-full border border-[#E6E0D2] px-4 py-2 text-sm"
                   >
                     {bi('Cancel', 'منسوخ')}
                   </button>
@@ -1280,12 +1280,12 @@ export function ReportsModerationPage() {
                         {bi('URGENT SOS', 'ہنگامی SOS')}
                       </span>
                     )}
-                    <p className="text-xs font-medium text-[#78857D]">
+                    <p className="text-xs font-medium text-[#69726B]">
                       {r.targetType} · {bi('Reported by', 'رپورٹ کنندہ:')} {r.reporterName} · {formatDate(r.createdAt, lang)}
                     </p>
                   </div>
                   <h3 className="text-base font-bold text-[#17251E] mt-0.5">{r.reason}</h3>
-                  <p className="text-xs text-[#78857D] mt-0.5">
+                  <p className="text-xs text-[#69726B] mt-0.5">
                     {bi('Target:', 'ہدف:')} {r.targetSummary}
                   </p>
                 </div>
@@ -1294,13 +1294,13 @@ export function ReportsModerationPage() {
               {r.details && <p className="text-sm text-[#17251E]">{r.details}</p>}
 
               {r.status === 'OPEN' || r.status === 'UNDER_REVIEW' ? (
-                <div className="border-t border-[#E5EEE8] pt-3 space-y-3">
+                <div className="border-t border-[#E6E0D2] pt-3 space-y-3">
                   <input
                     type="text"
                     value={notesById[r.id] || ''}
                     onChange={(e) => setNotesById({ ...notesById, [r.id]: e.target.value })}
                     placeholder={bi('Admin resolution notes...', 'ایڈمن کے حل کے نوٹس...')}
-                    className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-xs"
+                    className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-xs"
                   />
                   <div className="flex flex-wrap gap-2">
                     <button
@@ -1331,7 +1331,7 @@ export function ReportsModerationPage() {
                     <button
                       type="button"
                       onClick={() => resolve(r.id, 'DISMISSED', false, false)}
-                      className="rounded-full border border-[#E5EEE8] px-4 py-2 text-xs font-semibold text-[#17251E]"
+                      className="rounded-full border border-[#E6E0D2] px-4 py-2 text-xs font-semibold text-[#17251E]"
                     >
                       {bi('Dismiss', 'خارج کریں')}
                     </button>
@@ -1339,7 +1339,7 @@ export function ReportsModerationPage() {
                 </div>
               ) : (
                 r.adminNotes && (
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {bi('Resolution Note:', 'فیصلہ نوٹ:')} {r.adminNotes}
                   </p>
                 )
@@ -1372,13 +1372,13 @@ export function AuditLogsPage() {
     <DashboardLayout title={bi('Audit Logs', 'آڈٹ لاگز')}>
       <div className="space-y-4">
         <div className="rounded-2xl kc-glass-card p-4 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-xs text-[#78857D]">
+          <p className="text-xs text-[#69726B]">
             {bi('Immutable security and verification audit trail (read-only).', 'محفوظ سیکیورٹی اور تصدیقی ریکارڈ (صرف پڑھنے کے لیے)۔')}
           </p>
           <select
             value={actionFilter}
             onChange={(e) => setActionFilter(e.target.value)}
-            className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-1.5 text-xs"
+            className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-1.5 text-xs"
           >
             <option value="">{bi('All Actions', 'تمام سرگرمیاں')}</option>
             <option value="USER_REGISTERED">{bi('User Registered', 'صارف رجسٹر ہوا')}</option>
@@ -1403,7 +1403,7 @@ export function AuditLogsPage() {
           <div className="rounded-2xl kc-glass-card overflow-x-auto">
             <table className="w-full text-start text-xs">
               <thead>
-                <tr className="border-b border-[#E5EEE8] bg-[#F7FAF8] font-semibold text-[#78857D]">
+                <tr className="border-b border-[#E6E0D2] bg-[#F7F4EC] font-semibold text-[#69726B]">
                   <th className="px-4 py-3">{bi('Action', 'عمل')}</th>
                   <th className="px-4 py-3">{bi('User', 'صارف')}</th>
                   <th className="px-4 py-3">{bi('Record', 'ریکارڈ')}</th>
@@ -1411,19 +1411,19 @@ export function AuditLogsPage() {
                   <th className="px-4 py-3">{bi('Date & Time', 'تاریخ اور وقت')}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E5EEE8]">
+              <tbody className="divide-y divide-[#E6E0D2]">
                 {logs.map((l) => (
-                  <tr key={l.id} className="hover:bg-[#F7FAF8]/60">
+                  <tr key={l.id} className="hover:bg-[#F7F4EC]/60">
                     <td className="px-4 py-3 font-mono font-semibold text-[#176B4A] whitespace-nowrap">{l.action}</td>
                     <td className="px-4 py-3 whitespace-nowrap">
                       <span className="font-semibold text-[#17251E]">{l.actorName}</span>{' '}
-                      <span className="text-[#78857D]">({roleText(l.actorRole)})</span>
+                      <span className="text-[#69726B]">({roleText(l.actorRole)})</span>
                     </td>
-                    <td className="px-4 py-3 font-mono text-[#78857D] whitespace-nowrap">
+                    <td className="px-4 py-3 font-mono text-[#69726B] whitespace-nowrap">
                       {l.entityType} · {l.entityId.slice(0, 12)}
                     </td>
                     <td className="px-4 py-3 text-[#17251E]">{l.description}</td>
-                    <td className="px-4 py-3 font-mono text-[#78857D] whitespace-nowrap tabular-nums">
+                    <td className="px-4 py-3 font-mono text-[#69726B] whitespace-nowrap tabular-nums">
                       {new Date(l.createdAt).toLocaleString(lang === 'ur' ? 'ur-PK' : 'en-PK')}
                     </td>
                   </tr>

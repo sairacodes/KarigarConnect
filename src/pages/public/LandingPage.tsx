@@ -1,61 +1,198 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import QRCode from 'qrcode';
 import {
   ArrowRight,
-  Award,
-  BarChart3,
+  BadgeCheck,
+  Building2,
+  Camera,
   ChevronDown,
-  Hammer,
-  HelpCircle,
-  Lock,
+  ClipboardCheck,
+  GraduationCap,
   MapPin,
-  MessageCircle,
+  RotateCw,
   Search,
+  ShieldAlert,
   ShieldCheck,
-  Wrench,
-  Zap,
 } from 'lucide-react';
-import { SkillDemandInsightsSection } from '../../components/analytics/SkillDemandInsightsSection';
 import { PublicLayout } from '../../components/layouts/PublicLayout';
 import { CityCombobox } from '../../components/ui/CityCombobox';
-import { formatLevelLabel } from '../../components/ui/Components';
-import { FloatingCard } from '../../components/ui/MotionPrimitives';
-import { HorizontalProgressBar } from '../../components/ui/DataViz';
-import { TierPill, TrustScoreBadge, StarRatingInline } from '../../components/ui/RatingDisplay';
 import { ALL_CITIES_FLAT } from '../../data/pakistanCities';
 import { SERVICE_CATALOG } from '../../data/serviceCatalog';
 import { api } from '../../services/api';
 import { useI18n } from '../../i18n/translations';
+import { SUPPORT_EMAIL } from '../../config/site';
 
-import heroKarigarImg from '../../assets/images/hero_karigar_trades_1795340854886.jpg';
 import avatarBilalImg from '../../assets/images/avatar_bilal_1795340853872.jpg';
-import tradeElectricianImg from '../../assets/images/trade_electrician_1795340853927.jpg';
-import tradeCarpenterImg from '../../assets/images/trade_carpenter_1795340854383.jpg';
-import tradeMechanicImg from '../../assets/images/trade_mechanic_1795340854456.jpg';
 
-const HERO_IMG = heroKarigarImg;
-const AVATAR_BILAL = avatarBilalImg;
-const TRADE_IMAGES = {
-  electrician: tradeElectricianImg,
-  carpenter: tradeCarpenterImg,
-  mechanic: tradeMechanicImg,
-};
+const LEVEL_TO_SCORE: Record<string, number> = { BASIC: 1, COMPETENT: 2, ADVANCED: 3 };
 
-const WHATSAPP_WA_URL =
-  'https://wa.me/923000000000?text=' +
-  encodeURIComponent('Assalam-o-Alaikum KARIGAR CONNECT Support, I have a question about:');
+/** Rubric score drawn as 0–3 tally marks: a small handmade touch. */
+function Tally({ score, label }: { score: number; label?: string }) {
+  return (
+    <span className="kc-tally" role="img" aria-label={label ?? `Rubric score ${score} of 3`}>
+      {[1, 2, 3].map((i) => (
+        <span key={i} className={i <= score ? 'on' : ''} />
+      ))}
+    </span>
+  );
+}
+
+const PILOT_MAILTO = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('Karigar Connect pilot')}&body=${encodeURIComponent(
+  'Assalam-o-Alaikum,\n\nWe are interested in a Karigar Connect pilot.\n\nOrganisation:\nTrade(s):\nCity:\n'
+)}`;
+
+/* Hero visual: the Karigar Passport, which flips to show the competency matrix */
+function PassportCard() {
+  const { bi, isUr } = useI18n();
+  const prefersReduced = useReducedMotion();
+  const [flipped, setFlipped] = useState(false);
+  const [qr, setQr] = useState('');
+
+  useEffect(() => {
+    QRCode.toDataURL(`${window.location.origin}/verify-badge`, {
+      margin: 0,
+      width: 160,
+      color: { dark: '#11221B', light: '#FFFDF8' },
+    })
+      .then(setQr)
+      .catch(() => setQr(''));
+  }, []);
+
+  // One gentle flip on first view so people discover the back.
+  useEffect(() => {
+    if (prefersReduced) return;
+    const a = window.setTimeout(() => setFlipped(true), 2600);
+    const b = window.setTimeout(() => setFlipped(false), 5800);
+    return () => {
+      window.clearTimeout(a);
+      window.clearTimeout(b);
+    };
+  }, [prefersReduced]);
+
+  const skills = [
+    { en: 'Electrical safety practices', ur: 'برقی حفاظتی تدابیر', score: 3, safety: true },
+    { en: 'Electrical installation', ur: 'برقی تنصیب', score: 3 },
+    { en: 'Circuit troubleshooting', ur: 'سرکٹ کی خرابی کی تشخیص', score: 3 },
+    { en: 'Distribution board setup', ur: 'ڈسٹری بیوشن بورڈ', score: 0, pending: true },
+    { en: 'Earthing & bonding', ur: 'ارتھنگ', score: 0, pending: true },
+  ];
+
+  return (
+    <div className={`kc-flip relative mx-auto w-full max-w-[400px] ${flipped ? 'is-flipped' : ''}`}>
+      <div className="kc-flip-inner">
+        {/* FRONT */}
+        <div className="kc-flip-face rounded-[28px] bg-[#FFFDF8] border border-[#E2DBCB] p-6 sm:p-7">
+          <div className="flex items-center justify-between">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#176B4A]">
+              {bi('Karigar Passport', 'کاریگر پاسپورٹ')}
+            </p>
+            <span className="text-[11px] font-mono text-[#69726B]">KC-ISB-0192</span>
+          </div>
+          <div className="kc-stitch mt-4" />
+
+          <div className="mt-6 flex items-center gap-4">
+            <img
+              src={avatarBilalImg}
+              alt={bi('Sample karigar Bilal Ahmed', 'نمونہ کاریگر بلال احمد')}
+              className="h-20 w-20 rounded-2xl object-cover"
+            />
+            <div className="min-w-0">
+              <p className="font-[Fraunces] text-2xl font-semibold text-[#11221B] leading-tight">
+                {bi('Bilal Ahmed', 'بلال احمد')}
+              </p>
+              <p className="mt-1 text-sm text-[#4D6357]">{bi('Electrician · Islamabad', 'الیکٹریشن · اسلام آباد')}</p>
+            </div>
+          </div>
+
+          <div className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[#E2DBCB] bg-[#E2DBCB]">
+            <div className="bg-[#FFFDF8] p-4">
+              <p className="text-xs text-[#69726B]">{bi('Verified skills', 'تصدیق شدہ مہارتیں')}</p>
+              <p className="mt-1 font-[Fraunces] text-3xl font-semibold text-[#176B4A] tabular-nums">3</p>
+            </div>
+            <div className="bg-[#FFFDF8] p-4">
+              <p className="text-xs text-[#69726B]">{bi('Trust score', 'اعتماد اسکور')}</p>
+              <p className="mt-1 font-[Fraunces] text-3xl font-semibold text-[#11221B] tabular-nums">
+                79<span className="text-base text-[#69726B]">/100</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 flex items-end justify-between gap-4">
+            <div>
+              <p className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#176B4A]">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                {bi('Assessor-verified', 'ماہر سے تصدیق شدہ')}
+              </p>
+              <p className="mt-1 text-xs text-[#69726B]">{bi('Valid until Nov 2027', 'نومبر ۲۰۲۷ تک مؤثر')}</p>
+            </div>
+            {qr ? (
+              <img src={qr} alt={bi('QR code to verify this passport', 'پاسپورٹ کی تصدیق کا QR کوڈ')} className="h-20 w-20" />
+            ) : (
+              <div className="h-20 w-20 rounded-lg bg-[#ECE6D7]" />
+            )}
+          </div>
+        </div>
+
+        {/* BACK: competency matrix */}
+        <div className="kc-flip-face kc-flip-back rounded-[28px] bg-[#11221B] text-[#F7F4EC] p-6 sm:p-7 flex flex-col">
+          <div className="flex items-center justify-between">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E9C77E]">
+              {bi('Competency matrix', 'مہارتوں کا خاکہ')}
+            </p>
+            <span className="text-[11px] text-[#D8D0BE]">{bi('Rubric 0–3', 'معیار ۰ تا ۳')}</span>
+          </div>
+          <div className="kc-stitch mt-4" />
+          <ul className="mt-4 flex-1 divide-y divide-white/10">
+            {skills.map((s) => (
+              <li key={s.en} className="flex items-center justify-between gap-3 py-2.5">
+                <span className="text-sm">
+                  {isUr ? s.ur : s.en}
+                  {s.safety && (
+                    <span className="ms-2 rounded-full border border-[#E9C77E]/50 px-1.5 py-0.5 text-[10px] font-semibold text-[#E9C77E]">
+                      {bi('Safety', 'حفاظت')}
+                    </span>
+                  )}
+                </span>
+                {s.pending ? (
+                  <span className="text-xs text-[#D8D0BE]">{bi('In review', 'جانچ جاری')}</span>
+                ) : (
+                  <span className="kc-tally-dark">
+                    <Tally score={s.score} />
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-xs text-[#D8D0BE]">
+            {bi('Scored by an approved electrical assessor.', 'منظور شدہ الیکٹریکل ماہر نے جانچا۔')}
+          </p>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setFlipped((f) => !f)}
+        className="mt-4 mx-auto flex items-center gap-1.5 text-xs font-semibold text-[#4D6357] hover:text-[#11221B]"
+      >
+        <RotateCw className="h-3.5 w-3.5" />
+        {flipped ? bi('Show passport', 'پاسپورٹ دیکھیں') : bi('Flip to see verified skills', 'تصدیق شدہ مہارتیں دیکھیں')}
+      </button>
+      <p className="mt-1 text-center text-[11px] text-[#69726B]">{bi('Sample profile', 'نمونہ پروفائل')}</p>
+    </div>
+  );
+}
 
 export function LandingPage() {
   const prefersReduced = useReducedMotion();
-  const { bi, lang, isUr } = useI18n();
+  const { bi, isUr } = useI18n();
   const navigate = useNavigate();
 
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
+  const [stats, setStats] = useState<any | null>(null);
   const [loadingWorkers, setLoadingWorkers] = useState(true);
   const [leaderCity, setLeaderCity] = useState('');
-
-  // Unified Home Search State ("Electrician in Rawalpindi")
   const [searchTradeOrQuery, setSearchTradeOrQuery] = useState('');
   const [searchCity, setSearchCity] = useState('');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
@@ -68,6 +205,13 @@ export function LandingPage() {
       .catch(() => setLeaderboard([]))
       .finally(() => setLoadingWorkers(false));
   }, [leaderCity]);
+
+  useEffect(() => {
+    api
+      .get('/public/stats')
+      .then((res) => setStats(res.data.data || res.data))
+      .catch(() => setStats(null));
+  }, []);
 
   const handleHeroSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,187 +228,137 @@ export function LandingPage() {
         resolvedCity = foundCity ? foundCity.name : inMatch[2].trim();
       }
     }
-
     if (rawQuery) {
       const qLower = rawQuery.toLowerCase();
       const matchedService = SERVICE_CATALOG.find(
-        (s) =>
-          s.name.toLowerCase() === qLower ||
-          s.slug.toLowerCase() === qLower ||
-          s.urduName === rawQuery
+        (s) => s.name.toLowerCase() === qLower || s.slug.toLowerCase() === qLower || s.urduName === rawQuery
       );
-      if (matchedService) {
-        resolvedTrade = matchedService.slug;
-      }
+      if (matchedService) resolvedTrade = matchedService.slug;
     }
-
     const params = new URLSearchParams();
-    if (resolvedTrade) {
-      params.set('trade', resolvedTrade);
-    } else if (rawQuery) {
-      params.set('q', rawQuery);
-    }
+    if (resolvedTrade) params.set('trade', resolvedTrade);
+    else if (rawQuery) params.set('q', rawQuery);
     if (resolvedCity) params.set('city', resolvedCity);
-
     const qs = params.toString();
     navigate(qs ? `/explore?${qs}` : '/explore');
   };
 
-  const trades = [
+  const steps = [
     {
-      slug: 'electrician',
-      name: bi('Electrician', 'الیکٹریشن'),
-      secondary: isUr ? 'Electrician' : 'الیکٹریشن',
-      icon: Zap,
-      img: TRADE_IMAGES.electrician,
-      description: bi(
-        'Residential & commercial wiring, breaker panels, safety earthing, and circuit diagnostics.',
-        'گھریلو اور کمرشل وائرنگ، بریکر پینل، سیفٹی ارتھنگ، اور سرکٹ کی تشخیص۔'
+      icon: Camera,
+      title: bi('Evidence', 'ثبوت'),
+      body: bi(
+        'The worker uploads photos or video of real work for each competency in their trade.',
+        'ہنرمند اپنے پیشے کی ہر مہارت کے لیے اصل کام کی تصاویر یا ویڈیو اپ لوڈ کرتا ہے۔'
       ),
     },
     {
-      slug: 'carpenter',
-      name: bi('Carpenter', 'کارپینٹر / بڑھئی'),
-      secondary: isUr ? 'Carpenter' : 'بڑھئی / کارپینٹر',
-      icon: Hammer,
-      img: TRADE_IMAGES.carpenter,
-      description: bi(
-        'Precision measuring, hardwood cutting, mortise-and-tenon joinery, assembly, and finishing.',
-        'درست پیمائش، لکڑی کی کٹائی، مضبوط جوڑ، فرنیچر سازی، اور معیاری فنشنگ۔'
+      icon: ClipboardCheck,
+      title: bi('Assessor rubric', 'ماہر کی جانچ'),
+      body: bi(
+        'An approved trade assessor scores each competency from 0 to 3 against a written rubric.',
+        'منظور شدہ ماہر ہر مہارت کو تحریری معیار کے مطابق ۰ سے ۳ تک نمبر دیتا ہے۔'
+      ),
+      tally: true,
+    },
+    {
+      icon: ShieldAlert,
+      title: bi('Safety check', 'حفاظتی جانچ'),
+      body: bi(
+        'Any failed safety-critical item blocks the badge, however high the other scores are.',
+        'کوئی بھی لازمی حفاظتی نکتہ ناکام ہو تو بیج نہیں ملتا، چاہے باقی نمبر کتنے ہی زیادہ ہوں۔'
       ),
     },
     {
-      slug: 'mechanic',
-      name: bi('Mechanic', 'آٹو مکینک'),
-      secondary: isUr ? 'Mechanic' : 'آٹو مکینک',
-      icon: Wrench,
-      img: TRADE_IMAGES.mechanic,
-      description: bi(
-        'Multi-point vehicle inspection, engine servicing, brake systems, and preventive maintenance.',
-        'گاڑی کا مکمل معائنہ، انجن سروسنگ، بریک سسٹم، اور احتیاطی دیکھ بھال۔'
+      icon: BadgeCheck,
+      title: bi('Badge', 'بیج'),
+      body: bi(
+        'A verified badge, valid for 12 months, that anyone can check by scanning the QR passport.',
+        '۱۲ ماہ کے لیے مؤثر تصدیق شدہ بیج، جسے کوئی بھی QR پاسپورٹ اسکین کر کے جانچ سکتا ہے۔'
       ),
     },
   ];
 
   const faqs = [
     {
-      q: bi(
-        'What does a Verified Badge mean? Is it a government certificate?',
-        'تصدیق شدہ بیج کا کیا مطلب ہے؟ کیا یہ سرکاری سرٹیفکیٹ ہے؟'
-      ),
+      q: bi('What does a verified badge mean? Is it a government certificate?', 'تصدیق شدہ بیج کا کیا مطلب ہے؟ کیا یہ سرکاری سرٹیفکیٹ ہے؟'),
       a: bi(
-        'A verified badge means an Admin-approved trade assessor scored the worker’s uploaded photos or video against a 0–3 practical rubric, with mandatory safety-critical checks. Badges remain valid for 12 months and are NOT government accreditation or a formal license.',
-        'تصدیق شدہ بیج کا مطلب ہے کہ ایڈمن سے منظور شدہ ٹریڈ ماہر نے ہنرمند کی اپ لوڈ کردہ تصاویر یا ویڈیو کو ۰ تا ۳ عملی معیار اور لازمی حفاظتی اصولوں پر پرکھا ہے۔ یہ بیج ۱۲ ماہ کے لیے مؤثر ہوتا ہے اور یہ سرکاری سند یا لائسنس نہیں ہے۔'
+        'It means an approved trade assessor scored the worker’s evidence against a 0–3 practical rubric, including mandatory safety checks. Badges last 12 months. They are not government accreditation or a licence.',
+        'اس کا مطلب ہے کہ منظور شدہ ماہر نے ہنرمند کے ثبوت کو ۰ تا ۳ عملی معیار اور لازمی حفاظتی اصولوں پر پرکھا ہے۔ بیج ۱۲ ماہ کے لیے ہوتا ہے اور یہ سرکاری سند یا لائسنس نہیں ہے۔'
       ),
     },
     {
-      q: bi(
-        'When is a worker’s phone number or email visible to customers?',
-        'ہنرمند کا فون نمبر یا ای میل گاہک کو کب نظر آتا ہے؟'
-      ),
+      q: bi('Who are the assessors?', 'جانچ کرنے والے ماہر کون ہیں؟'),
       a: bi(
-        'Personal phone numbers and emails stay hidden by default on public portfolios. Contact details are unlocked only after the worker explicitly accepts your job request or contact request.',
-        'عوامی پورٹ فولیو پر ذاتی فون نمبر اور ای میل پوشیدہ رہتے ہیں۔ رابطہ تفصیلات صرف اس وقت ظاہر ہوتی ہیں جب ہنرمند خود آپ کی جاب یا رابطہ درخواست قبول کر لے۔'
+        'Experienced tradespeople and vocational instructors who apply, are reviewed by an admin, and score against the same written rubric. Workers can appeal a result.',
+        'تجربہ کار کاریگر اور فنی اساتذہ جو درخواست دیتے ہیں، ایڈمن ان کا جائزہ لیتا ہے، اور وہ ایک ہی تحریری معیار پر جانچ کرتے ہیں۔ ہنرمند نتیجے کے خلاف اپیل کر سکتا ہے۔'
       ),
     },
     {
-      q: bi(
-        'Does KARIGAR CONNECT conduct police or CNIC background checks?',
-        'کیا کاریگر کنیکٹ پولیس یا شناختی کارڈ کی پس منظر تصدیق کرتا ہے؟'
-      ),
+      q: bi('When can a customer see a worker’s phone number?', 'گاہک ہنرمند کا فون نمبر کب دیکھ سکتا ہے؟'),
       a: bi(
-        'No. This prototype focuses strictly on practical skill evidence assessed by approved assessors, privacy-first contact consent, real completed-job reviews, and customer-confirmed work photos. It never claims police or CNIC background checks.',
-        'نہیں۔ یہ پلیٹ فارم صرف منظور شدہ ماہرین کے ذریعے عملی مہارت کے ثبوت، اجازت پر مبنی رابطے، مکمل کام پر مبنی ریٹنگ اور تصویری ثبوت کی تصدیق فراہم کرتا ہے۔'
-      ),
-    },
-    {
-      q: bi(
-        'How does the 7-Day Karigar Guarantee work?',
-        '۷ دن کی کاریگر گارنٹی کیسے کام کرتی ہے؟'
-      ),
-      a: bi(
-        'If an issue reappears within 7 days of marking a job Completed, the customer can open a rework review request from My Jobs. Both parties can respond and an administrator reviews the resolution.',
-        'اگر کام مکمل ہونے کے ۷ دن کے اندر مسئلہ دوبارہ پیش آئے تو صارف اپنے کاموں کے صفحے سے دوبارہ مرمت یا نظرثانی کی درخواست جمع کرا سکتا ہے جس کا ایڈمن جائزہ لیتا ہے۔'
-      ),
-    },
-    {
-      q: bi(
-        'How are PKR Fair Price Guides calculated?',
-        'پاکستانی روپے میں مناسب نرخ نامہ کیسے طے ہوتا ہے؟'
-      ),
-      a: bi(
-        'Each of the 48+ home-service categories lists reference minimum and maximum PKR ranges editable by administrators so customers and workers can spot Below Guide, Fair Price Range, or Above Guide quotes before accepting.',
-        '۴۸ سے زائد گھریلو سروسز میں ایڈمن کے طے کردہ کم از کم اور زیادہ از زیادہ PKR نرخ شامل ہیں تاکہ درخواست قبول کرنے سے پہلے قیمت کے مناسب ہونے کا اندازہ ہو سکے۔'
+        'Only after the worker accepts the job or contact request. Until then, contact details stay hidden.',
+        'صرف اس وقت جب ہنرمند جاب یا رابطہ درخواست قبول کر لے۔ تب تک رابطہ معلومات پوشیدہ رہتی ہیں۔'
       ),
     },
   ];
 
-  const leaderCities = ['', 'Islamabad', 'Lahore', 'Karachi', 'Rawalpindi', 'Multan', 'Peshawar', 'Quetta'];
+  const leaderCities = ['', 'Islamabad', 'Lahore', 'Karachi', 'Rawalpindi'];
+
+  const fade = (delay = 0) =>
+    prefersReduced
+      ? {}
+      : {
+          initial: { opacity: 0, y: 14 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: '-60px' },
+          transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as any },
+        };
 
   return (
     <PublicLayout>
-      {/* 1. OPEN HERO SECTION (Pure White & Soft Mint Harmony, Exact Tagline Focal Point) */}
-      <section id="top" className="relative overflow-hidden bg-gradient-to-b from-white via-[#F6FCF8] to-[#ECF8F1]">
-        <div className="pointer-events-none absolute -top-28 end-0 h-96 w-96 rounded-full bg-[#B8E4C7]/45 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 start-0 h-72 w-72 rounded-full bg-[#DDF3E4]/65 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-4 pt-12 pb-14 sm:px-6 sm:pt-16 sm:pb-16 lg:px-8 lg:pt-20 lg:pb-20">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
-            <motion.div
-              initial={prefersReduced ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-7"
-            >
-              <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#176B4A]">
-                <MapPin className="h-3.5 w-3.5 text-[#399B6B]" />
-                <span>
-                  {bi(
-                    'Skilled Craftsmanship Across Pakistan',
-                    'پاکستان بھر میں ہنر اور بااعتماد روزگار'
-                  )}
-                </span>
+      {/* 1. HERO */}
+      <section id="top" className="bg-[#F7F4EC]">
+        <div className="mx-auto max-w-7xl px-4 pt-14 pb-20 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24 lg:pb-28">
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-center">
+            <motion.div {...fade(0)} className="lg:col-span-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#176B4A]">
+                {bi('Skills verification for Pakistan’s karigars', 'پاکستان کے کاریگروں کے لیے مہارت کی تصدیق')}
               </p>
 
-              <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-[#11221B] sm:text-5xl lg:text-[56px] text-balance leading-[1.06]">
+              <h1 className="mt-5 text-[40px] sm:text-6xl lg:text-[66px] font-semibold tracking-tight text-[#11221B] leading-[1.05] text-balance">
                 {isUr ? (
-                  'جہاں ہنر کو مواقع ملتے ہیں۔'
+                  <>
+                    دوسری ایپس بتاتی ہیں کون دستیاب ہے۔{' '}
+                    <span className="text-[#176B4A]">ہم بتاتے ہیں کون ثابت شدہ ہے۔</span>
+                  </>
                 ) : (
                   <>
-                    Where Skills Meet{' '}
-                    <span className="text-[#176B4A] underline decoration-[#73C99B]/70 decoration-4 underline-offset-8">
-                      Opportunities.
-                    </span>
+                    Other apps tell you who is available.{' '}
+                    <span className="italic text-[#176B4A]">We tell you who is proven.</span>
                   </>
                 )}
               </h1>
 
-              <p className="mt-5 text-base sm:text-lg text-[#3E5247] leading-relaxed max-w-2xl">
+              <p className="mt-6 text-base sm:text-lg text-[#4D6357] leading-relaxed max-w-xl">
                 {bi(
-                  'A platform connecting skilled individuals with meaningful opportunities, trusted connections, and professional growth.',
-                  'ایک ایسا پلیٹ فارم جو ہنرمند افراد کو بامعنی مواقع، بااعتماد رابطوں اور پیشہ ورانہ ترقی سے جوڑتا ہے۔'
+                  'Skilled workers build a portable profile of practical skills, scored by approved assessors against a written rubric, with safety checks that can’t be skipped.',
+                  'ہنرمند اپنی عملی مہارتوں کا ایسا پروفائل بناتے ہیں جسے منظور شدہ ماہرین تحریری معیار اور لازمی حفاظتی جانچ کے ساتھ پرکھتے ہیں۔'
                 )}
               </p>
 
-              {/* Floating Open Trade + City Search Strip */}
-              <form
-                onSubmit={handleHeroSearch}
-                className="mt-8 rounded-2xl bg-white p-2.5 shadow-[0_18px_42px_-18px_rgba(17,34,27,0.18)] border border-[#CFE9D8]"
-              >
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-12 sm:items-center">
-                  <div className="sm:col-span-6 relative">
-                    <Search className="pointer-events-none absolute start-3.5 top-3 h-4 w-4 text-[#176B4A]" />
+              <form onSubmit={handleHeroSearch} className="mt-9 max-w-2xl">
+                <div className="flex flex-col sm:flex-row gap-2 rounded-2xl border border-[#E2DBCB] bg-[#FFFDF8] p-2">
+                  <div className="relative flex-1">
+                    <Search className="pointer-events-none absolute start-3.5 top-3 h-4 w-4 text-[#69726B]" />
                     <input
                       type="text"
                       list="kc-hero-trades"
                       value={searchTradeOrQuery}
                       onChange={(e) => setSearchTradeOrQuery(e.target.value)}
-                      placeholder={bi(
-                        'Try "Electrician in Rawalpindi" or select trade...',
-                        'مثلاً "Electrician in Rawalpindi" یا ہنر لکھیں...'
-                      )}
+                      placeholder={bi('Electrician, plumber, carpenter…', 'الیکٹریشن، پلمبر، بڑھئی…')}
                       aria-label={bi('Trade or search query', 'ہنر یا تلاش')}
-                      className="w-full rounded-xl border border-transparent bg-[#F2FBF6] ps-10 pe-3 py-2.5 text-sm font-medium text-[#17251E] placeholder:text-[#5B6D63] focus:border-[#399B6B] focus:bg-white focus:outline-none transition-colors"
+                      className="w-full rounded-xl bg-transparent ps-10 pe-3 py-2.5 text-sm text-[#17251E] placeholder:text-[#69726B] focus:outline-none"
                     />
                     <datalist id="kc-hero-trades">
                       {SERVICE_CATALOG.map((s) => (
@@ -272,165 +366,100 @@ export function LandingPage() {
                       ))}
                     </datalist>
                   </div>
-
-                  <div className="sm:col-span-4">
+                  <div className="sm:w-52">
                     <CityCombobox
                       value={searchCity}
                       onChange={setSearchCity}
                       allowAll
-                      placeholder={bi('Any city in Pakistan', 'پاکستان کا کوئی بھی شہر')}
+                      placeholder={bi('Any city', 'کوئی بھی شہر')}
                     />
                   </div>
-
-                  <div className="sm:col-span-2">
-                    <button
-                      type="submit"
-                      className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#176B4A] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#11221B] transition-colors whitespace-nowrap"
-                    >
-                      <Search className="h-4 w-4" />
-                      <span>{bi('Search', 'تلاش')}</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1.5 px-2 pb-0.5 text-xs">
-                  <span className="font-semibold text-[#5B6D63]">{bi('Popular:', 'نمایاں تلاش:')}</span>
-                  {[
-                    { label: bi('Electrician in Rawalpindi', 'راولپنڈی میں الیکٹریشن'), trade: 'electrician', city: 'Rawalpindi' },
-                    { label: bi('Plumber in Lahore', 'لاہور میں پلمبر'), trade: 'plumber', city: 'Lahore' },
-                    { label: bi('AC Technician in Islamabad', 'اسلام آباد میں اے سی ماہر'), trade: 'ac-technician', city: 'Islamabad' },
-                  ].map((preset) => (
-                    <Link
-                      key={preset.label}
-                      to={`/explore?trade=${preset.trade}&city=${encodeURIComponent(preset.city)}`}
-                      className="font-semibold text-[#176B4A] hover:text-[#11221B] hover:underline underline-offset-4 transition-colors"
-                    >
-                      {preset.label}
-                    </Link>
-                  ))}
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#11221B] px-5 py-2.5 text-sm font-semibold text-[#F7F4EC] hover:bg-[#176B4A] transition-colors whitespace-nowrap"
+                  >
+                    {bi('Find proven workers', 'ہنرمند تلاش کریں')}
+                  </button>
                 </div>
               </form>
 
-              <div className="mt-7 flex flex-wrap items-center gap-4">
-                <Link
-                  to="/explore"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#176B4A] px-7 py-3.5 text-sm font-bold text-white hover:bg-[#11221B] transition-all shadow-sm hover:-translate-y-0.5 whitespace-nowrap"
-                >
-                  <span>{bi('Explore Proven Workers', 'ہنرمند تلاش کریں')}</span>
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+                <a href="#partners" className="inline-flex items-center gap-1.5 font-semibold text-[#176B4A] hover:text-[#11221B]">
+                  {bi('For institutes & employers', 'اداروں اور آجروں کے لیے')}
                   <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+                </a>
+                <Link to="/register/karigar" className="font-semibold text-[#4D6357] hover:text-[#11221B]">
+                  {bi('I’m a karigar: build my profile', 'میں کاریگر ہوں: پروفائل بنائیں')}
                 </Link>
               </div>
             </motion.div>
 
-            {/* Open Floating Portfolio Preview */}
-            <motion.div
-              initial={prefersReduced ? false : { opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 relative lg:ps-4"
-            >
-              <div className="relative mx-auto max-w-md">
-                <div className="overflow-hidden rounded-3xl bg-white border border-[#CFE9D8] shadow-[0_24px_60px_-20px_rgba(17,34,27,0.22)] kc-hover-lift">
-                  <div className="relative h-60 overflow-hidden bg-[#11221B]">
-                    <img
-                      src={HERO_IMG}
-                      alt={bi(
-                        'Skilled electrician inspecting a commercial distribution panel with digital multimeter',
-                        'ماہر الیکٹریشن ڈیجیٹل ملٹی میٹر کے ساتھ ڈسٹری بیوشن پینل کا معائنہ کرتے ہوئے'
-                      )}
-                      referrerPolicy="no-referrer"
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#11221B]/90 via-[#11221B]/25 to-transparent" />
-                    <div className="absolute bottom-4 start-5 end-5 flex items-center justify-between text-white">
-                      <div>
-                        <p className="text-[11px] font-semibold text-[#B8E4C7]">
-                          {bi(
-                            'Rubric-Assessed Evidence · Islamabad',
-                            'معیار کے مطابق جانچا گیا ثبوت · اسلام آباد'
-                          )}
-                        </p>
-                        <p className="text-sm font-bold mt-0.5">
-                          {bi('Electrical Safety Practices · Level 3', 'برقی حفاظتی تدابیر · درجہ ۳')}
-                        </p>
-                      </div>
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#399B6B] text-white shrink-0 shadow-sm">
-                        <ShieldCheck className="h-5 w-5" />
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-5 sm:p-6">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-3 min-w-0">
-                        <img
-                          src={AVATAR_BILAL}
-                          alt={bi('Featured electrician portfolio preview', 'الیکٹریشن پورٹ فولیو کا نمونہ')}
-                          referrerPolicy="no-referrer"
-                          className="h-11 w-11 rounded-full object-cover ring-2 ring-[#73C99B] shrink-0"
-                        />
-                        <div className="min-w-0">
-                          <p className="text-sm font-bold text-[#17251E] truncate">
-                            {bi('Bilal Ahmed · Electrician', 'بلال احمد · الیکٹریشن')}
-                          </p>
-                          <p className="text-xs text-[#4D6357] truncate">
-                            {bi('Assessor-verified · 12-Month Badges', 'ماہر سے تصدیق شدہ · ۱۲ ماہ بیج')}
-                          </p>
-                        </div>
-                      </div>
-                      <TierPill tier="GOLD" compact />
-                    </div>
-
-                    <div className="mt-5 space-y-2">
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="font-medium text-[#4D6357]">
-                          {bi('Karigar Trust Score', 'کاریگر ٹرسٹ اسکور')}
-                        </span>
-                        <span className="font-mono font-bold text-[#176B4A] tabular-nums">92 / 100</span>
-                      </div>
-                      <HorizontalProgressBar value={92} heightClass="h-2" />
-                    </div>
-                  </div>
-                </div>
-
-                <FloatingCard
-                  offset={6}
-                  duration={5.6}
-                  delay={0.4}
-                  className="hidden sm:block absolute -bottom-5 -start-6 w-56 rounded-2xl bg-[#11221B] text-white p-3.5 shadow-xl"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#399B6B]/30 text-[#B8E4C7] shrink-0">
-                      <Lock className="h-4 w-4" />
-                    </span>
-                    <div>
-                      <p className="text-xs font-bold text-white">
-                        {bi('Privacy-First Hiring', 'رازداری پر مبنی رابطہ')}
-                      </p>
-                      <p className="text-[11px] text-[#B8E4C7]">
-                        {bi('Phone hidden until accepted', 'منظوری تک فون نمبر پوشیدہ')}
-                      </p>
-                    </div>
-                  </div>
-                </FloatingCard>
-              </div>
+            <motion.div {...fade(0.15)} className="lg:col-span-5">
+              <PassportCard />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 2. PROOF WORKER CARDS (Clean crisp white elevated surfaces on soft mint band) */}
-      <section className="bg-[#F2FBF6] border-y border-[#CFE9D8] py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#176B4A]">
-                {bi('Proof Over Promises · Proven Portfolios', 'دعووں کے بجائے عملی ثبوت')}
+      {/* 2. HOW PROOF WORKS */}
+      <section id="how" className="bg-[#FFFDF8] border-y border-[#E2DBCB]">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+          <motion.div {...fade(0)} className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#176B4A]">
+              {bi('How proof works', 'ثبوت کیسے بنتا ہے')}
+            </p>
+            <h2 className="mt-3 text-3xl sm:text-5xl font-semibold tracking-tight text-[#11221B]">
+              {bi('A badge means someone checked.', 'بیج کا مطلب ہے کہ کسی نے جانچا ہے۔')}
+            </h2>
+          </motion.div>
+
+          <ol className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {steps.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <motion.li key={i} {...fade(0.08 * i)} className="border-t-2 border-[#11221B] pt-6">
+                  <div className="flex items-center justify-between">
+                    <span className="font-[Fraunces] text-4xl font-semibold text-[#176B4A] tabular-nums">0{i + 1}</span>
+                    <Icon className={`h-5 w-5 ${i === 2 ? 'text-[#B07F22]' : 'text-[#69726B]'}`} />
+                  </div>
+                  <p className="mt-4 text-lg font-semibold text-[#11221B]">{s.title}</p>
+                  <p className="mt-2 text-sm text-[#4D6357] leading-relaxed">{s.body}</p>
+                  {s.tally && (
+                    <div className="mt-4 flex items-center gap-4 text-xs text-[#69726B]">
+                      {[0, 1, 2, 3].map((n) => (
+                        <span key={n} className="inline-flex items-center gap-1.5">
+                          <Tally score={n} /> {n}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </motion.li>
+              );
+            })}
+          </ol>
+
+          <Link
+            to="/how-it-works"
+            className="mt-12 inline-flex items-center gap-1.5 text-sm font-semibold text-[#176B4A] hover:text-[#11221B]"
+          >
+            {bi('See the full process', 'مکمل طریقہ کار دیکھیں')}
+            <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+          </Link>
+        </div>
+      </section>
+
+      {/* 3. PROVEN KARIGARS + 3 NUMBERS */}
+      <section className="bg-[#F7F4EC]">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <motion.div {...fade(0)}>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#176B4A]">
+                {bi('Proven karigars', 'ثابت شدہ کاریگر')}
               </p>
-              <h2 className="mt-1.5 text-2xl sm:text-4xl font-extrabold tracking-tight text-[#11221B]">
-                {bi('Verified Karigars with Practical Badges', 'تصدیق شدہ ہنرمند اور ان کے مہارتی بیج')}
+              <h2 className="mt-3 text-3xl sm:text-5xl font-semibold tracking-tight text-[#11221B]">
+                {bi('Skills you can check.', 'مہارت جسے جانچا جا سکے۔')}
               </h2>
-            </div>
+            </motion.div>
             <div className="flex flex-wrap gap-1.5">
               {leaderCities.map((c) => (
                 <button
@@ -439,243 +468,198 @@ export function LandingPage() {
                   onClick={() => setLeaderCity(c)}
                   className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                     leaderCity === c
-                      ? 'bg-[#11221B] text-white'
-                      : 'bg-white border border-[#CFE9D8] text-[#17251E] hover:bg-[#DDF3E4]'
+                      ? 'bg-[#11221B] text-[#F7F4EC]'
+                      : 'border border-[#E2DBCB] text-[#4D6357] hover:border-[#11221B] hover:text-[#11221B]'
                   }`}
                 >
-                  {c || bi('All Pakistan', 'پورا پاکستان')}
+                  {c || bi('All', 'سب')}
                 </button>
               ))}
             </div>
           </div>
 
           {loadingWorkers ? (
-            <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-60 rounded-3xl bg-white/80 animate-pulse" />
+                <div key={i} className="h-72 rounded-3xl bg-[#EFE9DC] animate-pulse" />
               ))}
             </div>
           ) : leaderboard.length === 0 ? (
-            <div className="mt-8 rounded-3xl bg-white border border-[#CFE9D8] p-8 text-center text-sm text-[#4D6357]">
-              {bi(
-                'No public worker profiles listed in this city yet. Clear city filter or explore all workers.',
-                'اس شہر میں ابھی کوئی عوامی پروفائل موجود نہیں۔ تمام شہر دیکھنے کے لیے فلٹر تبدیل کریں۔'
-              )}
-            </div>
+            <p className="mt-10 border-t border-[#E2DBCB] pt-8 text-sm text-[#4D6357]">
+              {bi('No public profiles in this city yet.', 'اس شہر میں ابھی کوئی عوامی پروفائل نہیں۔')}{' '}
+              <button type="button" onClick={() => setLeaderCity('')} className="font-semibold text-[#176B4A] underline">
+                {bi('Show all cities', 'تمام شہر دکھائیں')}
+              </button>
+            </p>
           ) : (
-            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {leaderboard.slice(0, 6).map((w) => (
-                <div
-                  key={w.workerProfileId}
-                  className="rounded-3xl kc-beige-surface p-6 flex flex-col justify-between gap-4"
-                >
-                  <div>
-                    <div className="flex items-start gap-3.5">
-                      <div className="h-14 w-14 rounded-2xl bg-[#DDF3E4] overflow-hidden flex items-center justify-center font-bold text-[#176B4A] shrink-0">
+            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {leaderboard.slice(0, 3).map((w, idx) => (
+                <motion.div key={w.workerProfileId} {...fade(0.06 * idx)}>
+                  <Link
+                    to={`/workers/${w.publicId}`}
+                    className="group flex h-full flex-col rounded-3xl border border-[#E2DBCB] bg-[#FFFDF8] p-6 transition-colors hover:border-[#11221B]"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-[#ECE6D7] flex items-center justify-center font-semibold text-[#176B4A]">
                         {w.avatarUrl ? (
-                          <img src={w.avatarUrl} alt={w.fullName} referrerPolicy="no-referrer" className="h-full w-full object-cover" />
+                          <img src={w.avatarUrl} alt={w.fullName} className="h-full w-full object-cover" />
                         ) : (
                           w.fullName.slice(0, 2).toUpperCase()
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-start justify-between gap-2">
-                          <h3 className="text-base font-extrabold text-[#11221B] truncate">{w.fullName}</h3>
-                          <TrustScoreBadge score={w.trustScore} compact />
-                        </div>
-                        <p className="text-xs font-semibold text-[#176B4A] mt-0.5 truncate">
-                          {isUr && w.tradeUrduName ? w.tradeUrduName : w.tradeName}
-                          {w.yearsExperience ? ` · ${w.yearsExperience} ${bi('yrs exp', 'سال تجربہ')}` : ''}
+                        <h3 className="truncate font-[Fraunces] text-xl font-semibold text-[#11221B]">{w.fullName}</h3>
+                        <p className="mt-0.5 flex items-center gap-1 truncate text-sm text-[#4D6357]">
+                          <span className="truncate">{isUr && w.tradeUrduName ? w.tradeUrduName : w.tradeName}</span>
+                          <span className="text-[#C9BFA8]">·</span>
+                          <MapPin className="h-3.5 w-3.5 shrink-0" />
+                          {w.city}
                         </p>
-                        <p className="mt-0.5 flex items-center gap-1 text-xs text-[#4D6357]">
-                          <MapPin className="h-3.5 w-3.5 text-[#399B6B] shrink-0" />
-                          <span>{w.city}</span>
-                        </p>
+                      </div>
+                      <div className="text-end">
+                        <p className="font-[Fraunces] text-2xl font-semibold text-[#11221B] tabular-nums">{w.trustScore}</p>
+                        <p className="text-[10px] uppercase tracking-wider text-[#69726B]">{bi('Trust', 'اعتماد')}</p>
                       </div>
                     </div>
 
-                    <div className="mt-3.5 flex flex-wrap items-center gap-2">
-                      <TierPill tier={w.tier} compact />
-                      <StarRatingInline rating={w.bayesianRating} count={w.totalReviews} />
-                    </div>
+                    <div className="kc-stitch my-5" />
 
-                    <div className="mt-4 rounded-2xl bg-[#F2FBF6] border border-[#DCEFE3] p-3.5 space-y-1.5">
-                      <div className="flex items-center justify-between text-xs font-bold text-[#176B4A]">
-                        <span className="inline-flex items-center gap-1.5">
-                          <Award className="h-3.5 w-3.5 shrink-0" />
-                          <span className="tabular-nums">
-                            {w.verifiedCount} {bi('Verified Badges', 'تصدیق شدہ بیجز')}
-                          </span>
-                        </span>
-                        <span className="text-[11px] text-[#4D6357] tabular-nums">
-                          {w.completedJobsCount} {bi('completed jobs', 'مکمل کام')}
-                        </span>
-                      </div>
-                      {w.verifiedBadges && w.verifiedBadges.length > 0 ? (
-                        <ul className="space-y-1 text-xs text-[#17251E]">
-                          {w.verifiedBadges.slice(0, 2).map((b: any) => (
-                            <li key={b.id} className="flex items-center justify-between gap-2">
-                              <span className="truncate font-medium">
-                                • {isUr && b.competencyUrduTitle ? b.competencyUrduTitle : b.competencyTitle}
-                              </span>
-                              <span className="shrink-0 rounded-md bg-[#DDF3E4] px-1.5 py-0.5 text-[10px] font-bold text-[#176B4A] whitespace-nowrap">
-                                {formatLevelLabel(b.level, lang)}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p className="text-[11px] text-[#4D6357]">
-                          {bi('Building rubric evidence portfolio', 'عملی ثبوت کا پورٹ فولیو تیار ہو رہا ہے')}
-                        </p>
-                      )}
-                    </div>
-                  </div>
+                    <p className="text-xs font-semibold text-[#176B4A]">
+                      {w.verifiedCount} {bi('verified skills', 'تصدیق شدہ مہارتیں')}
+                    </p>
+                    {w.verifiedBadges && w.verifiedBadges.length > 0 ? (
+                      <ul className="mt-3 flex-1 space-y-2.5">
+                        {w.verifiedBadges.slice(0, 3).map((b: any) => (
+                          <li key={b.id} className="flex items-center justify-between gap-3 text-sm text-[#17251E]">
+                            <span className="truncate">
+                              {isUr && b.competencyUrduTitle ? b.competencyUrduTitle : b.competencyTitle}
+                            </span>
+                            <Tally score={LEVEL_TO_SCORE[b.level] ?? 0} />
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="mt-3 flex-1 text-sm text-[#69726B]">
+                        {bi('Evidence under review', 'ثبوت کی جانچ جاری ہے')}
+                      </p>
+                    )}
 
-                  <Link
-                    to={`/workers/${w.publicId}`}
-                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-[#176B4A] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#11221B] transition-colors"
-                  >
-                    <span>{bi('View portfolio', 'پورٹ فولیو دیکھیں')}</span>
-                    <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+                    <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#11221B] group-hover:text-[#176B4A]">
+                      {bi('View portfolio', 'پورٹ فولیو دیکھیں')}
+                      <ArrowRight className="h-4 w-4 rtl:rotate-180 transition-transform group-hover:translate-x-0.5" />
+                    </span>
                   </Link>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
-        </div>
-      </section>
 
-      {/* 3. POPULAR VERIFIED CATEGORIES (Crisp white canvas) */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#176B4A]">
-                {bi('Featured Core Trades', 'نمایاں بنیادی پیشے')}
-              </p>
-              <h2 className="mt-1.5 text-2xl sm:text-3xl font-extrabold tracking-tight text-[#11221B]">
-                {bi('Popular Verified Categories', 'مقبول تصدیق شدہ پیشے')}
-              </h2>
-            </div>
-            <Link
-              to="/explore"
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#176B4A] hover:underline whitespace-nowrap"
-            >
-              <span>{bi('Browse all 48+ categories', 'تمام ۴۸+ پیشے دیکھیں')}</span>
-              <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+          <Link to="/explore" className="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-[#176B4A] hover:text-[#11221B]">
+            {bi('Explore all proven workers', 'تمام ثابت شدہ ہنرمند دیکھیں')}
+            <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+          </Link>
+
+          {/* Three numbers instead of a full dashboard */}
+          <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-[#E2DBCB] bg-[#E2DBCB] sm:grid-cols-3">
+            {[
+              { v: stats?.verifiedWorkersCount, l: bi('Karigars with public profiles', 'عوامی پروفائل والے کاریگر') },
+              { v: stats?.totalVerifiedBadges, l: bi('Active verified badges', 'فعال تصدیق شدہ بیجز') },
+              { v: stats?.approvedAssessorsCount, l: bi('Approved assessors', 'منظور شدہ ماہرین') },
+            ].map((s, i) => (
+              <div key={i} className="bg-[#FFFDF8] p-7">
+                <p className="font-[Fraunces] text-5xl font-semibold text-[#11221B] tabular-nums">{s.v ?? '–'}</p>
+                <p className="mt-2 text-sm text-[#4D6357]">{s.l}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-xs text-[#69726B]">
+            <span className="inline-flex items-center gap-2">
+              <span className="rounded-full border border-[#C9973A] px-2 py-0.5 font-semibold text-[#8A6418]">
+                {bi('Sample data', 'نمونہ ڈیٹا')}
+              </span>
+              {bi('Prototype figures from seeded demo accounts.', 'پروٹوٹائپ کے نمونہ اکاؤنٹس کے اعداد۔')}
+            </span>
+            <Link to="/demand-insights" className="font-semibold text-[#176B4A] hover:text-[#11221B]">
+              {bi('See skill demand insights →', 'مہارتوں کی طلب دیکھیں ←')}
             </Link>
           </div>
-
-          <div className="mt-8 grid grid-cols-1 gap-7 md:grid-cols-3">
-            {trades.map((trade) => {
-              const Icon = trade.icon;
-              return (
-                <Link
-                  key={trade.slug}
-                  to={`/explore?trade=${trade.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-3xl kc-beige-surface"
-                >
-                  <div className="h-52 w-full overflow-hidden bg-[#DDF3E4]">
-                    <img
-                      src={trade.img}
-                      alt={trade.name}
-                      referrerPolicy="no-referrer"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-lg font-bold text-[#11221B]">{trade.name}</h3>
-                      <span className="text-sm text-[#5B6D63]">{trade.secondary}</span>
-                    </div>
-                    <p className="mt-2 flex-1 text-sm text-[#4D6357] leading-relaxed">{trade.description}</p>
-                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#176B4A] group-hover:text-[#11221B]">
-                      <Icon className="h-4 w-4" />
-                      <span>{bi(`Explore ${trade.name}s`, `${trade.name} تلاش کریں`)}</span>
-                      <ArrowRight className="h-4 w-4 rtl:rotate-180 transition-transform group-hover:translate-x-1" />
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-
         </div>
       </section>
 
-      {/* 4. SKILL DEMAND INSIGHTS (Interactive Marketplace Telemetry & 6 Real-Data Charts) */}
-      <section id="skill-demand-insights" className="bg-[#F2FBF6] border-y border-[#CFE9D8] py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-            <div>
-              <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#176B4A]">
-                <BarChart3 className="h-3.5 w-3.5" />
-                <span>{bi('Live Skill Demand Analytics', 'لائیو اسکل ڈیمانڈ تجزیات')}</span>
-              </p>
-              <h2 className="mt-1.5 text-2xl sm:text-4xl font-extrabold tracking-tight text-[#11221B]">
-                {bi('Skill Demand Insights', 'مہارتوں کی طلب اور رجحانات (Skill Demand Insights)')}
-              </h2>
-              <p className="mt-2 max-w-2xl text-sm text-[#4D6357]">
+      {/* 4. FOR THE PEOPLE WHO PAY */}
+      <section id="partners" className="bg-[#11221B] text-[#F7F4EC] scroll-mt-20">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+          <motion.div {...fade(0)} className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E9C77E]">
+              {bi('For institutes & employers', 'اداروں اور آجروں کے لیے')}
+            </p>
+            <h2 className="mt-3 text-3xl sm:text-5xl font-semibold tracking-tight text-[#F7F4EC]">
+              {bi('Hire on proof. Train with proof.', 'ثبوت پر بھرتی۔ ثبوت کے ساتھ تربیت۔')}
+            </h2>
+          </motion.div>
+
+          <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-2">
+            <motion.div {...fade(0.05)} className="border-t border-white/15 pt-8">
+              <GraduationCap className="h-6 w-6 text-[#E9C77E]" />
+              <h3 className="mt-5 font-[Fraunces] text-2xl font-semibold">{bi('Training institutes', 'فنی تربیتی ادارے')}</h3>
+              <p className="mt-3 text-[#D8D0BE] leading-relaxed">
                 {bi(
-                  'Help Hirers identify available talent and help Karigars discover which skills and cities currently have the strongest demand.',
-                  'ہائررز کو دستیاب ہنرمندوں اور کاریگروں کو زیادہ طلب والی مہارتوں اور شہروں کو پہچاننے میں مدد۔'
+                  'Give every graduate a verified, shareable skills profile. Your instructors assess with our rubric; your graduates leave with proof employers can check.',
+                  'ہر فارغ التحصیل کو تصدیق شدہ پروفائل دیں۔ آپ کے اساتذہ ہمارے معیار سے جانچیں، اور طلبہ ایسا ثبوت لے کر نکلیں جسے آجر جانچ سکیں۔'
                 )}
               </p>
-            </div>
-            <Link
-              to="/demand-insights"
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#11221B] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#176B4A] transition-colors whitespace-nowrap self-start sm:self-auto"
-            >
-              <span>{bi('Open Full Insights View', 'مکمل ڈیمانڈ تجزیات کھولیں')}</span>
-              <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
-            </Link>
+            </motion.div>
+            <motion.div {...fade(0.12)} className="border-t border-white/15 pt-8">
+              <Building2 className="h-6 w-6 text-[#E9C77E]" />
+              <h3 className="mt-5 font-[Fraunces] text-2xl font-semibold">{bi('Employers & contractors', 'آجر اور ٹھیکیدار')}</h3>
+              <p className="mt-3 text-[#D8D0BE] leading-relaxed">
+                {bi(
+                  'Search by verified competency and city, not just job title. Compare candidates on the same rubric before the first trial job.',
+                  'صرف عہدے کے بجائے تصدیق شدہ مہارت اور شہر سے تلاش کریں۔ پہلے آزمائشی کام سے پہلے امیدواروں کا ایک ہی معیار پر موازنہ کریں۔'
+                )}
+              </p>
+            </motion.div>
           </div>
 
-          <SkillDemandInsightsSection embedded />
+          <div className="mt-14 flex flex-wrap items-center gap-4">
+            <a
+              href={PILOT_MAILTO}
+              className="inline-flex items-center gap-2 rounded-full bg-[#E9C77E] px-7 py-3.5 text-sm font-semibold text-[#11221B] hover:bg-[#F3D9A0] transition-colors"
+            >
+              {bi('Run a pilot with us', 'ہمارے ساتھ پائلٹ شروع کریں')}
+              <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+            </a>
+            <Link
+              to="/register/assessor"
+              className="inline-flex items-center rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-[#F7F4EC] hover:border-[#E9C77E]"
+            >
+              {bi('Apply as an assessor', 'بطور ماہر درخواست دیں')}
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 5. CLEAN HAIRLINE BILINGUAL FAQ + OPEN CLOSING CTA (Pure White Canvas) */}
-      <section id="faq" className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#CFE9D8] pb-6">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#176B4A] inline-flex items-center gap-1.5">
-                <HelpCircle className="h-3.5 w-3.5" />
-                <span>{bi('Frequently Asked Questions', 'اکثر پوچھے جانے والے سوالات')}</span>
-              </p>
-              <h2 className="mt-1.5 text-2xl sm:text-3xl font-extrabold text-[#11221B]">
-                {bi('Quick Answers in English & Urdu', 'انگریزی اور اردو میں مختصر سوالات و جوابات')}
-              </h2>
-            </div>
-            <a
-              href={WHATSAPP_WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#176B4A] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#11221B] transition-colors shrink-0"
-            >
-              <MessageCircle className="h-4 w-4 text-[#B8E4C7]" />
-              <span>{bi('Ask on WhatsApp Help', 'واٹس ایپ پر مدد لیں')}</span>
-            </a>
-          </div>
+      {/* 5. FAQ + CLOSE */}
+      <section id="faq" className="bg-[#F7F4EC]">
+        <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#176B4A]">{bi('Questions', 'سوالات')}</p>
+          <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-[#11221B]">
+            {bi('Honest answers.', 'سیدھے جوابات۔')}
+          </h2>
 
-          <div className="divide-y divide-[#DCEFE3]">
+          <div className="mt-8 divide-y divide-[#E2DBCB] border-y border-[#E2DBCB]">
             {faqs.map((item, idx) => {
               const isOpen = openFaqIndex === idx;
               return (
                 <div key={item.q}>
                   <button
                     type="button"
+                    aria-expanded={isOpen}
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full flex items-center justify-between gap-4 py-5 text-start font-bold text-sm sm:text-base text-[#11221B] hover:text-[#176B4A] transition-colors"
+                    className="w-full flex items-center justify-between gap-4 py-5 text-start font-semibold text-[#11221B] hover:text-[#176B4A]"
                   >
                     <span>{item.q}</span>
-                    <ChevronDown
-                      className={`h-4 w-4 text-[#176B4A] shrink-0 transition-transform ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
-                    />
+                    <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
@@ -686,9 +670,7 @@ export function LandingPage() {
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                       >
-                        <p className="pb-5 text-xs sm:text-sm text-[#4D6357] leading-relaxed">
-                          {item.a}
-                        </p>
+                        <p className="pb-5 text-sm text-[#4D6357] leading-relaxed">{item.a}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -697,30 +679,23 @@ export function LandingPage() {
             })}
           </div>
 
-          {/* Open Editorial Closing CTA (Mint & White Harmony) */}
-          <div className="mt-16 rounded-3xl bg-gradient-to-br from-[#DDF3E4] via-[#ECF8F1] to-white border border-[#B8E4C7] px-6 py-12 sm:px-12 text-center shadow-xs">
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#11221B] text-balance">
-              {bi('Hire with proof, not guesswork.', 'اندازے پر نہیں، مصدقہ ثبوت پر بھرتی اور بکنگ کریں۔')}
+          <div className="mt-20 text-center">
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#11221B] text-balance">
+              {bi('Hire with proof, not guesswork.', 'اندازے پر نہیں، ثبوت پر بھرتی کریں۔')}
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-[#3E5247]">
-              {bi(
-                'Join skilled Karigars, approved assessors, homeowners, and businesses across Pakistan.',
-                'پاکستان بھر کے ہنرمندوں، ماہرین، گھریلو صارفین اور کاروباری اداروں کے نیٹ ورک میں شامل ہوں۔'
-              )}
-            </p>
-            <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 to="/register"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#176B4A] px-7 py-3.5 text-sm font-bold text-white hover:bg-[#11221B] transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 rounded-full bg-[#11221B] px-7 py-3.5 text-sm font-semibold text-[#F7F4EC] hover:bg-[#176B4A] transition-colors"
               >
-                <span>{bi('Get Started', 'ابھی شروع کریں')}</span>
+                {bi('Get started', 'شروع کریں')}
                 <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </Link>
               <Link
                 to="/verify-badge"
-                className="inline-flex items-center justify-center rounded-full bg-white border border-[#B8E4C7] px-7 py-3.5 text-sm font-semibold text-[#11221B] hover:bg-[#DDF3E4] transition-colors shadow-xs"
+                className="inline-flex items-center rounded-full border border-[#D8D0BE] px-7 py-3.5 text-sm font-semibold text-[#11221B] hover:border-[#11221B]"
               >
-                {bi('Verify a Badge or Passport', 'بیج یا پاسپورٹ کی تصدیق')}
+                {bi('Verify a badge', 'بیج کی تصدیق کریں')}
               </Link>
             </div>
           </div>

@@ -15,7 +15,7 @@ export function ProtectedRoute({
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F7FAF8] p-8 max-w-4xl mx-auto">
+      <div className="min-h-screen bg-[#F7F4EC] p-8 max-w-4xl mx-auto">
         <LoadingSkeleton rows={5} />
       </div>
     );

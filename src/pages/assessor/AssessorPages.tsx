@@ -66,7 +66,7 @@ export function AssessorDashboard() {
                 <h2 className="text-xl font-bold text-[#17251E]">{data.fullName}</h2>
                 <StatusLabel status={data.approvalStatus} />
               </div>
-              <p className="mt-1 text-sm text-[#78857D]">
+              <p className="mt-1 text-sm text-[#69726B]">
                 {bi('Assigned Trades:', 'مقرر کردہ پیشے:')}{' '}
                 <span className="font-semibold text-[#17251E]">
                   {data.approvedTrades?.length > 0
@@ -172,9 +172,9 @@ export function AssessorDashboard() {
 
             <div className="lg:col-span-3 kc-dark-surface rounded-2xl p-5 sm:p-6 text-white flex flex-col justify-between kc-hover-lift">
               <div>
-                <p className="text-xs font-semibold text-[#73C99B]">{bi('Rubric Safeguard', 'معیاری تحفظ')}</p>
+                <p className="text-xs font-semibold text-[#C9973A]">{bi('Rubric Safeguard', 'معیاری تحفظ')}</p>
                 <h3 className="mt-2 text-lg font-bold leading-snug">{bi('0–3 Criterion Scoring', '۰ تا ۳ معیاری اسکورنگ')}</h3>
-                <p className="mt-2 text-xs text-[#B8E4C7]/85 leading-relaxed">
+                <p className="mt-2 text-xs text-[#D8D0BE]/85 leading-relaxed">
                   {bi(
                     'Any score of 0 on a safety-critical criterion automatically prevents badge issuance.',
                     'کسی بھی اہم حفاظتی معیار پر صفر اسکور بیج کے اجراء کو خودکار روک دیتا ہے۔'
@@ -195,21 +195,21 @@ export function AssessorDashboard() {
               {bi('Recent Assessment Activity', 'حالیہ جائزہ سرگرمی')}
             </h3>
             {data.recentActivity.length === 0 ? (
-              <p className="mt-3 text-sm text-[#78857D]">
+              <p className="mt-3 text-sm text-[#69726B]">
                 {bi('No completed assessments recorded yet.', 'ابھی کوئی مکمل جائزہ ریکارڈ نہیں ہوا۔')}
               </p>
             ) : (
-              <div className="mt-4 divide-y divide-[#E5EEE8]">
+              <div className="mt-4 divide-y divide-[#E6E0D2]">
                 {data.recentActivity.map((act: any) => (
                   <div key={act.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm">
                     <div>
                       <span className="font-bold text-[#17251E]">{act.workerName}</span> ·{' '}
-                      <span className="text-[#78857D]">{act.competencyTitle}</span>
+                      <span className="text-[#69726B]">{act.competencyTitle}</span>
                     </div>
                     <div className="flex items-center gap-3 text-xs">
                       <span className="font-mono font-semibold text-[#17251E] tabular-nums">{act.percentage}%</span>
                       <StatusLabel status={act.status} />
-                      <span className="font-mono text-[#78857D]">{formatDate(act.assessedAt, lang)}</span>
+                      <span className="font-mono text-[#69726B]">{formatDate(act.assessedAt, lang)}</span>
                     </div>
                   </div>
                 ))}
@@ -302,7 +302,7 @@ export function AssessorApplicationPage() {
             </h2>
             <StatusLabel status={approvalStatus} />
           </div>
-          <p className="text-sm text-[#78857D]">
+          <p className="text-sm text-[#69726B]">
             {bi(
               'Admin reviews your trade experience and qualifications before enabling access to verification queues.',
               'تصدیقی قطار تک رسائی دینے سے قبل ایڈمن آپ کے پیشہ ورانہ تجربے اور اسناد کا جائزہ لیتا ہے۔'
@@ -317,7 +317,7 @@ export function AssessorApplicationPage() {
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
             <div>
@@ -336,11 +336,11 @@ export function AssessorApplicationPage() {
                 value={tradeQuery}
                 onChange={(e) => setTradeQuery(e.target.value)}
                 placeholder={bi('Filter categories...', 'شعبے تلاش کریں...')}
-                className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-1.5 text-xs"
+                className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-1.5 text-xs"
               />
             </div>
 
-            <div className="max-h-72 overflow-y-auto rounded-2xl border border-[#E5EEE8] bg-[#F7FAF8]/60 p-3 space-y-4">
+            <div className="max-h-72 overflow-y-auto rounded-2xl border border-[#E6E0D2] bg-[#F7F4EC]/60 p-3 space-y-4">
               {SERVICE_GROUPS.map((grp) => {
                 const q = tradeQuery.trim().toLowerCase();
                 const grpTrades = trades.filter(
@@ -360,15 +360,15 @@ export function AssessorApplicationPage() {
                           key={t.id}
                           className={`flex items-center gap-2 rounded-xl border p-2.5 text-xs cursor-pointer transition-colors ${
                             selectedTradeIds.includes(t.id)
-                              ? 'border-[#176B4A] bg-[#DDF3E4]/75 font-semibold text-[#17251E]'
-                              : 'border-[#E5EEE8] bg-white text-[#78857D]'
+                              ? 'border-[#176B4A] bg-[#ECE6D7]/75 font-semibold text-[#17251E]'
+                              : 'border-[#E6E0D2] bg-white text-[#69726B]'
                           }`}
                         >
                           <input
                             type="checkbox"
                             checked={selectedTradeIds.includes(t.id)}
                             onChange={() => toggleTrade(t.id)}
-                            className="h-3.5 w-3.5 rounded border-[#B8E4C7] accent-[#176B4A]"
+                            className="h-3.5 w-3.5 rounded border-[#D8D0BE] accent-[#176B4A]"
                           />
                           <span className="truncate">{isUr && t.urduName ? t.urduName : t.name}</span>
                         </label>
@@ -391,7 +391,7 @@ export function AssessorApplicationPage() {
               required
               value={yearsExperience}
               onChange={(e) => setYearsExperience(Number(e.target.value))}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
           </div>
 
@@ -408,7 +408,7 @@ export function AssessorApplicationPage() {
                 'List vocational diplomas, workshop leadership, safety certifications...',
                 'ووکیشنل ڈپلومہ، ورکشاپ نگرانی اور حفاظتی سرٹیفکیٹس درج کریں...'
               )}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
           </div>
 
@@ -421,7 +421,7 @@ export function AssessorApplicationPage() {
               required
               value={bio}
               onChange={(e) => setBio(e.target.value)}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
           </div>
 
@@ -492,7 +492,7 @@ export function VerificationQueuePage() {
               className="rounded-2xl kc-glass-card kc-hover-lift p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
               <div>
-                <p className="text-xs font-medium text-[#78857D]">
+                <p className="text-xs font-medium text-[#69726B]">
                   {item.tradeName} · {bi('Submitted', 'جمع تاریخ:')} {formatDate(item.requestedAt, lang)} · {item.evidenceCount}{' '}
                   {bi('private file(s)', 'نجی فائل')}
                   {item.isAppeal ? bi(' · Appeal Re-review', ' · اپیل پر دوبارہ جائزہ') : ''}
@@ -500,7 +500,7 @@ export function VerificationQueuePage() {
                 <h3 className="mt-1 text-base font-bold text-[#17251E]">
                   {item.workerName} — {item.competencyTitle}
                 </h3>
-                <p className="text-xs text-[#78857D]">{item.workerCity}</p>
+                <p className="text-xs text-[#69726B]">{item.workerCity}</p>
               </div>
               <div className="flex items-center gap-3 shrink-0">
                 <StatusLabel status={item.status} />
@@ -634,20 +634,20 @@ export function EvidenceReviewPage() {
       ) : (
         <div className="space-y-6">
           {/* Worker Summary */}
-          <div className="rounded-2xl border border-[#B8E4C7] bg-gradient-to-r from-white/95 to-[#DDF3E4]/65 backdrop-blur-md p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 kc-card-shadow">
+          <div className="rounded-2xl border border-[#D8D0BE] bg-gradient-to-r from-white/95 to-[#ECE6D7]/65 backdrop-blur-md p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 kc-card-shadow">
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[#399B6B]">
                 {data.tradeName} · {bi('Requested', 'درخواست تاریخ:')} {formatDate(data.requestedAt, lang)}
               </p>
               <h2 className="mt-1 text-xl font-extrabold text-[#17251E]">{data.worker.fullName}</h2>
-              <p className="text-sm text-[#78857D]">
+              <p className="text-sm text-[#69726B]">
                 {data.worker.city} · {data.worker.yearsExperience} {bi('years experience', 'سال کا تجربہ')}
               </p>
-              {data.worker.bio && <p className="mt-2 text-xs text-[#78857D] max-w-2xl">{data.worker.bio}</p>}
+              {data.worker.bio && <p className="mt-2 text-xs text-[#69726B] max-w-2xl">{data.worker.bio}</p>}
             </div>
             <Link
               to="/assessor/queue"
-              className="rounded-full border border-[#E5EEE8] bg-white px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#F7FAF8] whitespace-nowrap"
+              className="rounded-full border border-[#E6E0D2] bg-white px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#F7F4EC] whitespace-nowrap"
             >
               {bi('← Back to Queue', '→ قطار پر واپس جائیں')}
             </Link>
@@ -670,15 +670,15 @@ export function EvidenceReviewPage() {
 
             return (
               <div key={item.id} className="rounded-2xl kc-glass-card p-6 space-y-6">
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-[#E5EEE8] pb-4">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-[#E6E0D2] pb-4">
                   <div>
                     <h3 className="text-lg font-bold text-[#17251E]">
                       {item.competencyTitle}{' '}
                       {item.competencyUrduTitle && (
-                        <span className="text-sm font-normal text-[#78857D]">({item.competencyUrduTitle})</span>
+                        <span className="text-sm font-normal text-[#69726B]">({item.competencyUrduTitle})</span>
                       )}
                     </h3>
-                    <p className="mt-1 text-sm text-[#78857D]">{item.competencyDescription}</p>
+                    <p className="mt-1 text-sm text-[#69726B]">{item.competencyDescription}</p>
                     {item.isAppeal && (
                       <p className="mt-2 text-xs font-semibold text-amber-800">
                         {bi('Appeal Reason:', 'اپیل کی وجہ:')} “{item.appealReason}”
@@ -694,12 +694,12 @@ export function EvidenceReviewPage() {
                     {bi('Submitted Private Evidence', 'جمع کرائے گئے نجی ثبوت')} ({item.evidence?.length || 0})
                   </h4>
                   {item.evidence?.length === 0 ? (
-                    <p className="text-sm text-[#78857D]">{bi('No evidence files found.', 'کوئی ثبوت کی فائل نہیں ملی۔')}</p>
+                    <p className="text-sm text-[#69726B]">{bi('No evidence files found.', 'کوئی ثبوت کی فائل نہیں ملی۔')}</p>
                   ) : (
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                       {item.evidence.map((ev: any) => (
-                        <div key={ev.id} className="rounded-2xl border border-[#E5EEE8] overflow-hidden bg-[#F7FAF8] kc-hover-lift">
-                          <div className="h-56 bg-[#DDF3E4]/40">
+                        <div key={ev.id} className="rounded-2xl border border-[#E6E0D2] overflow-hidden bg-[#F7F4EC] kc-hover-lift">
+                          <div className="h-56 bg-[#ECE6D7]/40">
                             {ev.fileType === 'VIDEO' ? (
                               <video src={ev.signedUrl} controls className="h-full w-full object-cover" />
                             ) : (
@@ -713,8 +713,8 @@ export function EvidenceReviewPage() {
                           </div>
                           <div className="p-4">
                             <p className="text-sm font-bold text-[#17251E]">{ev.title}</p>
-                            <p className="mt-1 text-xs text-[#78857D]">{ev.description}</p>
-                            <p className="mt-1.5 text-[11px] font-mono text-[#78857D]">
+                            <p className="mt-1 text-xs text-[#69726B]">{ev.description}</p>
+                            <p className="mt-1.5 text-[11px] font-mono text-[#69726B]">
                               {ev.originalName} · {formatDate(ev.createdAt, lang)}
                             </p>
                           </div>
@@ -725,20 +725,20 @@ export function EvidenceReviewPage() {
                 </div>
 
                 {/* Rubric Scoring Interface */}
-                <div className="border-t border-[#E5EEE8] pt-5 space-y-4">
+                <div className="border-t border-[#E6E0D2] pt-5 space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
                       <h4 className="text-sm font-bold text-[#17251E]">
                         {bi('Structured Assessment Rubric (0–3 Scale)', 'معیاری جائزہ اسکورنگ (۰ تا ۳ پیمانہ)')}
                       </h4>
-                      <p className="text-xs text-[#78857D]">
+                      <p className="text-xs text-[#69726B]">
                         {bi(
                           '0 = Not demonstrated · 1 = Basic · 2 = Competent · 3 = Strong. Authoritative score & safety rules are validated before saving.',
                           '۰ = غیر واضح · ۱ = بنیادی · ۲ = ماہر · ۳ = بہترین۔ محفوظ کرنے سے قبل حفاظتی اصولوں کی خودکار جانچ کی جاتی ہے۔'
                         )}
                       </p>
                     </div>
-                    <div className="rounded-xl border border-[#B8E4C7] bg-[#DDF3E4]/55 px-4 py-2 text-end">
+                    <div className="rounded-xl border border-[#D8D0BE] bg-[#ECE6D7]/55 px-4 py-2 text-end">
                       <p className="font-mono text-sm font-extrabold text-[#17251E] tabular-nums">
                         {preview.total} / {preview.max} ({preview.pct}%)
                       </p>
@@ -756,7 +756,7 @@ export function EvidenceReviewPage() {
                     {(item.criteria || []).map((crit: any) => {
                       const val = scoresByItem[item.id]?.[crit.id] ?? 2;
                       return (
-                        <div key={crit.id} className="rounded-2xl border border-[#E5EEE8] bg-[#F7FAF8] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div key={crit.id} className="rounded-2xl border border-[#E6E0D2] bg-[#F7F4EC] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                           <div>
                             <div className="flex items-center gap-2">
                               <p className="text-sm font-bold text-[#17251E]">{crit.title}</p>
@@ -767,7 +767,7 @@ export function EvidenceReviewPage() {
                                 </span>
                               )}
                             </div>
-                            <p className="text-xs text-[#78857D] mt-0.5">{crit.description}</p>
+                            <p className="text-xs text-[#69726B] mt-0.5">{crit.description}</p>
                           </div>
 
                           <div className="flex items-center gap-1.5 shrink-0">
@@ -787,7 +787,7 @@ export function EvidenceReviewPage() {
                                     ? scoreOpt === 0 && crit.isSafetyCritical
                                       ? 'border-red-700 bg-red-600 text-white'
                                       : 'border-[#176B4A] bg-[#176B4A] text-white'
-                                    : 'border-[#E5EEE8] bg-white text-[#17251E] hover:bg-[#DDF3E4]/50'
+                                    : 'border-[#E6E0D2] bg-white text-[#17251E] hover:bg-[#ECE6D7]/50'
                                 } disabled:opacity-60`}
                               >
                                 {scoreOpt}
@@ -812,7 +812,7 @@ export function EvidenceReviewPage() {
                         'Explain strengths observed, safety compliance, or specific missing evidence...',
                         'کام کی خوبیاں، حفاظتی پابندی یا مطلوبہ اضافی ثبوت کی وضاحت لکھیں...'
                       )}
-                      className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none disabled:bg-[#F7FAF8]"
+                      className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none disabled:bg-[#F7F4EC]"
                     />
                   </div>
 
@@ -914,7 +914,7 @@ export function CompletedAssessmentsPage() {
         <div className="rounded-2xl kc-glass-card overflow-x-auto">
           <table className="w-full text-start text-sm">
             <thead>
-              <tr className="border-b border-[#E5EEE8] bg-[#F7FAF8] text-xs font-semibold text-[#78857D]">
+              <tr className="border-b border-[#E6E0D2] bg-[#F7F4EC] text-xs font-semibold text-[#69726B]">
                 <th className="px-4 py-3">{bi('Worker', 'ہنرمند')}</th>
                 <th className="px-4 py-3">{bi('Trade & Competency', 'پیشہ اور مہارت')}</th>
                 <th className="px-4 py-3">{bi('Score', 'اسکور')}</th>
@@ -922,13 +922,13 @@ export function CompletedAssessmentsPage() {
                 <th className="px-4 py-3">{bi('Date', 'تاریخ')}</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E5EEE8]">
+            <tbody className="divide-y divide-[#E6E0D2]">
               {items.map((r) => (
-                <tr key={r.id} className="hover:bg-[#F7FAF8]/60">
+                <tr key={r.id} className="hover:bg-[#F7F4EC]/60">
                   <td className="px-4 py-3 font-semibold text-[#17251E]">{r.workerName}</td>
                   <td className="px-4 py-3">
                     <p className="font-semibold text-[#17251E]">{r.competencyTitle}</p>
-                    <p className="text-xs text-[#78857D]">{r.tradeName}</p>
+                    <p className="text-xs text-[#69726B]">{r.tradeName}</p>
                   </td>
                   <td className="px-4 py-3 font-mono text-xs tabular-nums text-[#17251E]">
                     {r.totalScore}/{r.maxScore} ({r.percentage}%)
@@ -937,7 +937,7 @@ export function CompletedAssessmentsPage() {
                   <td className="px-4 py-3">
                     <StatusLabel status={r.status} />
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs text-[#78857D]">{formatDate(r.assessedAt, lang)}</td>
+                  <td className="px-4 py-3 font-mono text-xs text-[#69726B]">{formatDate(r.assessedAt, lang)}</td>
                 </tr>
               ))}
             </tbody>
@@ -971,11 +971,11 @@ export function AssessorProfilePage() {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl font-bold text-[#17251E]">{profile.fullName}</h2>
-              <p className="text-sm text-[#78857D]">{profile.city} · {profile.email}</p>
+              <p className="text-sm text-[#69726B]">{profile.city} · {profile.email}</p>
             </div>
             <StatusLabel status={profile.approvalStatus} />
           </div>
-          <div className="border-t border-[#E5EEE8] pt-4 text-sm space-y-2 text-[#78857D]">
+          <div className="border-t border-[#E6E0D2] pt-4 text-sm space-y-2 text-[#69726B]">
             <p>
               <strong className="text-[#17251E]">{bi('Experience:', 'تجربہ:')}</strong> {profile.yearsExperience}{' '}
               {bi('years', 'سال')}
@@ -992,7 +992,7 @@ export function AssessorProfilePage() {
               <strong className="text-[#17251E]">{bi('Biography:', 'تعارف:')}</strong> {profile.bio || '—'}
             </p>
           </div>
-          <Link to="/assessor/application" className="inline-block rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-5 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50">
+          <Link to="/assessor/application" className="inline-block rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-5 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50">
             {bi('Update Application Details', 'درخواست کی تفصیلات اپ ڈیٹ کریں')}
           </Link>
         </div>

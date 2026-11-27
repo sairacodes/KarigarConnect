@@ -166,14 +166,14 @@ export function EvidenceUploadPage() {
           {/* Upload Form */}
           <form onSubmit={handleUpload} className="lg:col-span-5 rounded-2xl kc-glass-card p-6 space-y-4 h-fit">
             <div className="flex items-start gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#DDF3E4] text-[#176B4A] shrink-0">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#ECE6D7] text-[#176B4A] shrink-0">
                 <Lock className="h-4 w-4" />
               </span>
               <div>
                 <h2 className="text-base font-bold text-[#17251E]">
                   {bi('Upload Private Practical Evidence', 'نجی عملی ثبوت اپ لوڈ کریں')}
                 </h2>
-                <p className="text-xs text-[#78857D]">
+                <p className="text-xs text-[#69726B]">
                   {bi(
                     "Files are saved locally in your browser's private IndexedDB file store and shown only in worker and assessor review views.",
                     'فائلیں براؤزر کی پرائیویٹ اسٹوریج میں محفوظ رہتی ہیں اور صرف ہنرمند اور ماہرِ جائزہ دیکھ سکتے ہیں۔'
@@ -188,7 +188,7 @@ export function EvidenceUploadPage() {
                 value={competencyId}
                 onChange={(e) => setCompetencyId(e.target.value)}
                 required
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               >
                 {competencies.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -206,7 +206,7 @@ export function EvidenceUploadPage() {
                 onChange={(e) => setTitle(e.target.value)}
                 required
                 placeholder={bi('e.g. Copper termination in 6-way breaker box', 'مثلاً ۶ وے بریکر باکس کی کاپر وائرنگ')}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
 
@@ -223,7 +223,7 @@ export function EvidenceUploadPage() {
                   'Describe tools used, safety precautions taken, and finished work...',
                   'استعمال شدہ اوزار، حفاظتی احتیاطی تدابیر اور مکمل کام کی وضاحت لکھیں...'
                 )}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
 
@@ -232,13 +232,13 @@ export function EvidenceUploadPage() {
                 <label className="block text-xs font-semibold text-[#17251E] mb-1">
                   {bi('Photo Evidence (JPG/PNG/WebP · max 5 MB)', 'تصویری ثبوت (JPG/PNG/WebP · زیادہ سے زیادہ ۵ ایم بی)')}
                 </label>
-                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-[#B8E4C7] bg-[#F7FAF8] px-4 py-3 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50 transition-colors">
+                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-[#D8D0BE] bg-[#F7F4EC] px-4 py-3 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50 transition-colors">
                   <ImageIcon className="h-4 w-4 text-[#176B4A]" />
                   <span>{imageFile ? imageFile.name : bi('Choose Photo', 'تصویر منتخب کریں')}</span>
                   <input type="file" accept="image/jpeg,image/png,image/webp" onChange={handleImagePick} className="hidden" />
                 </label>
                 {imagePreview && (
-                  <img src={imagePreview} alt={bi('Selected preview', 'منتخب تصویر')} className="mt-2 h-32 w-full rounded-xl object-cover border border-[#E5EEE8]" />
+                  <img src={imagePreview} alt={bi('Selected preview', 'منتخب تصویر')} className="mt-2 h-32 w-full rounded-xl object-cover border border-[#E6E0D2]" />
                 )}
               </div>
 
@@ -246,7 +246,7 @@ export function EvidenceUploadPage() {
                 <label className="block text-xs font-semibold text-[#17251E] mb-1">
                   {bi('Optional Short Video (1 video max · MP4/WebM/MOV · max 25 MB)', 'اختیاری مختصر ویڈیو (زیادہ سے زیادہ ۲۵ ایم بی)')}
                 </label>
-                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-[#E5EEE8] bg-[#F7FAF8] px-4 py-3 text-xs font-medium text-[#78857D] hover:bg-[#DDF3E4]/40 hover:text-[#17251E] transition-colors">
+                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-[#E6E0D2] bg-[#F7F4EC] px-4 py-3 text-xs font-medium text-[#69726B] hover:bg-[#ECE6D7]/40 hover:text-[#17251E] transition-colors">
                   <FileVideo className="h-4 w-4 text-[#399B6B]" />
                   <span>{videoFile ? videoFile.name : bi('Attach Optional Short Video', 'مختصر ویڈیو منسلک کریں')}</span>
                   <input type="file" accept="video/mp4,video/webm,video/quicktime" onChange={handleVideoPick} className="hidden" />
@@ -294,7 +294,7 @@ export function EvidenceUploadPage() {
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {evidenceList.map((ev) => (
                   <div key={ev.id} className="rounded-2xl kc-glass-card kc-hover-lift overflow-hidden flex flex-col">
-                    <div className="h-44 bg-[#DDF3E4]/40 relative">
+                    <div className="h-44 bg-[#ECE6D7]/40 relative">
                       {ev.fileType === 'VIDEO' ? (
                         <video src={ev.signedUrl} controls className="h-full w-full object-cover" />
                       ) : (
@@ -313,9 +313,9 @@ export function EvidenceUploadPage() {
                           <StatusLabel status={ev.status} />
                         </div>
                         <h3 className="mt-1 text-sm font-bold text-[#17251E]">{ev.title}</h3>
-                        <p className="mt-1 text-xs text-[#78857D] line-clamp-2">{ev.description}</p>
+                        <p className="mt-1 text-xs text-[#69726B] line-clamp-2">{ev.description}</p>
                       </div>
-                      <div className="mt-3 pt-3 border-t border-[#E5EEE8] flex items-center justify-between text-xs text-[#78857D]">
+                      <div className="mt-3 pt-3 border-t border-[#E6E0D2] flex items-center justify-between text-xs text-[#69726B]">
                         <span className="font-mono">{formatDate(ev.createdAt, lang)}</span>
                         {ev.status !== 'APPROVED' && (
                           <button

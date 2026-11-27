@@ -73,14 +73,14 @@ export function CityCombobox({
   return (
     <div ref={containerRef} className={`relative ${className}`}>
       <div className="relative">
-        <MapPin className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#78857D]" />
+        <MapPin className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#69726B]" />
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="flex w-full items-center justify-between rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] ps-9 pe-3 py-2.5 text-sm text-start text-[#17251E] hover:bg-white focus:border-[#399B6B] focus:bg-white focus:outline-none transition-colors"
+          className="flex w-full items-center justify-between rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] ps-9 pe-3 py-2.5 text-sm text-start text-[#17251E] hover:bg-white focus:border-[#399B6B] focus:bg-white focus:outline-none transition-colors"
         >
-          <span className={`truncate ${!value && !allowAll ? 'text-[#78857D]' : 'font-medium'}`}>
+          <span className={`truncate ${!value && !allowAll ? 'text-[#69726B]' : 'font-medium'}`}>
             {displayValue || placeholder || bi('Select city in Pakistan...', 'پاکستان کا شہر منتخب کریں...')}
           </span>
           <span className="flex items-center gap-1 shrink-0">
@@ -93,12 +93,12 @@ export function CityCombobox({
                   onChange('');
                   setOtherMode(false);
                 }}
-                className="rounded p-0.5 text-[#78857D] hover:bg-[#E5EEE8] hover:text-[#17251E]"
+                className="rounded p-0.5 text-[#69726B] hover:bg-[#E6E0D2] hover:text-[#17251E]"
               >
                 <X className="h-3.5 w-3.5" />
               </span>
             )}
-            <ChevronDown className="h-4 w-4 text-[#78857D]" />
+            <ChevronDown className="h-4 w-4 text-[#69726B]" />
           </span>
         </button>
         {required && (
@@ -114,17 +114,17 @@ export function CityCombobox({
       </div>
 
       {open && (
-        <div className="absolute start-0 end-0 z-50 mt-1.5 rounded-2xl border border-[#E5EEE8] bg-white shadow-xl overflow-hidden">
-          <div className="border-b border-[#E5EEE8] p-2.5 bg-[#F7FAF8]">
+        <div className="absolute start-0 end-0 z-50 mt-1.5 rounded-2xl border border-[#E6E0D2] bg-white shadow-xl overflow-hidden">
+          <div className="border-b border-[#E6E0D2] p-2.5 bg-[#F7F4EC]">
             <div className="relative">
-              <Search className="pointer-events-none absolute start-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#78857D]" />
+              <Search className="pointer-events-none absolute start-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#69726B]" />
               <input
                 type="text"
                 autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={bi('Type city or province name...', 'شہر یا صوبے کا نام لکھیں...')}
-                className="w-full rounded-lg border border-[#E5EEE8] bg-white ps-8 pe-3 py-1.5 text-xs text-[#17251E] focus:border-[#399B6B] focus:outline-none"
+                className="w-full rounded-lg border border-[#E6E0D2] bg-white ps-8 pe-3 py-1.5 text-xs text-[#17251E] focus:border-[#399B6B] focus:outline-none"
               />
             </div>
           </div>
@@ -139,7 +139,7 @@ export function CityCombobox({
                   setOpen(false);
                 }}
                 className={`w-full rounded-lg px-3 py-2 text-start text-xs font-semibold transition-colors ${
-                  !value ? 'bg-[#DDF3E4] text-[#176B4A]' : 'text-[#17251E] hover:bg-[#F7FAF8]'
+                  !value ? 'bg-[#ECE6D7] text-[#176B4A]' : 'text-[#17251E] hover:bg-[#F7F4EC]'
                 }`}
               >
                 {allLabel || bi('All cities across Pakistan', 'پاکستان کے تمام شہر')}
@@ -148,7 +148,7 @@ export function CityCombobox({
 
             {filteredGroups.map((g) => (
               <div key={g.province}>
-                <p className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#78857D] bg-[#F7FAF8] rounded-md">
+                <p className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#69726B] bg-[#F7F4EC] rounded-md">
                   {lang === 'ur' ? `${g.urduName} (${g.province})` : g.province}
                 </p>
                 <div className="mt-1 space-y-0.5">
@@ -166,12 +166,12 @@ export function CityCombobox({
                         }}
                         className={`flex w-full items-center justify-between rounded-lg px-3 py-1.5 text-start text-xs transition-colors ${
                           selected
-                            ? 'bg-[#DDF3E4] font-semibold text-[#176B4A]'
-                            : 'text-[#17251E] hover:bg-[#F7FAF8]'
+                            ? 'bg-[#ECE6D7] font-semibold text-[#176B4A]'
+                            : 'text-[#17251E] hover:bg-[#F7F4EC]'
                         }`}
                       >
                         <span>{c.name}</span>
-                        <span className="text-[11px] text-[#78857D]">{c.urduName}</span>
+                        <span className="text-[11px] text-[#69726B]">{c.urduName}</span>
                       </button>
                     );
                   })}
@@ -180,34 +180,34 @@ export function CityCombobox({
             ))}
 
             {filteredGroups.length === 0 && (
-              <p className="px-3 py-2 text-xs text-[#78857D]">
+              <p className="px-3 py-2 text-xs text-[#69726B]">
                 {bi('No listed city matched.', 'کوئی درج شہر نہیں ملا۔')}
               </p>
             )}
 
-            <div className="border-t border-[#E5EEE8] pt-1.5">
+            <div className="border-t border-[#E6E0D2] pt-1.5">
               {!otherMode ? (
                 <button
                   type="button"
                   onClick={() => setOtherMode(true)}
-                  className="w-full rounded-lg px-3 py-2 text-start text-xs font-semibold text-[#176B4A] hover:bg-[#DDF3E4]/50"
+                  className="w-full rounded-lg px-3 py-2 text-start text-xs font-semibold text-[#176B4A] hover:bg-[#ECE6D7]/50"
                 >
                   {bi('Other (type your city / tehsil)', 'دیگر (اپنا شہر یا تحصیل لکھیں)')}
                 </button>
               ) : (
-                <div className="p-2 space-y-2 bg-[#F7FAF8] rounded-lg">
+                <div className="p-2 space-y-2 bg-[#F7F4EC] rounded-lg">
                   <input
                     type="text"
                     value={customCity}
                     onChange={(e) => setCustomCity(e.target.value)}
                     placeholder={bi('Enter city or town name...', 'شہر یا قصبے کا نام لکھیں...')}
-                    className="w-full rounded-lg border border-[#E5EEE8] bg-white px-2.5 py-1.5 text-xs text-[#17251E] focus:border-[#399B6B] focus:outline-none"
+                    className="w-full rounded-lg border border-[#E6E0D2] bg-white px-2.5 py-1.5 text-xs text-[#17251E] focus:border-[#399B6B] focus:outline-none"
                   />
                   <div className="flex justify-end gap-1.5">
                     <button
                       type="button"
                       onClick={() => setOtherMode(false)}
-                      className="rounded-lg px-2.5 py-1 text-[11px] font-medium text-[#78857D] hover:text-[#17251E]"
+                      className="rounded-lg px-2.5 py-1 text-[11px] font-medium text-[#69726B] hover:text-[#17251E]"
                     >
                       {bi('Cancel', 'منسوخ')}
                     </button>

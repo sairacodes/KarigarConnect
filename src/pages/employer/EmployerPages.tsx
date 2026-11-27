@@ -102,7 +102,7 @@ export function EmployerDashboard() {
               <h2 className="text-xl sm:text-2xl font-extrabold text-[#17251E]">
                 {bi(`Welcome, ${data.fullName}`, `خوش آمدید، ${data.fullName}`)}
               </h2>
-              <p className="mt-1 text-sm text-[#78857D]">
+              <p className="mt-1 text-sm text-[#69726B]">
                 {data.companyName || (data.accountType === 'INDIVIDUAL' ? bi('Homeowner / Individual Account', 'گھریلو صارف اکاؤنٹ') : bi('Customer / Employer Account', 'گاہک / آجِر اکاؤنٹ'))} · {data.city}
               </p>
             </div>
@@ -116,14 +116,14 @@ export function EmployerDashboard() {
               </Link>
               <Link
                 to="/employer/jobs"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#B8E4C7] bg-[#DDF3E4]/60 px-5 py-2.5 text-xs font-semibold text-[#176B4A] hover:bg-[#DDF3E4] whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D8D0BE] bg-[#ECE6D7]/60 px-5 py-2.5 text-xs font-semibold text-[#176B4A] hover:bg-[#ECE6D7] whitespace-nowrap"
               >
                 <Briefcase className="h-3.5 w-3.5" />
                 {bi('My Jobs', 'میرے کام')} ({(data.stats?.activeJobsCount || 0) + (data.stats?.completedJobsCount || 0)})
               </Link>
               <Link
                 to="/employer/insights"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#B8E4C7] bg-[#EAF7F0] px-4 py-2.5 text-xs font-bold text-[#11221B] hover:bg-[#DDF3E4] whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D8D0BE] bg-[#F3EFE4] px-4 py-2.5 text-xs font-bold text-[#11221B] hover:bg-[#ECE6D7] whitespace-nowrap"
               >
                 <BarChart3 className="h-3.5 w-3.5 text-[#176B4A]" />
                 {bi('Skill Demand Insights', 'اسکل ڈیمانڈ بصیرت')}
@@ -133,7 +133,7 @@ export function EmployerDashboard() {
 
           {/* Pending Reviews Reminder */}
           {data.pendingReviewJobs?.length > 0 && (
-            <div className="rounded-2xl border border-[#73C99B] bg-[#DDF3E4]/55 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="rounded-2xl border border-[#C9973A] bg-[#ECE6D7]/55 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-start gap-3">
                 <Star className="h-5 w-5 text-[#176B4A] fill-amber-400 shrink-0 mt-0.5" />
                 <div>
@@ -223,13 +223,13 @@ export function EmployerDashboard() {
 
             <div className="lg:col-span-3 kc-dark-surface rounded-2xl p-5 sm:p-6 text-white flex flex-col justify-between kc-hover-lift">
               <div>
-                <p className="text-xs font-semibold text-[#73C99B]">
+                <p className="text-xs font-semibold text-[#C9973A]">
                   {bi('3-Layer Verified Hiring', 'تین سطحی تصدیق شدہ بھرتی')}
                 </p>
                 <h3 className="mt-2 text-lg font-bold leading-snug">
                   {bi('Hire Proven Karigars', 'مستند کاریگر منتخب کریں')}
                 </h3>
-                <p className="mt-2 text-xs text-[#B8E4C7]/85 leading-relaxed">
+                <p className="mt-2 text-xs text-[#D8D0BE]/85 leading-relaxed">
                   {bi(
                     'Compare assessor-verified skills, customer ratings, Fair Price Guides, and 7-day Karigar Guarantee protection.',
                     'ماہرین سے تصدیق شدہ مہارتیں، کسٹمر ریٹنگ، مناسب نرخ نامہ اور ۷ روزہ گارنٹی کے ساتھ کام کروائیں۔'
@@ -256,20 +256,20 @@ export function EmployerDashboard() {
                 </Link>
               </div>
               {data.recentShortlist.length === 0 ? (
-                <p className="mt-4 text-sm text-[#78857D]">
+                <p className="mt-4 text-sm text-[#69726B]">
                   {bi('No workers shortlisted yet.', 'ابھی کوئی ہنرمند شارٹ لسٹ نہیں کیا گیا۔')}
                 </p>
               ) : (
-                <div className="mt-4 divide-y divide-[#E5EEE8]">
+                <div className="mt-4 divide-y divide-[#E6E0D2]">
                   {data.recentShortlist.map((w: any) => (
                     <Link
                       key={w.id}
                       to={`/employer/workers/${w.publicId}`}
-                      className="py-3 flex items-center justify-between hover:bg-[#F7FAF8] rounded-xl px-2 transition-colors"
+                      className="py-3 flex items-center justify-between hover:bg-[#F7F4EC] rounded-xl px-2 transition-colors"
                     >
                       <div>
                         <p className="text-sm font-bold text-[#17251E]">{w.fullName}</p>
-                        <p className="text-xs text-[#78857D]">
+                        <p className="text-xs text-[#69726B]">
                           {w.tradeName} · {w.city} · {w.yearsExperience} {bi('yrs', 'سال')}
                         </p>
                       </div>
@@ -285,23 +285,23 @@ export function EmployerDashboard() {
                 {bi('Recently Viewed Profiles', 'حالیہ دیکھے گئے پروفائلز')}
               </h3>
               {recentViewed.length === 0 ? (
-                <p className="mt-4 text-sm text-[#78857D]">
+                <p className="mt-4 text-sm text-[#69726B]">
                   {bi(
                     'Profiles you open during worker search will appear here.',
                     'تلاش کے دوران کھولے گئے پروفائلز یہاں نظر آئیں گے۔'
                   )}
                 </p>
               ) : (
-                <div className="mt-4 divide-y divide-[#E5EEE8]">
+                <div className="mt-4 divide-y divide-[#E6E0D2]">
                   {recentViewed.map((w) => (
                     <Link
                       key={w.publicId}
                       to={`/employer/workers/${w.publicId}`}
-                      className="py-3 flex items-center justify-between hover:bg-[#F7FAF8] rounded-xl px-2 transition-colors"
+                      className="py-3 flex items-center justify-between hover:bg-[#F7F4EC] rounded-xl px-2 transition-colors"
                     >
                       <div>
                         <p className="text-sm font-bold text-[#17251E]">{w.fullName}</p>
-                        <p className="text-xs text-[#78857D]">{w.tradeName} · {w.city}</p>
+                        <p className="text-xs text-[#69726B]">{w.tradeName} · {w.city}</p>
                       </div>
                       <span className="text-xs font-semibold text-[#176B4A]">{bi('View →', 'دیکھیں ←')}</span>
                     </Link>
@@ -433,13 +433,13 @@ export function SearchWorkersPage() {
         >
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-6">
             <div className="lg:col-span-2 relative">
-              <Search className="absolute start-3.5 top-2.5 h-4 w-4 text-[#78857D]" />
+              <Search className="absolute start-3.5 top-2.5 h-4 w-4 text-[#69726B]" />
               <input
                 type="text"
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 placeholder={bi('Search name, skill, or category...', 'نام، ہنر یا شعبہ تلاش کریں...')}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] ps-9 pe-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] ps-9 pe-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
 
@@ -451,7 +451,7 @@ export function SearchWorkersPage() {
                 setCompetencyId('');
                 setPage(1);
               }}
-              className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+              className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
             >
               <option value="">{bi('All Service Groups', 'تمام ۸ گروپس')}</option>
               {SERVICE_GROUPS.map((g) => (
@@ -468,7 +468,7 @@ export function SearchWorkersPage() {
                 setCompetencyId('');
                 setPage(1);
               }}
-              className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+              className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
             >
               <option value="">{bi('All Categories', 'تمام شعبے')}</option>
               {tradesInGroup.map((t) => (
@@ -498,15 +498,15 @@ export function SearchWorkersPage() {
                 type="button"
                 onClick={handleClear}
                 title={bi('Clear filters', 'فلٹر صاف کریں')}
-                className="rounded-xl border border-[#E5EEE8] px-3 py-2 text-[#78857D] hover:bg-[#F7FAF8]"
+                className="rounded-xl border border-[#E6E0D2] px-3 py-2 text-[#69726B] hover:bg-[#F7F4EC]"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-[#E5EEE8] text-xs">
-            <span className="inline-flex items-center gap-1 text-[#78857D] font-medium">
+          <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-[#E6E0D2] text-xs">
+            <span className="inline-flex items-center gap-1 text-[#69726B] font-medium">
               <SlidersHorizontal className="h-3.5 w-3.5" />
               {bi('Filters:', 'فلٹرز:')}
             </span>
@@ -517,7 +517,7 @@ export function SearchWorkersPage() {
                 setCompetencyId(e.target.value);
                 setPage(1);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5 max-w-[200px]"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5 max-w-[200px]"
             >
               <option value="">{bi('All Verified Competencies', 'تمام تصدیق شدہ مہارتیں')}</option>
               {availableCompetencies.map((c: any) => (
@@ -533,7 +533,7 @@ export function SearchWorkersPage() {
                 setLevel(e.target.value);
                 setPage(1);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5"
             >
               <option value="">{bi('Any Level', 'کوئی بھی درجہ')}</option>
               <option value="BASIC">{bi('Level 1 — Basic', 'درجہ ۱ — بنیادی')}</option>
@@ -547,7 +547,7 @@ export function SearchWorkersPage() {
                 setMinRating(e.target.value);
                 setPage(1);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5"
             >
               <option value="">{bi('Any Rating', 'کوئی بھی ریٹنگ')}</option>
               <option value="4">{bi('4.0★ & up', '۴.۰★ اور اوپر')}</option>
@@ -561,7 +561,7 @@ export function SearchWorkersPage() {
                 setPage(1);
                 setTimeout(() => runSearch(1), 0);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5"
             >
               <option value="">{bi('Any Experience', 'کوئی بھی تجربہ')}</option>
               <option value="1">{bi('1+ years', '۱+ سال')}</option>
@@ -569,7 +569,7 @@ export function SearchWorkersPage() {
               <option value="5">{bi('5+ years', '۵+ سال')}</option>
             </select>
 
-            <label className="inline-flex items-center gap-1.5 rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5 cursor-pointer font-semibold text-[#176B4A]">
+            <label className="inline-flex items-center gap-1.5 rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5 cursor-pointer font-semibold text-[#176B4A]">
               <input
                 type="checkbox"
                 checked={femaleOnly}
@@ -582,13 +582,13 @@ export function SearchWorkersPage() {
               <span>{bi('Women pros only', 'صرف خواتین ماہرین')}</span>
             </label>
 
-            <span className="text-[#78857D] tabular-nums ms-auto">
+            <span className="text-[#69726B] tabular-nums ms-auto">
               {isUr ? `${pagination.total} نتائج` : `${pagination.total} result${pagination.total === 1 ? '' : 's'}`}
             </span>
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5"
             >
               <option value="verified_desc">{bi('Most Verified', 'سب سے زیادہ تصدیق شدہ')}</option>
               <option value="top_rated">{bi('Highest Rated', 'سب سے زیادہ ریٹنگ')}</option>
@@ -628,7 +628,7 @@ export function SearchWorkersPage() {
               >
                 <div>
                   <div className="flex items-start gap-3.5">
-                    <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-[#B8E4C7] bg-[#DDF3E4] flex items-center justify-center font-bold text-[#176B4A]">
+                    <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-[#D8D0BE] bg-[#ECE6D7] flex items-center justify-center font-bold text-[#176B4A]">
                       {w.avatarUrl ? (
                         <img src={w.avatarUrl} alt={w.fullName} referrerPolicy="no-referrer" className="h-full w-full object-cover" />
                       ) : (
@@ -640,10 +640,10 @@ export function SearchWorkersPage() {
                         <h3 className="text-base font-bold text-[#17251E] truncate">{w.fullName}</h3>
                         <TierPill tier={w.tier} underReview={w.tierUnderReview} tierStatus={w.tierStatus} compact />
                       </div>
-                      <p className="text-xs text-[#78857D]">
+                      <p className="text-xs text-[#69726B]">
                         {isUr && w.tradeUrduName ? w.tradeUrduName : w.tradeName} · {w.yearsExperience} {bi('yrs exp', 'سال تجربہ')}
                       </p>
-                      <p className="mt-1 flex items-center gap-1 text-xs text-[#78857D]">
+                      <p className="mt-1 flex items-center gap-1 text-xs text-[#69726B]">
                         <MapPin className="h-3.5 w-3.5 text-[#399B6B]" />
                         <span>{w.city}</span>
                       </p>
@@ -657,19 +657,19 @@ export function SearchWorkersPage() {
                       count={w.ratingSummary?.totalReviews || 0}
                     />
                     {w.isFemaleProfessional && (
-                      <span className="rounded-md bg-[#DDF3E4] px-2 py-0.5 text-[11px] font-semibold text-[#176B4A]">
+                      <span className="rounded-md bg-[#ECE6D7] px-2 py-0.5 text-[11px] font-semibold text-[#176B4A]">
                         {bi('Women Pro', 'خاتون ماہر')}
                       </span>
                     )}
                   </div>
 
-                  <div className="mt-3 border-t border-[#E5EEE8] pt-3">
+                  <div className="mt-3 border-t border-[#E6E0D2] pt-3">
                     <p className="text-xs font-semibold text-[#176B4A] flex items-center gap-1.5">
                       <ShieldCheck className="h-4 w-4 text-[#399B6B]" />
                       <span className="tabular-nums">
                         {w.verifiedCount} {bi('Verified Competencies', 'تصدیق شدہ مہارتیں')}
                       </span>
-                      <span className="text-[#78857D] font-normal">
+                      <span className="text-[#69726B] font-normal">
                         · {w.completedJobsCount || 0} {bi('jobs', 'کام')}
                       </span>
                     </p>
@@ -685,7 +685,7 @@ export function SearchWorkersPage() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#E5EEE8] flex items-center gap-2">
+                <div className="mt-4 pt-3 border-t border-[#E6E0D2] flex items-center gap-2">
                   <Link
                     to={`/employer/workers/${w.publicId}`}
                     className="flex-1 rounded-full bg-[#176B4A] px-3 py-2 text-center text-xs font-semibold text-white hover:bg-[#13563B]"
@@ -697,8 +697,8 @@ export function SearchWorkersPage() {
                     onClick={() => toggleShortlist(w)}
                     className={`rounded-full border p-2.5 text-xs font-semibold transition-colors ${
                       w.isShortlisted
-                        ? 'border-[#176B4A] bg-[#DDF3E4] text-[#176B4A]'
-                        : 'border-[#E5EEE8] bg-white text-[#78857D] hover:bg-[#F7FAF8]'
+                        ? 'border-[#176B4A] bg-[#ECE6D7] text-[#176B4A]'
+                        : 'border-[#E6E0D2] bg-white text-[#69726B] hover:bg-[#F7F4EC]'
                     }`}
                   >
                     <Star className="h-4 w-4" />
@@ -835,7 +835,7 @@ export function EmployerWorkerViewPage() {
           <div className="rounded-2xl kc-glass-card p-6">
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
               <div className="flex items-start gap-4">
-                <div className="h-16 w-16 overflow-hidden rounded-2xl border border-[#B8E4C7] bg-[#DDF3E4] flex items-center justify-center font-bold text-[#176B4A]">
+                <div className="h-16 w-16 overflow-hidden rounded-2xl border border-[#D8D0BE] bg-[#ECE6D7] flex items-center justify-center font-bold text-[#176B4A]">
                   {worker.avatarUrl ? (
                     <img src={worker.avatarUrl} alt={worker.fullName} referrerPolicy="no-referrer" className="h-full w-full object-cover" />
                   ) : (
@@ -848,7 +848,7 @@ export function EmployerWorkerViewPage() {
                     <TierPill tier={worker.tier} underReview={worker.tierUnderReview} tierStatus={worker.tierStatus} />
                     <TrustScoreBadge score={worker.trustScoreBreakdown?.total ?? worker.trustScore ?? 0} />
                   </div>
-                  <p className="text-sm text-[#78857D] mt-0.5">
+                  <p className="text-sm text-[#69726B] mt-0.5">
                     {isUr && worker.tradeUrduName ? worker.tradeUrduName : worker.tradeName} · {worker.city} · {worker.yearsExperience} {bi('years experience', 'سال تجربہ')}
                   </p>
                   <div className="mt-1.5 flex flex-wrap items-center gap-3">
@@ -857,12 +857,12 @@ export function EmployerWorkerViewPage() {
                       count={worker.ratingSummary?.totalReviews || 0}
                     />
                     {worker.passportId && (
-                      <span className="font-mono text-xs bg-[#F7FAF8] border border-[#E5EEE8] px-2 py-0.5 rounded text-[#176B4A]">
+                      <span className="font-mono text-xs bg-[#F7F4EC] border border-[#E6E0D2] px-2 py-0.5 rounded text-[#176B4A]">
                         {worker.passportId}
                       </span>
                     )}
                     {worker.isFemaleProfessional && (
-                      <span className="rounded-md bg-[#DDF3E4] px-2 py-0.5 text-xs font-semibold text-[#176B4A]">
+                      <span className="rounded-md bg-[#ECE6D7] px-2 py-0.5 text-xs font-semibold text-[#176B4A]">
                         {bi('Women-Safe Verified Pro', 'خواتین سروسز ماہر')}
                       </span>
                     )}
@@ -883,8 +883,8 @@ export function EmployerWorkerViewPage() {
                   onClick={toggleShortlist}
                   className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold ${
                     worker.isShortlisted
-                      ? 'bg-[#DDF3E4] text-[#176B4A] border border-[#73C99B]'
-                      : 'border border-[#E5EEE8] bg-[#F7FAF8] text-[#17251E] hover:bg-[#DDF3E4]/50'
+                      ? 'bg-[#ECE6D7] text-[#176B4A] border border-[#C9973A]'
+                      : 'border border-[#E6E0D2] bg-[#F7F4EC] text-[#17251E] hover:bg-[#ECE6D7]/50'
                   }`}
                 >
                   <Star className="h-3.5 w-3.5" />
@@ -893,7 +893,7 @@ export function EmployerWorkerViewPage() {
                 <button
                   type="button"
                   onClick={() => setReportOpen(true)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] px-3.5 py-2 text-xs font-medium text-[#78857D] hover:bg-[#F7FAF8]"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] px-3.5 py-2 text-xs font-medium text-[#69726B] hover:bg-[#F7F4EC]"
                 >
                   <Flag className="h-3.5 w-3.5" />
                   {bi('Report', 'رپورٹ')}
@@ -902,7 +902,7 @@ export function EmployerWorkerViewPage() {
             </div>
             {worker.bio && <p className="mt-4 text-sm text-[#17251E] leading-relaxed">{worker.bio}</p>}
             {worker.skills?.length > 0 && (
-              <p className="mt-3 text-xs text-[#78857D]">
+              <p className="mt-3 text-xs text-[#69726B]">
                 <strong className="text-[#17251E]">{bi('Skills:', 'مہارتیں:')}</strong> {worker.skills.join(' · ')}
               </p>
             )}
@@ -915,14 +915,14 @@ export function EmployerWorkerViewPage() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {worker.priceGuide.map((pg: any) => (
-                  <div key={pg.id} className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3 text-xs">
+                  <div key={pg.id} className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3 text-xs">
                     <p className="font-bold text-[#17251E]">
                       {isUr && pg.serviceUrduLabel ? pg.serviceUrduLabel : pg.serviceLabel}
                     </p>
                     <p className="mt-1 font-mono font-bold text-[#176B4A]">
                       PKR {pg.minPkr.toLocaleString()} – {pg.maxPkr.toLocaleString()}
                     </p>
-                    <p className="text-[11px] text-[#78857D]">{pg.unit}</p>
+                    <p className="text-[11px] text-[#69726B]">{pg.unit}</p>
                   </div>
                 ))}
               </div>
@@ -950,12 +950,12 @@ export function EmployerWorkerViewPage() {
                 )}
               </p>
             ) : worker.contactPermissionStatus === 'DECLINED' ? (
-              <p className="mt-2 text-sm text-[#78857D]">
+              <p className="mt-2 text-sm text-[#69726B]">
                 {bi('This worker declined your contact request.', 'اس ہنرمند نے آپ کی رابطہ درخواست مسترد کر دی ہے۔')}
               </p>
             ) : (
               <form onSubmit={sendContact} className="mt-3 space-y-3">
-                <p className="text-xs text-[#78857D] flex items-center gap-1.5">
+                <p className="text-xs text-[#69726B] flex items-center gap-1.5">
                   <Lock className="h-3.5 w-3.5 text-[#399B6B]" />
                   {bi(
                     'Phone and email are hidden until the worker accepts your job booking or contact request.',
@@ -971,7 +971,7 @@ export function EmployerWorkerViewPage() {
                       'Introduce your home or business requirement...',
                       'اپنے گھر یا کاروبار کے کام کی ضرورت لکھیں...'
                     )}
-                    className="flex-1 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3.5 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                    className="flex-1 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3.5 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
                   />
                   <button
                     type="submit"
@@ -1003,17 +1003,17 @@ export function EmployerWorkerViewPage() {
           {/* Book Job Modal */}
           {bookingOpen && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 backdrop-blur-[2px] p-4">
-              <div className="w-full max-w-lg rounded-2xl border border-[#E5EEE8] bg-white p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
+              <div className="w-full max-w-lg rounded-2xl border border-[#E6E0D2] bg-white p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-[#17251E]">
                       {bi(`Book ${worker.fullName}`, `${worker.fullName} کو بک کریں`)}
                     </h3>
-                    <p className="text-xs text-[#78857D]">
+                    <p className="text-xs text-[#69726B]">
                       {worker.tradeName} · {bi('7-Day Karigar Guarantee covered', '۷ روزہ کاریگر گارنٹی شامل ہے')}
                     </p>
                   </div>
-                  <button type="button" onClick={() => setBookingOpen(false)} className="text-[#78857D]">
+                  <button type="button" onClick={() => setBookingOpen(false)} className="text-[#69726B]">
                     <X className="h-5 w-5" />
                   </button>
                 </div>
@@ -1029,7 +1029,7 @@ export function EmployerWorkerViewPage() {
                       value={jobTitle}
                       onChange={(e) => setJobTitle(e.target.value)}
                       placeholder={bi('e.g. Main Breaker Trip Diagnosis', 'مثلاً مین بریکر ٹرپنگ کا مسئلہ')}
-                      className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                      className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                     />
                   </div>
                   <div>
@@ -1042,7 +1042,7 @@ export function EmployerWorkerViewPage() {
                       value={jobDesc}
                       onChange={(e) => setJobDesc(e.target.value)}
                       placeholder={bi('Describe the fault, location in home, or equipment...', 'خرابی یا کام کی مکمل تفصیل لکھیں...')}
-                      className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                      className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                     />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1060,7 +1060,7 @@ export function EmployerWorkerViewPage() {
                         value={jobArea}
                         onChange={(e) => setJobArea(e.target.value)}
                         placeholder={bi('e.g. G-10/4 or DHA Phase 5', 'مثلاً G-10/4 یا DHA فیز ۵')}
-                        className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                        className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                       />
                     </div>
                   </div>
@@ -1072,7 +1072,7 @@ export function EmployerWorkerViewPage() {
                         required
                         value={jobDate}
                         onChange={(e) => setJobDate(e.target.value)}
-                        className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                        className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                       />
                     </div>
                     <div>
@@ -1080,7 +1080,7 @@ export function EmployerWorkerViewPage() {
                       <select
                         value={jobTimeSlot}
                         onChange={(e) => setJobTimeSlot(e.target.value)}
-                        className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                        className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                       >
                         <option value="Morning (9 AM - 12 PM)">{bi('Morning (9 AM - 12 PM)', 'صبح (۹ تا ۱۲)')}</option>
                         <option value="Afternoon (12 PM - 4 PM)">{bi('Afternoon (12 PM - 4 PM)', 'دوپہر (۱۲ تا ۴)')}</option>
@@ -1089,7 +1089,7 @@ export function EmployerWorkerViewPage() {
                       </select>
                     </div>
                   </div>
-                  <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
+                  <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
                     <label className="block text-xs font-semibold text-[#17251E] mb-1">
                       <Camera className="inline h-3.5 w-3.5 me-1" />
                       {bi('Problem Photos (Optional)', 'مسئلے کی تصاویر (اختیاری)')}
@@ -1193,7 +1193,7 @@ export function MyShortlistPage() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <h3 className="text-base font-bold text-[#17251E]">{item.fullName}</h3>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {item.tradeName} · {item.city} · {item.yearsExperience} {bi('yrs', 'سال')} · {item.verifiedCount}{' '}
                     {bi('verified badge(s)', 'تصدیق شدہ بیج')}
                   </p>
@@ -1208,7 +1208,7 @@ export function MyShortlistPage() {
                   <button
                     type="button"
                     onClick={() => setRemoveTarget(item)}
-                    className="rounded-full border border-[#E5EEE8] p-2 text-red-600 hover:bg-red-50"
+                    className="rounded-full border border-[#E6E0D2] p-2 text-red-600 hover:bg-red-50"
                     title={bi('Remove from shortlist', 'شارٹ لسٹ سے ہٹائیں')}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -1216,7 +1216,7 @@ export function MyShortlistPage() {
                 </div>
               </div>
 
-              <div className="mt-4 border-t border-[#E5EEE8] pt-3">
+              <div className="mt-4 border-t border-[#E6E0D2] pt-3">
                 {editingNoteId === item.id ? (
                   <div className="flex flex-col sm:flex-row gap-2">
                     <input
@@ -1224,7 +1224,7 @@ export function MyShortlistPage() {
                       value={noteText}
                       onChange={(e) => setNoteText(e.target.value)}
                       placeholder={bi('Add private hiring notes...', 'ذاتی نوٹس شامل کریں...')}
-                      className="flex-1 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-1.5 text-xs"
+                      className="flex-1 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-1.5 text-xs"
                     />
                     <button
                       type="button"
@@ -1236,14 +1236,14 @@ export function MyShortlistPage() {
                     <button
                       type="button"
                       onClick={() => setEditingNoteId(null)}
-                      className="rounded-full border border-[#E5EEE8] px-4 py-1.5 text-xs font-medium text-[#78857D]"
+                      className="rounded-full border border-[#E6E0D2] px-4 py-1.5 text-xs font-medium text-[#69726B]"
                     >
                       {bi('Cancel', 'منسوخ')}
                     </button>
                   </div>
                 ) : (
                   <div className="flex items-center justify-between gap-2 text-xs">
-                    <p className="text-[#78857D]">
+                    <p className="text-[#69726B]">
                       <span className="font-semibold text-[#17251E]">{bi('Private Note:', 'ذاتی نوٹ:')} </span>
                       {item.notes || bi('None', 'کوئی نہیں')}
                     </p>
@@ -1318,7 +1318,7 @@ export function EmployerContactRequestsPage() {
                   <Link to={`/employer/workers/${r.workerPublicId}`} className="text-base font-bold text-[#17251E] hover:text-[#176B4A] hover:underline">
                     {r.workerName}
                   </Link>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {r.tradeName} · {r.workerCity} · {bi('Sent', 'بھیجی گئی:')} {formatDate(r.createdAt, lang)}
                   </p>
                 </div>
@@ -1332,7 +1332,7 @@ export function EmployerContactRequestsPage() {
               )}
 
               {r.status === 'ACCEPTED' && r.contactDetails ? (
-                <div className="mt-3 rounded-xl border border-[#73C99B] bg-[#DDF3E4]/65 p-3.5 flex flex-wrap gap-6 text-xs font-semibold text-[#176B4A]">
+                <div className="mt-3 rounded-xl border border-[#C9973A] bg-[#ECE6D7]/65 p-3.5 flex flex-wrap gap-6 text-xs font-semibold text-[#176B4A]">
                   <span className="inline-flex items-center gap-1.5">
                     <Phone className="h-3.5 w-3.5" />
                     <span className="font-mono">{r.contactDetails.phone}</span>
@@ -1343,7 +1343,7 @@ export function EmployerContactRequestsPage() {
                   </span>
                 </div>
               ) : (
-                <p className="mt-3 text-xs text-[#78857D] flex items-center gap-1.5">
+                <p className="mt-3 text-xs text-[#69726B] flex items-center gap-1.5">
                   <Lock className="h-3.5 w-3.5 text-[#399B6B]" />
                   <span>
                     {bi(
@@ -1438,8 +1438,8 @@ export function EmployerProfilePage() {
                 onClick={() => setForm({ ...form, accountType: opt.id })}
                 className={`rounded-xl border px-4 py-2.5 text-xs font-semibold transition-colors ${
                   form.accountType === opt.id
-                    ? 'border-[#176B4A] bg-[#DDF3E4]/75 text-[#176B4A]'
-                    : 'border-[#E5EEE8] bg-[#F7FAF8] text-[#78857D]'
+                    ? 'border-[#176B4A] bg-[#ECE6D7]/75 text-[#176B4A]'
+                    : 'border-[#E6E0D2] bg-[#F7F4EC] text-[#69726B]'
                 }`}
               >
                 {opt.label}
@@ -1455,7 +1455,7 @@ export function EmployerProfilePage() {
                 required
                 value={form.fullName}
                 onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
             <div>
@@ -1470,7 +1470,7 @@ export function EmployerProfilePage() {
                 value={form.companyName}
                 onChange={(e) => setForm({ ...form, companyName: e.target.value })}
                 placeholder={form.accountType === 'INDIVIDUAL' ? bi('Optional for homeowners', 'گھریلو صارفین کے لیے اختیاری') : ''}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
           </div>
@@ -1491,7 +1491,7 @@ export function EmployerProfilePage() {
                 required
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
           </div>
@@ -1504,7 +1504,7 @@ export function EmployerProfilePage() {
                   type="text"
                   value={form.industry}
                   onChange={(e) => setForm({ ...form, industry: e.target.value })}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
                 />
               </div>
               <div>
@@ -1513,7 +1513,7 @@ export function EmployerProfilePage() {
                   type="text"
                   value={form.website}
                   onChange={(e) => setForm({ ...form, website: e.target.value })}
-                  className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                  className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
                 />
               </div>
             </div>
@@ -1527,7 +1527,7 @@ export function EmployerProfilePage() {
               rows={3}
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
           </div>
           <button

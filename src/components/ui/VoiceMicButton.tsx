@@ -57,7 +57,7 @@ export function VoiceMicButton({
       className={`inline-flex items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-xs font-semibold transition-colors ${
         listening
           ? 'border-red-300 bg-red-50 text-red-700 animate-pulse'
-          : 'border-[#B8E4C7] bg-[#DDF3E4]/50 text-[#176B4A] hover:bg-[#DDF3E4]'
+          : 'border-[#D8D0BE] bg-[#ECE6D7]/50 text-[#176B4A] hover:bg-[#ECE6D7]'
       } ${className}`}
     >
       {listening ? <MicOff className="h-3.5 w-3.5" /> : <Mic className="h-3.5 w-3.5" />}

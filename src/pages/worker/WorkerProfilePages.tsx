@@ -41,7 +41,7 @@ export function WorkerProfilePage() {
           <div className="rounded-2xl kc-glass-card p-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <div className="h-16 w-16 overflow-hidden rounded-2xl border border-[#B8E4C7] bg-[#DDF3E4] flex items-center justify-center text-lg font-bold text-[#176B4A]">
+                <div className="h-16 w-16 overflow-hidden rounded-2xl border border-[#D8D0BE] bg-[#ECE6D7] flex items-center justify-center text-lg font-bold text-[#176B4A]">
                   {profile.avatarUrl ? (
                     <img src={profile.avatarUrl} alt={profile.fullName} referrerPolicy="no-referrer" className="h-full w-full object-cover" />
                   ) : (
@@ -54,18 +54,18 @@ export function WorkerProfilePage() {
                     <TierPill tier={profile.tier} underReview={profile.tierUnderReview} tierStatus={profile.tierStatus} compact />
                     <TrustScoreBadge score={profile.trustScoreBreakdown?.total ?? 0} compact />
                   </div>
-                  <p className="text-sm text-[#78857D] mt-0.5">
+                  <p className="text-sm text-[#69726B] mt-0.5">
                     {(isUr && profile.tradeUrduName ? profile.tradeUrduName : profile.tradeName) || bi('No category selected', 'کوئی شعبہ منتخب نہیں')} · {profile.city} · {profile.yearsExperience} {bi('yrs experience', 'سال تجربہ')}
                   </p>
                   <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-medium text-[#176B4A]">
                     <span>
                       {bi('Visibility:', 'مرئیت:')} {profile.isPublic ? bi('Public Portfolio Enabled', 'عوامی پورٹ فولیو فعال') : bi('Private', 'نجی')}
                     </span>
-                    <span className="font-mono bg-[#F7FAF8] border border-[#E5EEE8] px-2 py-0.5 rounded">
+                    <span className="font-mono bg-[#F7F4EC] border border-[#E6E0D2] px-2 py-0.5 rounded">
                       {profile.passportId}
                     </span>
                     {profile.isFemaleProfessional && (
-                      <span className="inline-flex items-center gap-1 rounded-md border border-[#B8E4C7] bg-[#DDF3E4]/60 px-2 py-0.5 text-[11px] font-semibold text-[#176B4A]">
+                      <span className="inline-flex items-center gap-1 rounded-md border border-[#D8D0BE] bg-[#ECE6D7]/60 px-2 py-0.5 text-[11px] font-semibold text-[#176B4A]">
                         <ShieldCheck className="h-3 w-3" />
                         {bi('Women-Safe Verified Pro', 'خواتین سروسز کے لیے دستیاب')}
                       </span>
@@ -77,21 +77,21 @@ export function WorkerProfilePage() {
                 <button
                   type="button"
                   onClick={copyLink}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/60"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/60"
                 >
                   <Copy className="h-3.5 w-3.5 text-[#176B4A]" />
                   {bi('Copy Share Link', 'لنک کاپی کریں')}
                 </button>
                 <Link
                   to="/worker/growth"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/60"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/60"
                 >
                   <ExternalLink className="h-3.5 w-3.5 text-[#176B4A]" />
                   {bi('QR Passport', 'QR پاسپورٹ')}
                 </Link>
                 <Link
                   to={`/workers/${profile.publicId}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/60"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/60"
                 >
                   <ExternalLink className="h-3.5 w-3.5 text-[#176B4A]" />
                   {bi('Preview Public Page', 'عوامی صفحہ دیکھیں')}
@@ -106,39 +106,39 @@ export function WorkerProfilePage() {
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-[#E5EEE8] pt-5 text-sm">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-[#E6E0D2] pt-5 text-sm">
               <div>
-                <p className="text-xs font-medium text-[#78857D]">
+                <p className="text-xs font-medium text-[#69726B]">
                   {bi('Private Phone (Hidden until job/request accepted)', 'ذاتی فون نمبر (منظوری تک پوشیدہ)')}
                 </p>
                 <p className="mt-1 font-mono text-[#17251E]">{profile.phone}</p>
               </div>
               <div>
-                <p className="text-xs font-medium text-[#78857D]">{bi('Private Email', 'ذاتی ای میل')}</p>
+                <p className="text-xs font-medium text-[#69726B]">{bi('Private Email', 'ذاتی ای میل')}</p>
                 <p className="mt-1 text-[#17251E]">{profile.email}</p>
               </div>
             </div>
 
-            <div className="mt-5 border-t border-[#E5EEE8] pt-5">
-              <p className="text-xs font-medium text-[#78857D]">{bi('Biography', 'تعارف')}</p>
+            <div className="mt-5 border-t border-[#E6E0D2] pt-5">
+              <p className="text-xs font-medium text-[#69726B]">{bi('Biography', 'تعارف')}</p>
               <p className="mt-1 text-sm text-[#17251E] leading-relaxed">
                 {profile.bio || bi('No biography added yet.', 'ابھی تک کوئی تعارف شامل نہیں کیا گیا۔')}
               </p>
             </div>
 
-            <div className="mt-5 border-t border-[#E5EEE8] pt-5">
-              <p className="text-xs font-medium text-[#78857D]">{bi('Skills', 'مہارتیں')}</p>
+            <div className="mt-5 border-t border-[#E6E0D2] pt-5">
+              <p className="text-xs font-medium text-[#69726B]">{bi('Skills', 'مہارتیں')}</p>
               <p className="mt-1 text-sm text-[#17251E]">
                 {profile.skills.length > 0 ? profile.skills.join(' · ') : bi('No skills listed yet.', 'ابھی تک کوئی مہارت درج نہیں کی گئی۔')}
               </p>
             </div>
 
             {profile.certificates.length > 0 && (
-              <div className="mt-5 border-t border-[#E5EEE8] pt-5">
-                <p className="text-xs font-medium text-[#78857D]">
+              <div className="mt-5 border-t border-[#E6E0D2] pt-5">
+                <p className="text-xs font-medium text-[#69726B]">
                   {bi('Supporting Certificates', 'معاون اسناد')} ({profile.showCertificates ? bi('Shown publicly', 'عوامی طور پر ظاہر') : bi('Hidden', 'پوشیدہ')})
                 </p>
-                <ul className="mt-2 space-y-1.5 text-sm text-[#78857D]">
+                <ul className="mt-2 space-y-1.5 text-sm text-[#69726B]">
                   {profile.certificates.map((c: any, idx: number) => (
                     <li key={idx}>
                       • <span className="font-semibold text-[#17251E]">{c.title}</span> — {c.issuer} ({c.year})
@@ -283,7 +283,7 @@ export function WorkerEditProfilePage() {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
             <div>
@@ -300,7 +300,7 @@ export function WorkerEditProfilePage() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
             <div>
@@ -309,7 +309,7 @@ export function WorkerEditProfilePage() {
                 type="email"
                 value={email}
                 disabled
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm text-[#78857D]"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm text-[#69726B]"
               />
             </div>
           </div>
@@ -320,7 +320,7 @@ export function WorkerEditProfilePage() {
               <select
                 value={selectedTradeId}
                 onChange={(e) => setSelectedTradeId(e.target.value)}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               >
                 <option value="">{bi('Select a category', 'شعبہ منتخب کریں')}</option>
                 {SERVICE_GROUPS.map((grp) => {
@@ -348,7 +348,7 @@ export function WorkerEditProfilePage() {
                 max={60}
                 value={yearsExperience}
                 onChange={(e) => setYearsExperience(Number(e.target.value))}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
           </div>
@@ -363,7 +363,7 @@ export function WorkerEditProfilePage() {
                   src={avatarUrl}
                   alt={bi('Profile preview', 'پروفائل تصویر')}
                   referrerPolicy="no-referrer"
-                  className="h-12 w-12 rounded-xl object-cover border border-[#B8E4C7] shrink-0"
+                  className="h-12 w-12 rounded-xl object-cover border border-[#D8D0BE] shrink-0"
                 />
               ) : null}
               <input
@@ -371,9 +371,9 @@ export function WorkerEditProfilePage() {
                 value={avatarUrl.startsWith('data:image/') ? '' : avatarUrl}
                 onChange={(e) => setAvatarUrl(e.target.value)}
                 placeholder="/images/trade_electrician_1795340853927.jpg"
-                className="flex-1 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="flex-1 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
-              <label className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-[#B8E4C7] bg-[#DDF3E4]/60 px-3.5 py-2 text-xs font-semibold text-[#176B4A] hover:bg-[#DDF3E4] whitespace-nowrap">
+              <label className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-[#D8D0BE] bg-[#ECE6D7]/60 px-3.5 py-2 text-xs font-semibold text-[#176B4A] hover:bg-[#ECE6D7] whitespace-nowrap">
                 <span>{bi('Upload Photo', 'تصویر اپ لوڈ کریں')}</span>
                 <input type="file" accept="image/jpeg,image/png,image/webp" onChange={handleAvatarFile} className="hidden" />
               </label>
@@ -381,7 +381,7 @@ export function WorkerEditProfilePage() {
                 <button
                   type="button"
                   onClick={() => setAvatarUrl('')}
-                  className="rounded-xl border border-[#E5EEE8] px-3 py-2 text-xs font-medium text-[#78857D] hover:text-red-600"
+                  className="rounded-xl border border-[#E6E0D2] px-3 py-2 text-xs font-medium text-[#69726B] hover:text-red-600"
                 >
                   {bi('Remove', 'ہٹائیں')}
                 </button>
@@ -408,7 +408,7 @@ export function WorkerEditProfilePage() {
                 'Describe the practical installations, repairs, and tools you handle (or tap Speak)...',
                 'اپنے عملی کام، مرمت اور جن اوزاروں پر عبور رکھتے ہیں ان کی تفصیل لکھیں یا مائیک سے بولیں...'
               )}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
           </div>
 
@@ -431,11 +431,11 @@ export function WorkerEditProfilePage() {
                 'Distribution Board Setup, Conduit Wiring, Multimeter Diagnostics',
                 'ڈسٹری بیوشن بورڈ، کُنڈوٹ وائرنگ، ملٹی میٹر تشخیص'
               )}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
           </div>
 
-          <div className="border-t border-[#E5EEE8] pt-4">
+          <div className="border-t border-[#E6E0D2] pt-4">
             <div className="flex items-center justify-between mb-2">
               <label className="text-sm font-medium text-[#17251E]">
                 {bi('Supporting Certificates (Optional)', 'معاون اسناد (اختیاری)')}
@@ -461,7 +461,7 @@ export function WorkerEditProfilePage() {
                       next[idx].title = e.target.value;
                       setCertificates(next);
                     }}
-                    className="sm:col-span-5 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-xs"
+                    className="sm:col-span-5 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-xs"
                   />
                   <input
                     type="text"
@@ -472,7 +472,7 @@ export function WorkerEditProfilePage() {
                       next[idx].issuer = e.target.value;
                       setCertificates(next);
                     }}
-                    className="sm:col-span-4 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-xs"
+                    className="sm:col-span-4 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-xs"
                   />
                   <input
                     type="text"
@@ -483,7 +483,7 @@ export function WorkerEditProfilePage() {
                       next[idx].year = e.target.value;
                       setCertificates(next);
                     }}
-                    className="sm:col-span-2 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-xs"
+                    className="sm:col-span-2 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-xs"
                   />
                   <button
                     type="button"
@@ -497,13 +497,13 @@ export function WorkerEditProfilePage() {
             </div>
           </div>
 
-          <div className="space-y-2.5 border-t border-[#E5EEE8] pt-4 text-sm">
+          <div className="space-y-2.5 border-t border-[#E6E0D2] pt-4 text-sm">
             <label className="flex items-center gap-2.5 cursor-pointer">
               <input
                 type="checkbox"
                 checked={isFemaleProfessional}
                 onChange={(e) => setIsFemaleProfessional(e.target.checked)}
-                className="h-4 w-4 rounded border-[#B8E4C7] accent-[#176B4A]"
+                className="h-4 w-4 rounded border-[#D8D0BE] accent-[#176B4A]"
               />
               <span>
                 {bi(
@@ -517,7 +517,7 @@ export function WorkerEditProfilePage() {
                 type="checkbox"
                 checked={isPublic}
                 onChange={(e) => setIsPublic(e.target.checked)}
-                className="h-4 w-4 rounded border-[#B8E4C7] accent-[#176B4A]"
+                className="h-4 w-4 rounded border-[#D8D0BE] accent-[#176B4A]"
               />
               <span>{bi('Make my skills portfolio publicly searchable by customers & employers', 'میرا ہنر پورٹ فولیو گاہکوں اور آجروں کے لیے تلاش کے قابل بنائیں')}</span>
             </label>
@@ -526,7 +526,7 @@ export function WorkerEditProfilePage() {
                 type="checkbox"
                 checked={showCertificates}
                 onChange={(e) => setShowCertificates(e.target.checked)}
-                className="h-4 w-4 rounded border-[#B8E4C7] accent-[#176B4A]"
+                className="h-4 w-4 rounded border-[#D8D0BE] accent-[#176B4A]"
               />
               <span>{bi('Display optional supporting certificates on my public portfolio', 'عوامی پورٹ فولیو پر معاون اسناد دکھائیں')}</span>
             </label>
@@ -542,7 +542,7 @@ export function WorkerEditProfilePage() {
             </button>
             <Link
               to="/worker/profile"
-              className="rounded-full border border-[#E5EEE8] px-5 py-2.5 text-sm font-semibold text-[#17251E] hover:bg-[#F7FAF8]"
+              className="rounded-full border border-[#E6E0D2] px-5 py-2.5 text-sm font-semibold text-[#17251E] hover:bg-[#F7F4EC]"
             >
               {bi('Cancel', 'منسوخ کریں')}
             </Link>
@@ -641,19 +641,19 @@ export function WorkerTradesPage() {
         <div className="space-y-6">
           <div className="rounded-2xl kc-glass-card p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
             <div className="relative flex-1">
-              <Search className="pointer-events-none absolute start-3 top-2.5 h-4 w-4 text-[#78857D]" />
+              <Search className="pointer-events-none absolute start-3 top-2.5 h-4 w-4 text-[#69726B]" />
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={bi('Search across 48+ categories (Electrician, Mehndi, AC Tech, Chef)...', '۴۸+ شعبوں میں تلاش کریں (الیکٹریشن، مہندی، اے سی ٹیکنیشن)...')}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] ps-9 pe-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] ps-9 pe-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
             <select
               value={groupFilter}
               onChange={(e) => setGroupFilter(e.target.value)}
-              className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+              className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
             >
               <option value="">{bi('All 8 Service Groups', 'تمام ۸ سروس گروپس')}</option>
               {SERVICE_GROUPS.map((g) => (
@@ -666,11 +666,11 @@ export function WorkerTradesPage() {
 
           {groupedSections.map((section) => (
             <div key={section.group} className="space-y-3">
-              <div className="flex items-center justify-between border-b border-[#E5EEE8] pb-2">
+              <div className="flex items-center justify-between border-b border-[#E6E0D2] pb-2">
                 <h2 className="text-base font-extrabold text-[#17251E]">
                   {isUr ? `${section.urduGroup} (${section.group})` : section.group}
                 </h2>
-                <span className="text-xs font-semibold text-[#78857D] tabular-nums">
+                <span className="text-xs font-semibold text-[#69726B] tabular-nums">
                   {section.items.length} {bi('categories', 'شعبے')}
                 </span>
               </div>
@@ -690,13 +690,13 @@ export function WorkerTradesPage() {
                           <h3 className="text-base font-bold text-[#17251E]">
                             {isUr && t.urduName ? t.urduName : t.name}
                           </h3>
-                          <span className="text-xs text-[#78857D]">{isUr ? t.name : t.urduName}</span>
+                          <span className="text-xs text-[#69726B]">{isUr ? t.name : t.urduName}</span>
                         </div>
-                        <p className="mt-1.5 text-xs text-[#78857D] leading-relaxed">{t.description}</p>
+                        <p className="mt-1.5 text-xs text-[#69726B] leading-relaxed">{t.description}</p>
                         <p className="mt-3 text-xs font-bold text-[#176B4A]">
                           {t.competencies?.length || 0} {bi('Core Competencies', 'بنیادی مہارتیں')}
                         </p>
-                        <ul className="mt-1.5 space-y-1 text-xs text-[#78857D]">
+                        <ul className="mt-1.5 space-y-1 text-xs text-[#69726B]">
                           {(t.competencies || []).slice(0, 3).map((c: any) => (
                             <li key={c.id} className="truncate">
                               • {isUr && c.urduTitle ? c.urduTitle : c.title}
@@ -705,7 +705,7 @@ export function WorkerTradesPage() {
                         </ul>
                       </div>
 
-                      <div className="mt-5 pt-3 border-t border-[#E5EEE8]">
+                      <div className="mt-5 pt-3 border-t border-[#E6E0D2]">
                         {isSelected ? (
                           <div className="flex items-center justify-between">
                             <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#176B4A]">
@@ -790,14 +790,14 @@ export function WorkerPrivacyPage() {
         <div className="max-w-2xl space-y-6">
           <div className="rounded-2xl kc-glass-card p-6 space-y-5">
             <div className="flex items-start gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#DDF3E4] text-[#176B4A] shrink-0">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ECE6D7] text-[#176B4A] shrink-0">
                 <Lock className="h-5 w-5" />
               </span>
               <div>
                 <h2 className="text-base font-bold text-[#17251E]">
                   {bi('Portfolio & Contact Privacy Controls', 'پورٹ فولیو اور رابطے کی رازداری')}
                 </h2>
-                <p className="mt-1 text-sm text-[#78857D]">
+                <p className="mt-1 text-sm text-[#69726B]">
                   {bi(
                     'Your private phone number, email address, and raw evidence files are never exposed publicly. Customers and employers only receive your phone and email after you accept their job booking or contact request.',
                     'آپ کا ذاتی فون نمبر، ای میل اور اپ لوڈ کردہ فائلیں عوامی طور پر ظاہر نہیں ہوتیں۔ گاہکوں کو فون اور ای میل صرف آپ کی منظوری کے بعد ملتا ہے۔'
@@ -806,13 +806,13 @@ export function WorkerPrivacyPage() {
               </div>
             </div>
 
-            <div className="border-t border-[#E5EEE8] pt-4 space-y-4">
+            <div className="border-t border-[#E6E0D2] pt-4 space-y-4">
               <label className="flex items-start justify-between gap-4 cursor-pointer">
                 <div>
                   <p className="text-sm font-semibold text-[#17251E]">
                     {bi('Public Portfolio Searchability', 'عوامی پورٹ فولیو کی تلاش')}
                   </p>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {bi(
                       'Allow customers and employers to find your profile and view verified badges.',
                       'گاہکوں اور آجروں کو اپنا پروفائل اور تصدیق شدہ بیج دیکھنے کی اجازت دیں۔'
@@ -824,16 +824,16 @@ export function WorkerPrivacyPage() {
                   disabled={saving}
                   checked={profile.isPublic}
                   onChange={(e) => updatePrivacy(e.target.checked, profile.showCertificates)}
-                  className="h-5 w-5 rounded border-[#B8E4C7] accent-[#176B4A]"
+                  className="h-5 w-5 rounded border-[#D8D0BE] accent-[#176B4A]"
                 />
               </label>
 
-              <label className="flex items-start justify-between gap-4 cursor-pointer border-t border-[#E5EEE8] pt-4">
+              <label className="flex items-start justify-between gap-4 cursor-pointer border-t border-[#E6E0D2] pt-4">
                 <div>
                   <p className="text-sm font-semibold text-[#17251E]">
                     {bi('Show Supporting Certificates', 'معاون اسناد ظاہر کریں')}
                   </p>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {bi(
                       'Include optional training certificates on your public portfolio page.',
                       'اپنے عوامی پورٹ فولیو صفحے پر اختیاری تربیتی اسناد شامل کریں۔'
@@ -845,7 +845,7 @@ export function WorkerPrivacyPage() {
                   disabled={saving}
                   checked={profile.showCertificates}
                   onChange={(e) => updatePrivacy(profile.isPublic, e.target.checked)}
-                  className="h-5 w-5 rounded border-[#B8E4C7] accent-[#176B4A]"
+                  className="h-5 w-5 rounded border-[#D8D0BE] accent-[#176B4A]"
                 />
               </label>
             </div>

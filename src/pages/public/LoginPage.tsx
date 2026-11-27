@@ -195,7 +195,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
           <div className="kc-dark-surface text-white p-8 sm:p-10 lg:col-span-5 flex flex-col justify-between gap-10">
             <div>
               <BrandLogo variant="dark" sizeClass="h-10" />
-              <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#399B6B]/25 border border-[#73C99B]/40 px-3.5 py-1 text-xs font-bold text-[#B8E4C7]">
+              <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#399B6B]/25 border border-[#C9973A]/40 px-3.5 py-1 text-xs font-bold text-[#D8D0BE]">
                 <PortalIcon className="h-3.5 w-3.5" />
                 <span>{portalMeta.badge}</span>
               </div>
@@ -203,7 +203,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
               <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-balance leading-snug">
                 {portalMeta.headline}
               </h2>
-              <p className="mt-3 text-sm text-[#DDF3E4]/85 leading-relaxed">
+              <p className="mt-3 text-sm text-[#ECE6D7]/85 leading-relaxed">
                 {portalMeta.subcopy}
               </p>
 
@@ -211,8 +211,8 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
                 {portalMeta.highlights.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <li key={item.text} className="flex items-start gap-3 text-xs sm:text-sm text-[#DDF3E4]">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#399B6B]/30 text-[#B8E4C7] shrink-0">
+                    <li key={item.text} className="flex items-start gap-3 text-xs sm:text-sm text-[#ECE6D7]">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#399B6B]/30 text-[#D8D0BE] shrink-0">
                         <Icon className="h-4 w-4" />
                       </span>
                       <span className="pt-0.5">{item.text}</span>
@@ -222,7 +222,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
               </ul>
             </div>
 
-            <div className="border-t border-white/12 pt-5 text-xs text-[#B8E4C7]/80">
+            <div className="border-t border-white/12 pt-5 text-xs text-[#D8D0BE]/80">
               {bi(
                 'Each role has its own secure login and dedicated dashboard.',
                 'ہر کردار کا اپنا علیحدہ محفوظ لاگ ان اور مخصوص ڈیش بورڈ ہے۔'
@@ -279,7 +279,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@example.com"
                       required
-                      className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3.5 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
+                      className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3.5 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
                     />
                   </div>
 
@@ -303,7 +303,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                        className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] ps-3.5 pe-10 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
+                        className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] ps-3.5 pe-10 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
                       />
                       <button
                         type="button"
@@ -341,7 +341,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
                   </p>
                 </form>
 
-                <div className="mt-8 border-t border-[#E4F2EA] pt-5">
+                <div className="mt-8 border-t border-[#ECE6D7] pt-5">
                   <p className="text-xs font-bold text-[#11221B] mb-2.5">
                     {bi('Quick-fill demo accounts for this role (Pass: KarigarDemo@2026):', 'اس کردار کے نمونہ اکاؤنٹس (پاس ورڈ: KarigarDemo@2026):')}
                   </p>
@@ -355,7 +355,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
                           setPassword('KarigarDemo@2026');
                           setError('');
                         }}
-                        className="rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3 py-2 text-start text-xs font-medium text-[#17251E] hover:border-[#176B4A] hover:bg-[#DDF3E4]/65 transition-colors truncate"
+                        className="rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3 py-2 text-start text-xs font-medium text-[#17251E] hover:border-[#176B4A] hover:bg-[#ECE6D7]/65 transition-colors truncate"
                       >
                         {acc.label}
                       </button>
@@ -366,7 +366,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
             ) : (
               <form onSubmit={handleForgotSubmit} className="mt-7 space-y-5">
                 {resetNotice && (
-                  <div className="rounded-xl border border-[#73C99B] bg-[#DDF3E4]/65 px-3.5 py-2.5 text-sm text-[#176B4A]">
+                  <div className="rounded-xl border border-[#C9973A] bg-[#ECE6D7]/65 px-3.5 py-2.5 text-sm text-[#176B4A]">
                     {resetNotice}
                   </div>
                 )}
@@ -379,7 +379,7 @@ export function LoginPage({ portalRole = 'WORKER' }: LoginPageProps) {
                     value={resetEmail}
                     onChange={(e) => setResetEmail(e.target.value)}
                     required
-                    className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3.5 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none"
+                    className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3.5 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none"
                   />
                 </div>
                 <button

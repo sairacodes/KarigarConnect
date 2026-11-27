@@ -76,7 +76,7 @@ export function MyAssessmentsPage() {
             <div key={item.id} className="rounded-2xl kc-glass-card p-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <p className="text-xs font-medium text-[#78857D]">
+                  <p className="text-xs font-medium text-[#69726B]">
                     {item.tradeName} · {bi('Requested', 'درخواست تاریخ:')} {formatDate(item.requestedAt, lang)}
                   </p>
                   <h3 className="text-lg font-bold text-[#17251E]">{item.competencyTitle}</h3>
@@ -85,32 +85,32 @@ export function MyAssessmentsPage() {
               </div>
 
               {item.status !== 'PENDING' && (
-                <div className="mt-4 space-y-4 border-t border-[#E5EEE8] pt-4">
+                <div className="mt-4 space-y-4 border-t border-[#E6E0D2] pt-4">
                   <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
                     <div>
-                      <span className="text-[#78857D]">{bi('Assessor', 'ماہرِ جائزہ')}</span>
+                      <span className="text-[#69726B]">{bi('Assessor', 'ماہرِ جائزہ')}</span>
                       <p className="font-semibold text-[#17251E]">
                         {item.assessorName || bi('Assigned Assessor', 'مقرر کردہ ماہر')}
                       </p>
                     </div>
                     <div>
-                      <span className="text-[#78857D]">{bi('Rubric Score', 'معیاری اسکور')}</span>
+                      <span className="text-[#69726B]">{bi('Rubric Score', 'معیاری اسکور')}</span>
                       <p className="font-mono font-semibold text-[#17251E] tabular-nums">
                         {item.totalScore} / {item.maxScore} ({item.percentage}%)
                       </p>
                     </div>
                     <div>
-                      <span className="text-[#78857D]">{bi('Level Awarded', 'تفویض کردہ درجہ')}</span>
+                      <span className="text-[#69726B]">{bi('Level Awarded', 'تفویض کردہ درجہ')}</span>
                       <p className="font-semibold text-[#176B4A]">{formatLevelLabel(item.level, lang)}</p>
                     </div>
                     <div>
-                      <span className="text-[#78857D]">{bi('Assessed Date', 'جائزے کی تاریخ')}</span>
+                      <span className="text-[#69726B]">{bi('Assessed Date', 'جائزے کی تاریخ')}</span>
                       <p className="font-mono text-[#17251E]">{formatDate(item.assessedAt, lang)}</p>
                     </div>
                   </div>
 
                   {item.feedback && (
-                    <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3.5 text-sm text-[#17251E]">
+                    <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3.5 text-sm text-[#17251E]">
                       <span className="font-bold">{bi('Assessor Feedback:', 'ماہر کی رائے:')} </span>
                       {item.feedback}
                     </div>
@@ -120,17 +120,17 @@ export function MyAssessmentsPage() {
                     <div className="overflow-x-auto">
                       <table className="w-full text-start text-xs">
                         <thead>
-                          <tr className="border-b border-[#E5EEE8] text-[#78857D]">
+                          <tr className="border-b border-[#E6E0D2] text-[#69726B]">
                             <th className="py-2 pe-4 font-semibold">{bi('Criterion', 'معیار')}</th>
                             <th className="py-2 pe-4 font-semibold">{bi('Safety', 'حفاظت')}</th>
                             <th className="py-2 text-end font-semibold">{bi('Score', 'اسکور')}</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-[#E5EEE8]">
+                        <tbody className="divide-y divide-[#E6E0D2]">
                           {item.scores.map((s: any, i: number) => (
                             <tr key={i}>
                               <td className="py-2 pe-4 text-[#17251E]">{s.criterionTitle}</td>
-                              <td className="py-2 pe-4 text-[#78857D]">
+                              <td className="py-2 pe-4 text-[#69726B]">
                                 {s.isSafetyCritical ? bi('Safety-Critical', 'حفاظتی لازم') : bi('Standard', 'معیاری')}
                               </td>
                               <td className="py-2 text-end font-mono font-semibold text-[#176B4A] tabular-nums">
@@ -156,7 +156,7 @@ export function MyAssessmentsPage() {
                       <button
                         type="button"
                         onClick={() => setAppealTarget(item)}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50"
                       >
                         <Scale className="h-3.5 w-3.5 text-[#176B4A]" />
                         {bi('Appeal Decision', 'فیصلے پر اپیل کریں')}
@@ -180,7 +180,7 @@ export function MyAssessmentsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 backdrop-blur-[2px] p-4">
           <form onSubmit={submitAppeal} className="w-full max-w-md rounded-2xl kc-glass-card p-6 space-y-4 shadow-xl">
             <h3 className="text-lg font-bold text-[#17251E]">{bi('Appeal Assessment Decision', 'جائزے کے فیصلے پر اپیل')}</h3>
-            <p className="text-xs text-[#78857D]">
+            <p className="text-xs text-[#69726B]">
               {bi(
                 'Your appeal for',
                 'آپ کی اپیل برائے'
@@ -201,13 +201,13 @@ export function MyAssessmentsPage() {
                 'Explain why you believe the rubric evaluation should be re-reviewed...',
                 'وضاحت کریں کہ اس جائزے پر دوبارہ غور کیوں ضروری ہے...'
               )}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
             <div className="flex justify-end gap-2">
               <button
                 type="button"
                 onClick={() => setAppealTarget(null)}
-                className="rounded-full border border-[#E5EEE8] px-4 py-2 text-sm font-semibold text-[#17251E]"
+                className="rounded-full border border-[#E6E0D2] px-4 py-2 text-sm font-semibold text-[#17251E]"
               >
                 {bi('Cancel', 'منسوخ کریں')}
               </button>
@@ -268,12 +268,12 @@ export function MyBadgesPage() {
         />
       ) : (
         <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-[#B8E4C7] bg-gradient-to-r from-white/95 to-[#DDF3E4]/70 backdrop-blur-md p-5 kc-card-shadow">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-[#D8D0BE] bg-gradient-to-r from-white/95 to-[#ECE6D7]/70 backdrop-blur-md p-5 kc-card-shadow">
             <div>
               <h2 className="text-base font-bold text-[#17251E]">
                 {bi('Share Your Verified Credentials', 'اپنی تصدیق شدہ مہارتیں شیئر کریں')}
               </h2>
-              <p className="text-xs text-[#78857D]">
+              <p className="text-xs text-[#69726B]">
                 {bi(
                   'Badges are valid for 12 months per competency and do not represent government accreditation.',
                   'ہر مہارت کے بیج ۱۲ ماہ کے لیے مؤثر ہوتے ہیں اور سرکاری سند کی نمائندگی نہیں کرتے۔'
