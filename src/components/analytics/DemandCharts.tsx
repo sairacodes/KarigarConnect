@@ -45,9 +45,9 @@ const DOUGHNUT_PALETTE = [
   '#26805B',
   '#399B6B',
   '#56B383',
-  '#73C99B',
-  '#9CE0B9',
-  '#C8EFE0',
+  '#C9973A',
+  '#D8D0BE',
+  '#ECE6D7',
 ];
 
 export function InDemandSkillsBarChart({
@@ -65,7 +65,7 @@ export function InDemandSkillsBarChart({
 
   if (data.length === 0) {
     return (
-      <div className="flex h-64 items-center justify-center rounded-2xl bg-[#F2FBF6] border border-[#DCEFE3] p-6 text-center text-sm text-[#4D6357]">
+      <div className="flex h-64 items-center justify-center rounded-2xl bg-[#F3EFE4] border border-[#E2DBCB] p-6 text-center text-sm text-[#4D6357]">
         {bi(
           'No skill request activity matches the current category, city, and time window filters.',
           'منتخب کردہ کیٹیگری، شہر اور مدت کے مطابق ابھی کوئی ڈیمانڈ ریکارڈ موجود نہیں۔'
@@ -81,7 +81,7 @@ export function InDemandSkillsBarChart({
           <span className="font-bold">
             {isUr && data[hoveredIdx].urduName ? data[hoveredIdx].urduName : data[hoveredIdx].name}
           </span>
-          <div className="flex flex-wrap items-center gap-3 font-mono tabular-nums text-[#B8E4C7]">
+          <div className="flex flex-wrap items-center gap-3 font-mono tabular-nums text-[#D8D0BE]">
             <span>
               {data[hoveredIdx].requestsCount} {bi('requests', 'درخواستیں')}
             </span>
@@ -98,7 +98,7 @@ export function InDemandSkillsBarChart({
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-between rounded-xl bg-[#F2FBF6] border border-[#DCEFE3] px-3.5 py-2 text-xs text-[#4D6357]">
+        <div className="flex items-center justify-between rounded-xl bg-[#F3EFE4] border border-[#E2DBCB] px-3.5 py-2 text-xs text-[#4D6357]">
           <span>{bi('Hover or tap a skill bar to inspect supply & rates', 'تفصیلات دیکھنے کے لیے کسی بھی ہنر پر ہوور یا کلک کریں')}</span>
           <span className="font-mono font-semibold text-[#176B4A] tabular-nums">
             {bi('Top', 'نمایاں')} {data.length}
@@ -115,7 +115,7 @@ export function InDemandSkillsBarChart({
               ? 'from-[#11221B] to-[#176B4A]'
               : idx <= 2
                 ? 'from-[#176B4A] to-[#399B6B]'
-                : 'from-[#399B6B] to-[#73C99B]';
+                : 'from-[#399B6B] to-[#C9973A]';
 
           return (
             <button
@@ -126,7 +126,7 @@ export function InDemandSkillsBarChart({
               onFocus={() => setHoveredIdx(idx)}
               onClick={() => onSelectTrade?.(item.slug)}
               className={`w-full rounded-xl p-2 text-start transition-colors ${
-                isHovered ? 'bg-[#EAF7F0]' : 'hover:bg-[#F2FBF6]'
+                isHovered ? 'bg-[#F3EFE4]' : 'hover:bg-[#F3EFE4]'
               }`}
             >
               <div className="flex items-center justify-between gap-2 text-xs mb-1.5">
@@ -147,7 +147,7 @@ export function InDemandSkillsBarChart({
                 </span>
               </div>
 
-              <div className="h-3 w-full rounded-full bg-[#EAF7F0] overflow-hidden">
+              <div className="h-3 w-full rounded-full bg-[#F3EFE4] overflow-hidden">
                 <motion.div
                   initial={prefersReduced ? { width: `${widthPct}%` } : { width: 0 }}
                   animate={{ width: `${widthPct}%` }}
@@ -200,7 +200,7 @@ export function CategoryDoughnutChart({
 
   if (data.length === 0 || totalCount === 0) {
     return (
-      <div className="flex h-64 items-center justify-center rounded-2xl bg-[#F2FBF6] border border-[#DCEFE3] p-6 text-center text-sm text-[#4D6357]">
+      <div className="flex h-64 items-center justify-center rounded-2xl bg-[#F3EFE4] border border-[#E2DBCB] p-6 text-center text-sm text-[#4D6357]">
         {bi(
           'No category distribution data found for the current filters.',
           'موجودہ فلٹرز کے لیے کیٹیگری کی تقسیم کا ڈیٹا دستیاب نہیں۔'
@@ -216,7 +216,7 @@ export function CategoryDoughnutChart({
       <div className="sm:col-span-5 flex items-center justify-center">
         <div className="relative h-48 w-48">
           <svg viewBox="0 0 180 180" className="h-full w-full -rotate-90" aria-hidden="true">
-            <circle cx="90" cy="90" r="68" fill="none" stroke="#E4F5EB" strokeWidth="22" />
+            <circle cx="90" cy="90" r="68" fill="none" stroke="#ECE6D7" strokeWidth="22" />
             {segments.map((seg, idx) => {
               const isHighlighted =
                 hoveredIdx === idx ||
@@ -272,7 +272,7 @@ export function CategoryDoughnutChart({
               onMouseLeave={() => setHoveredIdx(null)}
               onClick={() => onSelectCategory?.(isFiltered ? 'ALL' : seg.group)}
               className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2 text-start text-xs transition-colors ${
-                isHovered || isFiltered ? 'bg-[#DDF3E4]' : 'hover:bg-[#F2FBF6]'
+                isHovered || isFiltered ? 'bg-[#ECE6D7]' : 'hover:bg-[#F3EFE4]'
               }`}
             >
               <span className="flex items-center gap-2.5 min-w-0">
@@ -339,7 +339,7 @@ export function MonthlyDemandLineChart({ data }: { data: MonthlyTrendDatum[] }) 
 
   if (data.length === 0 || data.every((d) => d.requestsCount === 0 && d.completedCount === 0)) {
     return (
-      <div className="flex h-60 items-center justify-center rounded-2xl bg-[#F2FBF6] border border-[#DCEFE3] p-6 text-center text-sm text-[#4D6357]">
+      <div className="flex h-60 items-center justify-center rounded-2xl bg-[#F3EFE4] border border-[#E2DBCB] p-6 text-center text-sm text-[#4D6357]">
         {bi(
           'No monthly request trend points recorded for this selection yet.',
           'اس انتخاب کے لیے ابھی ماہانہ رجحان کا کوئی ریکارڈ دستیاب نہیں۔'
@@ -359,12 +359,12 @@ export function MonthlyDemandLineChart({ data }: { data: MonthlyTrendDatum[] }) 
             <span>{bi('Demand Requests', 'کل ڈیمانڈ درخواستیں')}</span>
           </span>
           <span className="inline-flex items-center gap-1.5 font-semibold text-[#176B4A]">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#73C99B]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#C9973A]" />
             <span>{bi('Completed Jobs', 'مکمل شدہ کام')}</span>
           </span>
         </div>
         {activePoint && (
-          <div className="rounded-lg bg-[#DDF3E4] px-3 py-1 font-mono text-[11px] font-bold text-[#11221B] tabular-nums">
+          <div className="rounded-lg bg-[#ECE6D7] px-3 py-1 font-mono text-[11px] font-bold text-[#11221B] tabular-nums">
             {isUr ? activePoint.urduLabel : activePoint.label}: {activePoint.requestsCount}{' '}
             {bi('req', 'درخواست')} · {activePoint.completedCount} {bi('done', 'مکمل')}
           </div>
@@ -391,7 +391,7 @@ export function MonthlyDemandLineChart({ data }: { data: MonthlyTrendDatum[] }) 
                   x2={width - padX}
                   y1={y}
                   y2={y}
-                  stroke="#D3ECDD"
+                  stroke="#ECE6D7"
                   strokeDasharray="3 4"
                   strokeWidth="1"
                 />
@@ -514,7 +514,7 @@ export function LocationDemandChart({
 
   if (data.length === 0) {
     return (
-      <div className="flex h-60 items-center justify-center rounded-2xl bg-[#F2FBF6] border border-[#DCEFE3] p-6 text-center text-sm text-[#4D6357]">
+      <div className="flex h-60 items-center justify-center rounded-2xl bg-[#F3EFE4] border border-[#E2DBCB] p-6 text-center text-sm text-[#4D6357]">
         {bi('No city demand records available for this selection.', 'اس انتخاب کے لیے شہروں کی ڈیمانڈ کا ڈیٹا دستیاب نہیں۔')}
       </div>
     );
@@ -529,7 +529,7 @@ export function LocationDemandChart({
             <span>{bi('Skill Requests', 'سکل ڈیمانڈ')}</span>
           </span>
           <span className="inline-flex items-center gap-1.5 font-semibold text-[#176B4A]">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#73C99B]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#C9973A]" />
             <span>{bi('Available Karigars', 'دستیاب کاریگر')}</span>
           </span>
         </div>
@@ -553,10 +553,10 @@ export function LocationDemandChart({
               onClick={() => onSelectCity?.(row.isSelectedCity ? 'ALL' : row.city)}
               className={`w-full rounded-2xl p-3 text-start transition-all border ${
                 row.isSelectedCity
-                  ? 'bg-[#DDF3E4] border-[#176B4A]'
+                  ? 'bg-[#ECE6D7] border-[#176B4A]'
                   : isHovered
-                    ? 'bg-[#EAF7F0] border-[#B8E4C7]'
-                    : 'bg-[#F5FBF7] border-[#DCEFE3] hover:bg-[#EAF7F0]'
+                    ? 'bg-[#F3EFE4] border-[#D8D0BE]'
+                    : 'bg-[#F3EFE4] border-[#E2DBCB] hover:bg-[#F3EFE4]'
               }`}
             >
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
@@ -564,7 +564,7 @@ export function LocationDemandChart({
                   <MapPin className="h-3.5 w-3.5 text-[#176B4A] shrink-0" />
                   <span className="text-xs sm:text-sm font-bold text-[#11221B]">{row.city}</span>
                   {row.topSkill && (
-                    <span className="rounded-full bg-white border border-[#CFE9D8] px-2 py-0.5 text-[10px] font-semibold text-[#176B4A] truncate max-w-[140px]">
+                    <span className="rounded-full bg-white border border-[#E2DBCB] px-2 py-0.5 text-[10px] font-semibold text-[#176B4A] truncate max-w-[140px]">
                       {bi('Top:', 'نمایاں:')} {row.topSkill}
                     </span>
                   )}
@@ -580,7 +580,7 @@ export function LocationDemandChart({
               </div>
 
               <div className="space-y-1.5">
-                <div className="h-2 w-full rounded-full bg-[#E3F4EA] overflow-hidden">
+                <div className="h-2 w-full rounded-full bg-[#ECE6D7] overflow-hidden">
                   <motion.div
                     initial={prefersReduced ? { width: `${reqPct}%` } : { width: 0 }}
                     animate={{ width: `${reqPct}%` }}
@@ -588,12 +588,12 @@ export function LocationDemandChart({
                     className="h-full rounded-full bg-[#176B4A]"
                   />
                 </div>
-                <div className="h-2 w-full rounded-full bg-[#E3F4EA] overflow-hidden">
+                <div className="h-2 w-full rounded-full bg-[#ECE6D7] overflow-hidden">
                   <motion.div
                     initial={prefersReduced ? { width: `${supPct}%` } : { width: 0 }}
                     animate={{ width: `${supPct}%` }}
                     transition={{ duration: 0.45, delay: idx * 0.04 + 0.05 }}
-                    className="h-full rounded-full bg-[#73C99B]"
+                    className="h-full rounded-full bg-[#C9973A]"
                   />
                 </div>
               </div>

@@ -75,14 +75,14 @@ export function StatusLabel({ status }: { status: string }) {
       </span>
     );
   }
-  return <span className="text-xs font-medium text-[#78857D]">{label}</span>;
+  return <span className="text-xs font-medium text-[#69726B]">{label}</span>;
 }
 
 export function LoadingSkeleton({ rows = 4 }: { rows?: number }) {
   return (
     <div className="space-y-3 animate-pulse">
       {Array.from({ length: rows }).map((_, i) => (
-        <div key={i} className="h-16 rounded-2xl bg-[#E5EEE8]/80" />
+        <div key={i} className="h-16 rounded-2xl bg-[#E6E0D2]/80" />
       ))}
     </div>
   );
@@ -99,11 +99,11 @@ export function EmptyState({
 }) {
   return (
     <div className="rounded-2xl p-8 sm:p-10 text-center kc-glass-card">
-      <div className="mx-auto mb-3.5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#DDF3E4] text-[#176B4A]">
+      <div className="mx-auto mb-3.5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ECE6D7] text-[#176B4A]">
         <FileWarning className="h-5 w-5" />
       </div>
       <h3 className="text-base font-bold text-[#17251E]">{title}</h3>
-      <p className="mx-auto mt-1.5 max-w-md text-sm text-[#78857D]">{description}</p>
+      <p className="mx-auto mt-1.5 max-w-md text-sm text-[#69726B]">{description}</p>
       {action && <div className="mt-5">{action}</div>}
     </div>
   );
@@ -137,20 +137,20 @@ export function ConfirmDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 backdrop-blur-[2px] p-4">
-      <div className="w-full max-w-md rounded-2xl border border-[#B8E4C7] bg-[#F2FAF5]/98 backdrop-blur-md p-6 shadow-xl">
+      <div className="w-full max-w-md rounded-2xl border border-[#D8D0BE] bg-[#F3EFE4]/98 backdrop-blur-md p-6 shadow-xl">
         <div className="flex items-start justify-between gap-4">
           <h3 className="text-lg font-bold text-[#17251E]">{title}</h3>
-          <button type="button" onClick={onCancel} className="text-[#78857D] hover:text-[#17251E]">
+          <button type="button" onClick={onCancel} className="text-[#69726B] hover:text-[#17251E]">
             <X className="h-5 w-5" />
           </button>
         </div>
-        <p className="mt-2 text-sm text-[#78857D] leading-relaxed">{message}</p>
+        <p className="mt-2 text-sm text-[#69726B] leading-relaxed">{message}</p>
         <div className="mt-6 flex items-center justify-end gap-3">
           <button
             type="button"
             onClick={onCancel}
             disabled={loading}
-            className="rounded-xl border border-[#E5EEE8] bg-white px-4 py-2 text-sm font-semibold text-[#17251E] hover:bg-[#F7FAF8]"
+            className="rounded-xl border border-[#E6E0D2] bg-white px-4 py-2 text-sm font-semibold text-[#17251E] hover:bg-[#F7F4EC]"
           >
             {resolvedCancel}
           </button>
@@ -193,15 +193,15 @@ export function BadgeCard({
   const isExpired = status === 'EXPIRED' || new Date(expiresAt).getTime() <= Date.now();
   const levelAccent =
     level === 'ADVANCED'
-      ? 'border-[#73C99B] bg-gradient-to-br from-[#EAF7EE] to-[#CBEBD5]/90 backdrop-blur-md'
+      ? 'border-[#C9973A] bg-gradient-to-br from-[#F3EFE4] to-[#E3DCC9]/90 backdrop-blur-md'
       : level === 'COMPETENT'
-        ? 'border-[#9BD9B4] bg-gradient-to-br from-[#F0FAF3] to-[#DDF3E4]/90 backdrop-blur-md'
+        ? 'border-[#D8D0BE] bg-gradient-to-br from-[#F3EFE4] to-[#ECE6D7]/90 backdrop-blur-md'
         : 'kc-glass-card';
 
   return (
     <div
       className={`rounded-2xl border p-5 kc-hover-lift kc-card-shadow ${
-        isExpired ? 'border-[#C6E2CF] bg-[#EAF5EE]/90 opacity-80' : levelAccent
+        isExpired ? 'border-[#E3DCC9] bg-[#F3EFE4]/90 opacity-80' : levelAccent
       }`}
     >
       <div className="flex items-start justify-between gap-3">
@@ -214,40 +214,40 @@ export function BadgeCard({
         <div
           className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
             isExpired
-              ? 'bg-[#E5EEE8] text-[#78857D]'
+              ? 'bg-[#E6E0D2] text-[#69726B]'
               : level === 'ADVANCED'
                 ? 'bg-[#176B4A] text-white'
                 : level === 'COMPETENT'
                   ? 'bg-[#399B6B] text-white'
-                  : 'bg-[#DDF3E4] text-[#176B4A]'
+                  : 'bg-[#ECE6D7] text-[#176B4A]'
           }`}
         >
           {level === 'ADVANCED' ? <Award className="h-5 w-5" /> : <ShieldCheck className="h-5 w-5" />}
         </div>
       </div>
 
-      <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[#E5EEE8] pt-3 text-xs">
+      <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[#E6E0D2] pt-3 text-xs">
         <div>
-          <dt className="text-[#78857D]">{bi('Holder', 'ہنرمند')}</dt>
+          <dt className="text-[#69726B]">{bi('Holder', 'ہنرمند')}</dt>
           <dd className="font-semibold text-[#17251E] truncate">{workerName}</dd>
         </div>
         <div>
-          <dt className="text-[#78857D]">{bi('Assessed By', 'جائزہ کار')}</dt>
+          <dt className="text-[#69726B]">{bi('Assessed By', 'جائزہ کار')}</dt>
           <dd className="font-semibold text-[#17251E] truncate">{assessorName}</dd>
         </div>
         <div>
-          <dt className="text-[#78857D]">{bi('Issued', 'تاریخِ اجراء')}</dt>
+          <dt className="text-[#69726B]">{bi('Issued', 'تاریخِ اجراء')}</dt>
           <dd className="font-mono tabular-nums text-[#17251E]">{formatDate(issuedAt, lang)}</dd>
         </div>
         <div>
-          <dt className="text-[#78857D]">{isExpired ? bi('Expired', 'میعاد ختم') : bi('Valid Until', 'قابلِ قبول تا')}</dt>
+          <dt className="text-[#69726B]">{isExpired ? bi('Expired', 'میعاد ختم') : bi('Valid Until', 'قابلِ قبول تا')}</dt>
           <dd className={`font-mono tabular-nums ${isExpired ? 'text-red-700 font-semibold' : 'text-[#176B4A] font-medium'}`}>
             {formatDate(expiresAt, lang)}
           </dd>
         </div>
       </dl>
 
-      <p className="mt-3 text-[11px] text-[#78857D] leading-snug">
+      <p className="mt-3 text-[11px] text-[#69726B] leading-snug">
         {bi(
           'Rubric-assessed competency badge by an approved KARIGAR CONNECT assessor. Not a government accreditation.',
           'یہ بیج کاریگر کنیکٹ کے منظور شدہ ماہرِ جائزہ کی جانچ کی بنیاد پر جاری کیا گیا ہے اور یہ سرکاری سند نہیں ہے۔'
@@ -269,8 +269,8 @@ export function Pagination({
   const { bi } = useI18n();
   if (totalPages <= 1) return null;
   return (
-    <div className="flex items-center justify-between border-t border-[#E5EEE8] pt-4 text-sm">
-      <span className="text-[#78857D] tabular-nums">
+    <div className="flex items-center justify-between border-t border-[#E6E0D2] pt-4 text-sm">
+      <span className="text-[#69726B] tabular-nums">
         {bi(`Page ${page} of ${totalPages}`, `صفحہ ${page} از ${totalPages}`)}
       </span>
       <div className="flex items-center gap-2">
@@ -278,7 +278,7 @@ export function Pagination({
           type="button"
           onClick={() => onPageChange(page - 1)}
           disabled={page <= 1}
-          className="rounded-xl border border-[#E5EEE8] bg-white px-3.5 py-1.5 text-sm font-medium text-[#17251E] hover:bg-[#DDF3E4]/50 disabled:opacity-50"
+          className="rounded-xl border border-[#E6E0D2] bg-white px-3.5 py-1.5 text-sm font-medium text-[#17251E] hover:bg-[#ECE6D7]/50 disabled:opacity-50"
         >
           {bi('Previous', 'پچھلا')}
         </button>
@@ -286,7 +286,7 @@ export function Pagination({
           type="button"
           onClick={() => onPageChange(page + 1)}
           disabled={page >= totalPages}
-          className="rounded-xl border border-[#E5EEE8] bg-white px-3.5 py-1.5 text-sm font-medium text-[#17251E] hover:bg-[#DDF3E4]/50 disabled:opacity-50"
+          className="rounded-xl border border-[#E6E0D2] bg-white px-3.5 py-1.5 text-sm font-medium text-[#17251E] hover:bg-[#ECE6D7]/50 disabled:opacity-50"
         >
           {bi('Next', 'اگلا')}
         </button>
@@ -333,13 +333,13 @@ export function ReportModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/45 backdrop-blur-[2px] p-4">
-      <div className="w-full max-w-md rounded-2xl border border-[#B8E4C7] bg-[#F2FAF5]/98 backdrop-blur-md p-6 shadow-xl">
+      <div className="w-full max-w-md rounded-2xl border border-[#D8D0BE] bg-[#F3EFE4]/98 backdrop-blur-md p-6 shadow-xl">
         <div className="flex items-start justify-between">
           <div>
             <h3 className="text-lg font-bold text-[#17251E]">{bi('Report Content', 'مواد کی رپورٹ کریں')}</h3>
-            <p className="text-xs text-[#78857D] mt-0.5">{targetLabel}</p>
+            <p className="text-xs text-[#69726B] mt-0.5">{targetLabel}</p>
           </div>
-          <button type="button" onClick={onClose} className="text-[#78857D] hover:text-[#17251E]">
+          <button type="button" onClick={onClose} className="text-[#69726B] hover:text-[#17251E]">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -349,7 +349,7 @@ export function ReportModal({
             <select
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
             >
               <option value="Suspicious or inaccurate claims">{bi('Suspicious or inaccurate claims', 'مشکوک یا غلط دعوے')}</option>
               <option value="Unsafe work practices shown">{bi('Unsafe work practices shown', 'غیر محفوظ کام کا طریقہ')}</option>
@@ -364,14 +364,14 @@ export function ReportModal({
               value={details}
               onChange={(e) => setDetails(e.target.value)}
               placeholder={bi('Provide context for the moderation team...', 'ماڈریشن ٹیم کے لیے مزید وضاحت لکھیں...')}
-              className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
             />
           </div>
           <div className="flex justify-end gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl border border-[#E5EEE8] px-4 py-2 text-sm font-semibold text-[#17251E] hover:bg-[#F7FAF8]"
+              className="rounded-xl border border-[#E6E0D2] px-4 py-2 text-sm font-semibold text-[#17251E] hover:bg-[#F7F4EC]"
             >
               {bi('Cancel', 'منسوخ کریں')}
             </button>

@@ -171,7 +171,7 @@ export function PublicPortfolioPage() {
             <h1 className="text-xl font-bold text-[#17251E]">
               {bi('Portfolio Unavailable', 'پورٹ فولیو دستیاب نہیں')}
             </h1>
-            <p className="mt-2 text-sm text-[#78857D]">{error}</p>
+            <p className="mt-2 text-sm text-[#69726B]">{error}</p>
             <Link to="/explore" className="mt-4 inline-block text-sm font-semibold text-[#176B4A] hover:underline">
               {bi('← Back to Explore Workers', '→ ہنرمندوں کی فہرست پر واپس جائیں')}
             </Link>
@@ -182,7 +182,7 @@ export function PublicPortfolioPage() {
             <div className="rounded-3xl kc-glass-card kc-hover-lift p-6 sm:p-8">
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
                 <div className="flex items-start gap-5">
-                  <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl border border-[#B8E4C7] bg-[#DDF3E4] flex items-center justify-center text-xl font-bold text-[#176B4A]">
+                  <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl border border-[#D8D0BE] bg-[#ECE6D7] flex items-center justify-center text-xl font-bold text-[#176B4A]">
                     {worker.avatarUrl ? (
                       <img src={worker.avatarUrl} alt={worker.fullName} referrerPolicy="no-referrer" className="h-full w-full object-cover" />
                     ) : (
@@ -198,14 +198,14 @@ export function PublicPortfolioPage() {
                         </span>
                       )}
                     </div>
-                    <p className="mt-1 text-sm font-medium text-[#78857D]">
+                    <p className="mt-1 text-sm font-medium text-[#69726B]">
                       {isUr && worker.tradeUrduName ? worker.tradeUrduName : worker.tradeName}{' '}
                       {!isUr && worker.tradeUrduName ? `(${worker.tradeUrduName})` : ''} ·{' '}
                       <span className="tabular-nums">
                         {worker.yearsExperience} {bi('years experience', 'سال کا تجربہ')}
                       </span>
                     </p>
-                    <p className="mt-1 flex items-center gap-1.5 text-sm text-[#78857D]">
+                    <p className="mt-1 flex items-center gap-1.5 text-sm text-[#69726B]">
                       <MapPin className="h-4 w-4 text-[#399B6B]" />
                       <span>{worker.city}</span>
                       <span aria-hidden="true">·</span>
@@ -219,7 +219,7 @@ export function PublicPortfolioPage() {
                       {worker.ratingSummary && (
                         <StarRatingInline rating={worker.ratingSummary.bayesianRating} count={worker.ratingSummary.totalReviews} />
                       )}
-                      <span className="text-xs font-semibold text-[#78857D] tabular-nums">
+                      <span className="text-xs font-semibold text-[#69726B] tabular-nums">
                         · {worker.completedJobsCount || 0} {bi('completed jobs', 'مکمل کام')}
                       </span>
                     </div>
@@ -249,7 +249,7 @@ export function PublicPortfolioPage() {
                   <button
                     type="button"
                     onClick={() => setPassportOpen(true)}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#B8E4C7] bg-[#DDF3E4]/60 px-4 py-2 text-xs font-semibold text-[#176B4A] hover:bg-[#DDF3E4]"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#D8D0BE] bg-[#ECE6D7]/60 px-4 py-2 text-xs font-semibold text-[#176B4A] hover:bg-[#ECE6D7]"
                   >
                     <QrCode className="h-3.5 w-3.5" />
                     {bi('QR Passport', 'کیو آر پاسپورٹ')}
@@ -258,7 +258,7 @@ export function PublicPortfolioPage() {
                   <button
                     type="button"
                     onClick={handleCopyLink}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/60"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/60"
                   >
                     <Copy className="h-3.5 w-3.5" />
                     {bi('Copy Link', 'لنک کاپی کریں')}
@@ -272,7 +272,7 @@ export function PublicPortfolioPage() {
                       className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
                         worker.isShortlisted
                           ? 'bg-[#176B4A] text-white hover:bg-[#13563B]'
-                          : 'border border-[#E5EEE8] bg-white text-[#17251E] hover:bg-[#DDF3E4]/50'
+                          : 'border border-[#E6E0D2] bg-white text-[#17251E] hover:bg-[#ECE6D7]/50'
                       }`}
                     >
                       <Star className="h-3.5 w-3.5" />
@@ -290,7 +290,7 @@ export function PublicPortfolioPage() {
                           label: `${bi('Profile:', 'پروفائل:')} ${worker.fullName}`,
                         })
                       }
-                      className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] px-3.5 py-2 text-xs font-medium text-[#78857D] hover:bg-[#F7FAF8] hover:text-[#17251E]"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] px-3.5 py-2 text-xs font-medium text-[#69726B] hover:bg-[#F7F4EC] hover:text-[#17251E]"
                     >
                       <Flag className="h-3.5 w-3.5" />
                       {bi('Report', 'رپورٹ کریں')}
@@ -302,7 +302,7 @@ export function PublicPortfolioPage() {
               {worker.bio && <p className="mt-5 text-sm sm:text-base text-[#17251E]/85 leading-relaxed">{worker.bio}</p>}
 
               {worker.skills?.length > 0 && (
-                <div className="mt-5 border-t border-[#E5EEE8] pt-4 text-sm text-[#78857D]">
+                <div className="mt-5 border-t border-[#E6E0D2] pt-4 text-sm text-[#69726B]">
                   <span className="font-semibold text-[#17251E] me-2">{bi('Practical Skills:', 'عملی مہارتیں:')}</span>
                   <span>{worker.skills.join(' · ')}</span>
                 </div>
@@ -317,7 +317,7 @@ export function PublicPortfolioPage() {
                     <h2 className="text-base font-bold text-[#17251E]">
                       {bi(`Fair Price Guide — ${worker.tradeName}`, `مناسب نرخ نامہ — ${worker.tradeUrduName || worker.tradeName}`)}
                     </h2>
-                    <p className="text-xs text-[#78857D]">
+                    <p className="text-xs text-[#69726B]">
                       {bi(
                         'Standard labor estimates in PKR so you know typical rates before booking.',
                         'بکنگ سے پہلے اندازاً مناسب مزدوری جاننے کے لیے معیاری نرخ۔'
@@ -327,14 +327,14 @@ export function PublicPortfolioPage() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {worker.priceGuide.map((pg: any) => (
-                    <div key={pg.id} className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
+                    <div key={pg.id} className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
                       <p className="text-xs font-bold text-[#17251E]">
                         {isUr && pg.serviceUrduLabel ? pg.serviceUrduLabel : pg.serviceLabel}
                       </p>
                       <p className="mt-1 font-mono text-sm font-extrabold text-[#176B4A] tabular-nums">
                         PKR {Number(pg.minPkr).toLocaleString()} – {Number(pg.maxPkr).toLocaleString()}
                       </p>
-                      <p className="text-[11px] text-[#78857D]">{pg.unit}</p>
+                      <p className="text-[11px] text-[#69726B]">{pg.unit}</p>
                     </div>
                   ))}
                 </div>
@@ -364,12 +364,12 @@ export function PublicPortfolioPage() {
                     )}
                   </p>
                 ) : worker.contactPermissionStatus === 'DECLINED' ? (
-                  <p className="mt-2 text-sm text-[#78857D]">
+                  <p className="mt-2 text-sm text-[#69726B]">
                     {bi('This worker declined your previous contact request.', 'اس ہنرمند نے آپ کی پچھلی رابطہ درخواست مسترد کر دی ہے۔')}
                   </p>
                 ) : (
                   <form onSubmit={handleSendContactRequest} className="mt-3 space-y-3">
-                    <p className="text-sm text-[#78857D] flex items-center gap-2">
+                    <p className="text-sm text-[#69726B] flex items-center gap-2">
                       <Lock className="h-4 w-4 text-[#399B6B] shrink-0" />
                       <span>
                         {bi(
@@ -387,7 +387,7 @@ export function PublicPortfolioPage() {
                           'Optional introduction message (site location, project type)...',
                           'تعارفی پیغام (کام کی جگہ، کام کی نوعیت)...'
                         )}
-                        className="flex-1 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3.5 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                        className="flex-1 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3.5 py-2 text-sm focus:border-[#399B6B] focus:bg-white focus:outline-none"
                       />
                       <button
                         type="submit"
@@ -403,7 +403,7 @@ export function PublicPortfolioPage() {
                   </form>
                 )
               ) : (
-                <p className="mt-2 text-sm text-[#78857D] flex items-center gap-2">
+                <p className="mt-2 text-sm text-[#69726B] flex items-center gap-2">
                   <Lock className="h-4 w-4 text-[#399B6B] shrink-0" />
                   <span>
                     {bi('Private phone and email are protected.', 'ذاتی فون اور ای میل محفوظ ہیں۔')}{' '}
@@ -424,7 +424,7 @@ export function PublicPortfolioPage() {
                 </h2>
               </div>
               {worker.verifiedBadges.length === 0 ? (
-                <div className="rounded-2xl kc-glass-card p-6 text-sm text-[#78857D]">
+                <div className="rounded-2xl kc-glass-card p-6 text-sm text-[#69726B]">
                   {bi(
                     'No currently active verified badges yet. Check the competency checklist below to view progress.',
                     'ابھی کوئی فعال تصدیق شدہ بیج موجود نہیں ہے۔ پیش رفت دیکھنے کے لیے نیچے مہارتوں کی فہرست دیکھیں۔'
@@ -446,7 +446,7 @@ export function PublicPortfolioPage() {
                   <h2 className="text-lg font-bold text-[#17251E]">
                     {bi('Verified Work Proof (Confirmed by Customer)', 'تصدیق شدہ کام کا ثبوت (صارف سے مصدقہ)')}
                   </h2>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {bi(
                       'Before and after completion photos confirmed by real customers after job handover.',
                       'کام مکمل ہونے پر صارفین کی جانب سے تصدیق شدہ پہلے اور بعد کی تصاویر۔'
@@ -455,15 +455,15 @@ export function PublicPortfolioPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {worker.confirmedWorkProof.map((wpProof: any) => (
-                    <div key={wpProof.jobId} className="rounded-2xl border border-[#E5EEE8] bg-[#F7FAF8] p-4 space-y-3">
+                    <div key={wpProof.jobId} className="rounded-2xl border border-[#E6E0D2] bg-[#F7F4EC] p-4 space-y-3">
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <p className="text-sm font-bold text-[#17251E]">{wpProof.title}</p>
-                          <p className="text-xs text-[#78857D]">
+                          <p className="text-xs text-[#69726B]">
                             {wpProof.area}, {wpProof.city} · {bi('Confirmed by', 'تصدیق کنندہ:')} {wpProof.confirmedByName}
                           </p>
                         </div>
-                        <span className="inline-flex items-center gap-1 rounded-md bg-[#DDF3E4] px-2 py-0.5 text-[11px] font-bold text-[#176B4A]">
+                        <span className="inline-flex items-center gap-1 rounded-md bg-[#ECE6D7] px-2 py-0.5 text-[11px] font-bold text-[#176B4A]">
                           <CheckCircle2 className="h-3 w-3" />
                           {bi('Confirmed', 'مصدقہ')}
                         </span>
@@ -471,11 +471,11 @@ export function PublicPortfolioPage() {
                       <div className="grid grid-cols-2 gap-2.5">
                         {wpProof.beforePhotos?.[0]?.signedUrl && (
                           <div>
-                            <p className="text-[10px] font-bold uppercase text-[#78857D] mb-1">{bi('Before', 'پہلے')}</p>
+                            <p className="text-[10px] font-bold uppercase text-[#69726B] mb-1">{bi('Before', 'پہلے')}</p>
                             <img
                               src={wpProof.beforePhotos[0].signedUrl}
                               alt="Before work"
-                              className="h-28 w-full rounded-xl object-cover border border-[#E5EEE8]"
+                              className="h-28 w-full rounded-xl object-cover border border-[#E6E0D2]"
                             />
                           </div>
                         )}
@@ -485,7 +485,7 @@ export function PublicPortfolioPage() {
                             <img
                               src={wpProof.afterPhotos[0].signedUrl}
                               alt="After work"
-                              className="h-28 w-full rounded-xl object-cover border border-[#B8E4C7]"
+                              className="h-28 w-full rounded-xl object-cover border border-[#D8D0BE]"
                             />
                           </div>
                         )}
@@ -503,7 +503,7 @@ export function PublicPortfolioPage() {
                   <h2 className="text-xl font-extrabold text-[#17251E]">
                     {bi('Ratings & Verified Hire Reviews', 'درجہ بندی اور تصدیق شدہ صارفین کے تبصرے')}
                   </h2>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {bi('Only customers who completed a job can submit Verified Hire reviews.', 'صرف مکمل شدہ کاموں کے صارفین ہی ریویو دے سکتے ہیں۔')}
                   </p>
                 </div>
@@ -517,7 +517,7 @@ export function PublicPortfolioPage() {
                         className={`rounded-lg px-2.5 py-1 font-semibold transition-colors ${
                           reviewStarFilter === s
                             ? 'bg-[#176B4A] text-white'
-                            : 'border border-[#B8E4C7] bg-[#E8F6EE] text-[#4D6357] hover:text-[#17251E]'
+                            : 'border border-[#D8D0BE] bg-[#F3EFE4] text-[#4D6357] hover:text-[#17251E]'
                         }`}
                       >
                         {s === 0 ? bi('All', 'تمام') : `${s}★`}
@@ -530,24 +530,24 @@ export function PublicPortfolioPage() {
               {worker.ratingSummary && <RatingDistributionCard summary={worker.ratingSummary} />}
 
               {filteredReviews.length === 0 ? (
-                <p className="text-sm text-[#78857D]">
+                <p className="text-sm text-[#69726B]">
                   {bi('No reviews match this filter yet.', 'اس فلٹر کے مطابق ابھی کوئی ریویو موجود نہیں۔')}
                 </p>
               ) : (
                 <div className="space-y-4">
                   {filteredReviews.map((rev: any) => (
-                    <div key={rev.id} className="rounded-2xl border border-[#B8E4C7] bg-[#F2FAF5]/90 p-5 space-y-3">
+                    <div key={rev.id} className="rounded-2xl border border-[#D8D0BE] bg-[#F3EFE4]/90 p-5 space-y-3">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
                           <div className="flex flex-wrap items-center gap-2">
                             <span className="text-sm font-bold text-[#17251E]">{rev.customerName}</span>
-                            <span className="inline-flex items-center gap-1 rounded bg-[#DDF3E4] px-2 py-0.5 text-[10px] font-bold text-[#176B4A]">
+                            <span className="inline-flex items-center gap-1 rounded bg-[#ECE6D7] px-2 py-0.5 text-[10px] font-bold text-[#176B4A]">
                               <CheckCircle2 className="h-3 w-3" />
                               {bi('Verified Hire', 'تصدیق شدہ کام')}
                             </span>
-                            <span className="text-xs text-[#78857D]">· {rev.jobTitle}</span>
+                            <span className="text-xs text-[#69726B]">· {rev.jobTitle}</span>
                           </div>
-                          <p className="mt-1 text-xs text-[#78857D]">
+                          <p className="mt-1 text-xs text-[#69726B]">
                             {rev.jobCity} · {formatDate(rev.createdAt, lang)}
                           </p>
                         </div>
@@ -567,7 +567,7 @@ export function PublicPortfolioPage() {
                                   label: `${bi('Review by', 'ریویو از')} ${rev.customerName}`,
                                 })
                               }
-                              className="text-xs text-[#78857D] hover:text-red-700 inline-flex items-center gap-1"
+                              className="text-xs text-[#69726B] hover:text-red-700 inline-flex items-center gap-1"
                             >
                               <Flag className="h-3 w-3" />
                               {bi('Report', 'رپورٹ')}
@@ -579,7 +579,7 @@ export function PublicPortfolioPage() {
                       {rev.tags?.length > 0 && (
                         <div className="flex flex-wrap gap-1.5">
                           {rev.tags.map((tg: string) => (
-                            <span key={tg} className="rounded-md bg-[#DDF3E4] border border-[#B8E4C7] px-2 py-0.5 text-[11px] font-medium text-[#176B4A]">
+                            <span key={tg} className="rounded-md bg-[#ECE6D7] border border-[#D8D0BE] px-2 py-0.5 text-[11px] font-medium text-[#176B4A]">
                               {tg}
                             </span>
                           ))}
@@ -596,7 +596,7 @@ export function PublicPortfolioPage() {
                                 key={p.id}
                                 src={p.signedUrl}
                                 alt={p.originalName}
-                                className="h-20 w-24 rounded-xl object-cover border border-[#E5EEE8]"
+                                className="h-20 w-24 rounded-xl object-cover border border-[#E6E0D2]"
                               />
                             ) : null
                           )}
@@ -604,7 +604,7 @@ export function PublicPortfolioPage() {
                       )}
 
                       {rev.workerReply && (
-                        <div className="rounded-xl border border-[#73C99B] bg-[#DDF3E4]/70 p-3 text-xs">
+                        <div className="rounded-xl border border-[#C9973A] bg-[#ECE6D7]/70 p-3 text-xs">
                           <p className="font-bold text-[#176B4A]">
                             {bi(`Reply from ${worker.fullName}`, `${worker.fullName} کا جواب`)}
                           </p>
@@ -625,15 +625,15 @@ export function PublicPortfolioPage() {
                     ? `${worker.tradeUrduName || worker.tradeName} — مہارتوں کی فہرست`
                     : `${worker.tradeName} Competency Checklist`}
                 </h2>
-                <div className="mt-4 divide-y divide-[#E5EEE8]">
+                <div className="mt-4 divide-y divide-[#E6E0D2]">
                   {worker.competencies.map((c: any) => (
                     <div key={c.id} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div>
                         <p className="text-sm font-semibold text-[#17251E]">
                           {isUr && c.urduTitle ? c.urduTitle : c.title}{' '}
-                          {!isUr && c.urduTitle ? <span className="text-[#78857D] font-normal">· {c.urduTitle}</span> : null}
+                          {!isUr && c.urduTitle ? <span className="text-[#69726B] font-normal">· {c.urduTitle}</span> : null}
                         </p>
-                        <p className="text-xs text-[#78857D]">{c.description}</p>
+                        <p className="text-xs text-[#69726B]">{c.description}</p>
                       </div>
                       <div className="shrink-0 text-xs font-semibold">
                         {c.verified ? (
@@ -642,7 +642,7 @@ export function PublicPortfolioPage() {
                             {bi('Verified', 'تصدیق شدہ')} ({c.level}) · {bi('Exp', 'میعاد')} {formatDate(c.expiresAt, lang)}
                           </span>
                         ) : (
-                          <span className="text-[#78857D]">{bi('Not Verified', 'غیر تصدیق شدہ')}</span>
+                          <span className="text-[#69726B]">{bi('Not Verified', 'غیر تصدیق شدہ')}</span>
                         )}
                       </div>
                     </div>
@@ -662,7 +662,7 @@ export function PublicPortfolioPage() {
                     <li key={idx} className="flex items-center gap-2 text-[#17251E]">
                       <CheckCircle2 className="h-4 w-4 text-[#399B6B] shrink-0" />
                       <span className="font-semibold">{cert.title}</span>
-                      <span className="text-[#78857D]">· {cert.issuer} ({cert.year})</span>
+                      <span className="text-[#69726B]">· {cert.issuer} ({cert.year})</span>
                     </li>
                   ))}
                 </ul>
@@ -674,12 +674,12 @@ export function PublicPortfolioPage() {
         {/* QR Karigar Passport Modal */}
         {worker && passportOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17251E]/50 backdrop-blur-[2px] p-4">
-            <div className="w-full max-w-2xl rounded-3xl border border-[#B8E4C7] bg-[#F2FAF5] p-5 sm:p-6 shadow-2xl space-y-4">
+            <div className="w-full max-w-2xl rounded-3xl border border-[#D8D0BE] bg-[#F3EFE4] p-5 sm:p-6 shadow-2xl space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-extrabold text-[#17251E]">
                   {bi('Karigar Passport & Verification QR', 'کاریگر پاسپورٹ اور تصدیقی کیو آر')}
                 </h3>
-                <button type="button" onClick={() => setPassportOpen(false)} className="text-[#78857D] hover:text-[#17251E]">
+                <button type="button" onClick={() => setPassportOpen(false)} className="text-[#69726B] hover:text-[#17251E]">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -709,17 +709,17 @@ export function PublicPortfolioPage() {
                   <h3 className="text-lg font-extrabold text-[#17251E]">
                     {bi(`Book Job with ${worker.fullName}`, `${worker.fullName} کے ساتھ کام کی بکنگ`)}
                   </h3>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {bi('Phone & email remain private until the worker accepts and submits a PKR quote.', 'منظوری اور قیمت موصول ہونے تک رابطہ نمبر پوشیدہ رہتا ہے۔')}
                   </p>
                 </div>
-                <button type="button" onClick={() => setBookingOpen(false)} className="text-[#78857D] hover:text-[#17251E]">
+                <button type="button" onClick={() => setBookingOpen(false)} className="text-[#69726B] hover:text-[#17251E]">
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
               {worker.priceGuide?.length > 0 && (
-                <div className="rounded-xl border border-[#B8E4C7] bg-[#F7FAF8] p-3 text-xs">
+                <div className="rounded-xl border border-[#D8D0BE] bg-[#F7F4EC] p-3 text-xs">
                   <p className="font-bold text-[#176B4A] mb-1">{bi('Reference Fair Price Guide (PKR):', 'حوالہ جاتی مناسب نرخ (روپے):')}</p>
                   <div className="flex flex-wrap gap-x-4 gap-y-1 text-[#17251E]">
                     {worker.priceGuide.map((pg: any) => (
@@ -745,7 +745,7 @@ export function PublicPortfolioPage() {
                     value={jobTitle}
                     onChange={(e) => setJobTitle(e.target.value)}
                     placeholder={bi('e.g. Split AC Master Service / Breaker Check', 'مثلاً سپلیٹ اے سی سروس / بریکر مرمت')}
-                    className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                    className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                   />
                 </div>
 
@@ -759,7 +759,7 @@ export function PublicPortfolioPage() {
                     value={jobDesc}
                     onChange={(e) => setJobDesc(e.target.value)}
                     placeholder={bi('Describe the fault, model/size, and site notes...', 'خرابی اور کام کی جگہ کی تفصیل لکھیں...')}
-                    className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                    className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                   />
                 </div>
 
@@ -778,7 +778,7 @@ export function PublicPortfolioPage() {
                       value={jobArea}
                       onChange={(e) => setJobArea(e.target.value)}
                       placeholder={bi('e.g. G-10/4, DHA Phase 5, Gulshan', 'مثلاً جی-۱۰، ڈی ایچ اے، گلشن')}
-                      className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2.5 text-sm"
+                      className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2.5 text-sm"
                     />
                   </div>
                 </div>
@@ -790,7 +790,7 @@ export function PublicPortfolioPage() {
                       type="date"
                       value={jobDate}
                       onChange={(e) => setJobDate(e.target.value)}
-                      className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                      className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                     />
                   </div>
                   <div>
@@ -798,7 +798,7 @@ export function PublicPortfolioPage() {
                     <select
                       value={jobTimeSlot}
                       onChange={(e) => setJobTimeSlot(e.target.value)}
-                      className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-sm"
+                      className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-sm"
                     >
                       <option value="Morning (9 AM - 12 PM)">{bi('Morning (9 AM - 12 PM)', 'صبح (۹ تا ۱۲)')}</option>
                       <option value="Afternoon (12 PM - 4 PM)">{bi('Afternoon (12 PM - 4 PM)', 'دوپہر (۱۲ تا ۴)')}</option>
@@ -808,7 +808,7 @@ export function PublicPortfolioPage() {
                 </div>
 
                 <div>
-                  <label className="inline-flex items-center gap-2 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3.5 py-2 text-xs font-semibold text-[#17251E] cursor-pointer">
+                  <label className="inline-flex items-center gap-2 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3.5 py-2 text-xs font-semibold text-[#17251E] cursor-pointer">
                     <Camera className="h-4 w-4 text-[#176B4A]" />
                     <span>
                       {jobPhotos.length > 0
@@ -829,7 +829,7 @@ export function PublicPortfolioPage() {
                   <button
                     type="button"
                     onClick={() => setBookingOpen(false)}
-                    className="rounded-xl border border-[#E5EEE8] px-4 py-2 text-xs font-semibold text-[#17251E]"
+                    className="rounded-xl border border-[#E6E0D2] px-4 py-2 text-xs font-semibold text-[#17251E]"
                   >
                     {bi('Cancel', 'منسوخ')}
                   </button>

@@ -254,8 +254,8 @@ export function DashboardLayout({
         className={({ isActive }) =>
           `group relative flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all ${
             isActive
-              ? 'bg-[#DDF3E4] text-[#176B4A] font-semibold'
-              : 'text-[#78857D] hover:bg-[#F7FAF8] hover:text-[#17251E]'
+              ? 'bg-[#ECE6D7] text-[#176B4A] font-semibold'
+              : 'text-[#69726B] hover:bg-[#F7F4EC] hover:text-[#17251E]'
           }`
         }
       >
@@ -266,7 +266,7 @@ export function DashboardLayout({
             )}
             <Icon
               className={`h-4 w-4 shrink-0 transition-colors ${
-                isActive ? 'text-[#176B4A]' : 'text-[#78857D] group-hover:text-[#176B4A]'
+                isActive ? 'text-[#176B4A]' : 'text-[#69726B] group-hover:text-[#176B4A]'
               }`}
             />
             <span className="truncate">{displayLabel}</span>
@@ -277,15 +277,15 @@ export function DashboardLayout({
   };
 
   const SidebarBody = () => (
-    <div className="flex h-full flex-col bg-[#F2FAF5]/95 backdrop-blur-md text-[#17251E]">
-      <div className="flex h-[68px] items-center justify-between border-b border-[#B8E4C7] px-4">
+    <div className="flex h-full flex-col bg-[#F3EFE4]/95 backdrop-blur-md text-[#17251E]">
+      <div className="flex h-[68px] items-center justify-between border-b border-[#D8D0BE] px-4">
         <Link to="/" className="inline-flex items-center focus:outline-none">
           <BrandLogo variant="light" sizeClass="h-9" />
         </Link>
         <button
           type="button"
           onClick={() => setSidebarOpen(false)}
-          className="lg:hidden rounded-lg p-1.5 text-[#78857D] hover:text-[#17251E]"
+          className="lg:hidden rounded-lg p-1.5 text-[#69726B] hover:text-[#17251E]"
         >
           <X className="h-5 w-5" />
         </button>
@@ -293,14 +293,14 @@ export function DashboardLayout({
 
       <nav className="flex-1 overflow-y-auto px-3.5 py-5 space-y-6">
         <div>
-          <p className="px-3.5 mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#78857D]">
+          <p className="px-3.5 mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#69726B]">
             {bi('Menu', 'مینو')}
           </p>
           <div className="space-y-1">{menuItems.map(renderNavLink)}</div>
         </div>
 
         <div>
-          <p className="px-3.5 mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#78857D]">
+          <p className="px-3.5 mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#69726B]">
             {bi('General', 'عمومی')}
           </p>
           <div className="space-y-1">
@@ -308,7 +308,7 @@ export function DashboardLayout({
             <button
               type="button"
               onClick={handleLogout}
-              className="group flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-[#78857D] hover:bg-red-50/80 hover:text-red-700 transition-colors"
+              className="group flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-[#69726B] hover:bg-red-50/80 hover:text-red-700 transition-colors"
             >
               <LogOut className="h-4 w-4 shrink-0 rtl:rotate-180" />
               <span>{bi('Sign Out', 'لاگ آؤٹ')}</span>
@@ -320,9 +320,9 @@ export function DashboardLayout({
       {/* Bottom Dark Contrast Shortcut Card */}
       <div className="p-3.5 pt-0">
         <div className="kc-dark-surface rounded-2xl p-4 text-white">
-          <p className="text-xs font-semibold text-[#73C99B]">{roleText(user.role)}</p>
+          <p className="text-xs font-semibold text-[#C9973A]">{roleText(user.role)}</p>
           <p className="mt-1 text-sm font-bold leading-snug">{sidebarCard.title}</p>
-          <p className="mt-1 text-xs text-[#B8E4C7]/80 leading-relaxed">{sidebarCard.desc}</p>
+          <p className="mt-1 text-xs text-[#D8D0BE]/80 leading-relaxed">{sidebarCard.desc}</p>
           <Link
             to={sidebarCard.to}
             onClick={() => setSidebarOpen(false)}
@@ -337,9 +337,9 @@ export function DashboardLayout({
   );
 
   return (
-    <div className="min-h-screen flex bg-[#EAF5EE] text-[#17251E]">
+    <div className="min-h-screen flex bg-[#F3EFE4] text-[#17251E]">
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block w-64 shrink-0 border-e border-[#B8E4C7] bg-[#F2FAF5]">
+      <aside className="hidden lg:block w-64 shrink-0 border-e border-[#D8D0BE] bg-[#F3EFE4]">
         <div className="sticky top-0 h-screen">
           <SidebarBody />
         </div>
@@ -357,13 +357,13 @@ export function DashboardLayout({
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="sticky top-0 z-30 flex h-[68px] items-center justify-between gap-4 border-b border-[#B8E4C7] bg-[#F2FAF5]/92 backdrop-blur-md px-4 sm:px-6 lg:px-8">
+        <header className="sticky top-0 z-30 flex h-[68px] items-center justify-between gap-4 border-b border-[#D8D0BE] bg-[#F3EFE4]/92 backdrop-blur-md px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 min-w-0 flex-1">
             <button
               type="button"
               onClick={() => setSidebarOpen(true)}
               aria-label={bi('Open navigation menu', 'نیویگیشن مینو کھولیں')}
-              className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] text-[#17251E] hover:bg-[#DDF3E4]/60 shrink-0"
+              className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] text-[#17251E] hover:bg-[#ECE6D7]/60 shrink-0"
             >
               <Menu className="h-5 w-5" />
             </button>
@@ -372,16 +372,16 @@ export function DashboardLayout({
 
             {/* Search Input (Desktop & Tablet) */}
             <form onSubmit={handleSearchSubmit} className="hidden md:flex items-center relative max-w-sm w-full">
-              <Search className="pointer-events-none absolute start-3.5 h-4 w-4 text-[#78857D]" />
+              <Search className="pointer-events-none absolute start-3.5 h-4 w-4 text-[#69726B]" />
               <input
                 ref={searchInputRef}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={searchPlaceholder}
-                className="w-full rounded-full border border-[#E5EEE8] bg-[#F7FAF8] ps-10 pe-14 py-2 text-sm text-[#17251E] placeholder:text-[#78857D] focus:border-[#399B6B] focus:bg-white focus:outline-none transition-colors"
+                className="w-full rounded-full border border-[#E6E0D2] bg-[#F7F4EC] ps-10 pe-14 py-2 text-sm text-[#17251E] placeholder:text-[#69726B] focus:border-[#399B6B] focus:bg-white focus:outline-none transition-colors"
               />
-              <kbd className="pointer-events-none absolute end-3 rounded-md border border-[#E5EEE8] bg-white px-1.5 py-0.5 text-[10px] font-mono text-[#78857D]">
+              <kbd className="pointer-events-none absolute end-3 rounded-md border border-[#E6E0D2] bg-white px-1.5 py-0.5 text-[10px] font-mono text-[#69726B]">
                 ⌘F
               </kbd>
             </form>
@@ -391,7 +391,7 @@ export function DashboardLayout({
             <button
               type="button"
               onClick={toggleLang}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2 text-xs font-semibold text-[#17251E] hover:border-[#B8E4C7] hover:bg-[#DDF3E4]/60 whitespace-nowrap transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2 text-xs font-semibold text-[#17251E] hover:border-[#D8D0BE] hover:bg-[#ECE6D7]/60 whitespace-nowrap transition-colors"
             >
               <Languages className="h-3.5 w-3.5 text-[#176B4A]" />
               <span>{lang === 'en' ? 'اردو' : 'English'}</span>
@@ -402,7 +402,7 @@ export function DashboardLayout({
                 to={messagesRoute}
                 title={bi('Contact Requests', 'رابطہ درخواستیں')}
                 aria-label={bi('Contact Requests', 'رابطہ درخواستیں')}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E5EEE8] bg-[#F7FAF8] text-[#17251E] hover:border-[#B8E4C7] hover:bg-[#DDF3E4]/60 transition-colors"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E6E0D2] bg-[#F7F4EC] text-[#17251E] hover:border-[#D8D0BE] hover:bg-[#ECE6D7]/60 transition-colors"
               >
                 <MessageSquare className="h-4 w-4" />
               </Link>
@@ -418,7 +418,7 @@ export function DashboardLayout({
                   if (!notifOpen) loadNotifications();
                 }}
                 aria-label={bi('Notifications', 'اطلاعات')}
-                className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E5EEE8] bg-[#F7FAF8] text-[#17251E] hover:border-[#B8E4C7] hover:bg-[#DDF3E4]/60 transition-colors"
+                className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E6E0D2] bg-[#F7F4EC] text-[#17251E] hover:border-[#D8D0BE] hover:bg-[#ECE6D7]/60 transition-colors"
               >
                 <Bell className="h-4 w-4" />
                 {unreadCount > 0 && (
@@ -429,8 +429,8 @@ export function DashboardLayout({
               </button>
 
               {notifOpen && (
-                <div className="absolute end-0 mt-2 w-80 sm:w-96 rounded-2xl border border-[#E5EEE8] bg-white/95 backdrop-blur-md shadow-xl z-50 overflow-hidden">
-                  <div className="flex items-center justify-between border-b border-[#E5EEE8] px-4 py-3">
+                <div className="absolute end-0 mt-2 w-80 sm:w-96 rounded-2xl border border-[#E6E0D2] bg-white/95 backdrop-blur-md shadow-xl z-50 overflow-hidden">
+                  <div className="flex items-center justify-between border-b border-[#E6E0D2] px-4 py-3">
                     <span className="text-sm font-bold text-[#17251E]">{bi('Notifications', 'اطلاعات')}</span>
                     {unreadCount > 0 && (
                       <button
@@ -443,9 +443,9 @@ export function DashboardLayout({
                       </button>
                     )}
                   </div>
-                  <div className="max-h-80 overflow-y-auto divide-y divide-[#E5EEE8]">
+                  <div className="max-h-80 overflow-y-auto divide-y divide-[#E6E0D2]">
                     {notifications.length === 0 ? (
-                      <p className="p-5 text-center text-sm text-[#78857D]">
+                      <p className="p-5 text-center text-sm text-[#69726B]">
                         {bi('No notifications yet.', 'ابھی کوئی اطلاع نہیں ہے۔')}
                       </p>
                     ) : (
@@ -454,12 +454,12 @@ export function DashboardLayout({
                           key={n.id}
                           type="button"
                           onClick={() => handleNotifClick(n)}
-                          className={`w-full text-start px-4 py-3 hover:bg-[#F7FAF8] transition-colors ${
-                            n.isRead ? 'bg-white' : 'bg-[#DDF3E4]/45'
+                          className={`w-full text-start px-4 py-3 hover:bg-[#F7F4EC] transition-colors ${
+                            n.isRead ? 'bg-white' : 'bg-[#ECE6D7]/45'
                           }`}
                         >
                           <p className="text-xs font-bold text-[#17251E]">{n.title}</p>
-                          <p className="mt-0.5 text-xs text-[#78857D] line-clamp-2">{n.message}</p>
+                          <p className="mt-0.5 text-xs text-[#69726B] line-clamp-2">{n.message}</p>
                         </button>
                       ))
                     )}
@@ -476,37 +476,37 @@ export function DashboardLayout({
                   setNotifOpen(false);
                   setProfileOpen((v) => !v);
                 }}
-                className="flex items-center gap-2.5 rounded-full border border-[#E5EEE8] bg-[#F7FAF8] py-1 ps-1.5 pe-3 hover:border-[#B8E4C7] hover:bg-[#DDF3E4]/40 transition-colors"
+                className="flex items-center gap-2.5 rounded-full border border-[#E6E0D2] bg-[#F7F4EC] py-1 ps-1.5 pe-3 hover:border-[#D8D0BE] hover:bg-[#ECE6D7]/40 transition-colors"
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#176B4A] text-xs font-bold text-white shrink-0">
                   {initials}
                 </span>
                 <div className="hidden sm:block text-start min-w-0 max-w-[135px]">
                   <p className="text-xs font-bold text-[#17251E] truncate leading-tight">{user.fullName}</p>
-                  <p className="text-[11px] text-[#78857D] truncate leading-tight">{user.email}</p>
+                  <p className="text-[11px] text-[#69726B] truncate leading-tight">{user.email}</p>
                 </div>
-                <ChevronDown className="h-3.5 w-3.5 text-[#78857D] hidden sm:block" />
+                <ChevronDown className="h-3.5 w-3.5 text-[#69726B] hidden sm:block" />
               </button>
 
               {profileOpen && (
-                <div className="absolute end-0 mt-2 w-56 rounded-2xl border border-[#E5EEE8] bg-white/95 backdrop-blur-md p-1.5 shadow-xl z-50">
-                  <div className="px-3 py-2 border-b border-[#E5EEE8] mb-1">
+                <div className="absolute end-0 mt-2 w-56 rounded-2xl border border-[#E6E0D2] bg-white/95 backdrop-blur-md p-1.5 shadow-xl z-50">
+                  <div className="px-3 py-2 border-b border-[#E6E0D2] mb-1">
                     <p className="text-xs font-bold text-[#17251E] truncate">{user.fullName}</p>
-                    <p className="text-[11px] text-[#78857D] truncate">
+                    <p className="text-[11px] text-[#69726B] truncate">
                       {roleText(user.role)} · {user.city}
                     </p>
                   </div>
                   <Link
                     to={getDashboardPathForRole(user.role)}
                     onClick={() => setProfileOpen(false)}
-                    className="block rounded-xl px-3 py-2 text-xs font-medium text-[#17251E] hover:bg-[#DDF3E4]/50"
+                    className="block rounded-xl px-3 py-2 text-xs font-medium text-[#17251E] hover:bg-[#ECE6D7]/50"
                   >
                     {bi('Dashboard', 'ڈیش بورڈ')}
                   </Link>
                   <Link
                     to={getRoleProfileRoute(user.role)}
                     onClick={() => setProfileOpen(false)}
-                    className="block rounded-xl px-3 py-2 text-xs font-medium text-[#17251E] hover:bg-[#DDF3E4]/50"
+                    className="block rounded-xl px-3 py-2 text-xs font-medium text-[#17251E] hover:bg-[#ECE6D7]/50"
                   >
                     {bi('Account & Settings', 'اکاؤنٹ اور ترتیبات')}
                   </Link>

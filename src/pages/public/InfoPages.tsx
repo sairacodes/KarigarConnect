@@ -19,6 +19,7 @@ import {
 import { PublicLayout } from '../../components/layouts/PublicLayout';
 import { ScrollReveal, StaggerGroup, StaggerItem } from '../../components/ui/MotionPrimitives';
 import { useI18n } from '../../i18n/translations';
+import { SUPPORT_EMAIL, hasWhatsApp, whatsappLink } from '../../config/site';
 
 export function AboutPage() {
   const { bi } = useI18n();
@@ -33,7 +34,7 @@ export function AboutPage() {
           <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-[#17251E]">
             {bi('Making Practical Skills Easier to Prove', 'عملی ہنر کو ثابت کرنا اب آسان')}
           </h1>
-          <p className="mt-4 text-base text-[#78857D] leading-relaxed">
+          <p className="mt-4 text-base text-[#69726B] leading-relaxed">
             {bi(
               'KARIGAR CONNECT bridges the trust gap between skilled tradespeople and employers. Instead of relying solely on paper resumes or word of mouth, workers organize practical photos and videos against trade competencies, request structured rubric reviews from approved assessors, and share verifiable portfolios.',
               'کاریگر کنیکٹ ہنرمند افراد اور آجروں کے درمیان اعتماد کا پل قائم کرتا ہے۔ محض کاغذی سی وی یا زبانی دعووں کے بجائے، ہنرمند اپنے عملی کام کی تصاویر اور ویڈیوز کو پیشہ ورانہ مہارتوں کے مطابق ترتیب دیتے ہیں، منظور شدہ ماہرین سے منظم جانچ کی درخواست کرتے ہیں اور قابلِ تصدیق پورٹ فولیو شیئر کرتے ہیں۔'
@@ -46,7 +47,7 @@ export function AboutPage() {
             <h2 className="text-lg font-bold text-[#17251E]">
               {bi('What a Verified Badge Means', 'تصدیق شدہ بیج کا کیا مطلب ہے؟')}
             </h2>
-            <div className="space-y-3 text-sm text-[#78857D]">
+            <div className="space-y-3 text-sm text-[#69726B]">
               <p className="flex items-start gap-2.5">
                 <ShieldCheck className="h-5 w-5 text-[#176B4A] shrink-0 mt-0.5" />
                 <span>
@@ -79,7 +80,7 @@ export function AboutPage() {
           </Link>
           <Link
             to="/explore"
-            className="rounded-full border border-[#E5EEE8] kc-glass-card px-6 py-3 text-sm font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50 transition-colors"
+            className="rounded-full border border-[#E6E0D2] kc-glass-card px-6 py-3 text-sm font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50 transition-colors"
           >
             {bi('Explore Verified Workers', 'تصدیق شدہ ہنرمند دیکھیں')}
           </Link>
@@ -172,7 +173,7 @@ export function HowItWorksPage() {
       <div className="h-full rounded-3xl kc-glass-card kc-hover-lift p-5 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between gap-2">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#DDF3E4] text-[#176B4A]">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#ECE6D7] text-[#176B4A]">
               <Icon className="h-4 w-4" />
             </span>
             <div className="flex items-center gap-2">
@@ -183,7 +184,7 @@ export function HowItWorksPage() {
             </div>
           </div>
           <h2 className="mt-4 text-base font-bold text-[#17251E]">{step.title}</h2>
-          <p className="mt-1.5 text-xs sm:text-sm text-[#78857D] leading-relaxed">{step.desc}</p>
+          <p className="mt-1.5 text-xs sm:text-sm text-[#69726B] leading-relaxed">{step.desc}</p>
         </div>
       </div>
     );
@@ -199,7 +200,7 @@ export function HowItWorksPage() {
           <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-[#17251E]">
             {bi('How KARIGAR CONNECT Works', 'کاریگر کنیکٹ کیسے کام کرتا ہے')}
           </h1>
-          <p className="mt-3 max-w-3xl text-base text-[#78857D]">
+          <p className="mt-3 max-w-3xl text-base text-[#69726B]">
             {bi(
               'Follow the end-to-end journey from skill registration to rubric evaluation and privacy-safe employer hiring.',
               'ہنرمند کے پروفائل سے لے کر عملی ثبوت، ماہرین کی جانچ اور آجروں سے بااعتماد رابطے تک کا مکمل مربوط سفر دیکھیں۔'
@@ -209,13 +210,13 @@ export function HowItWorksPage() {
 
         {/* Visual Connected Process Map */}
         <ScrollReveal delay={0.05}>
-          <div className="rounded-3xl border border-[#B8E4C7] bg-gradient-to-br from-[#F0FAF3]/85 via-white/90 to-[#EAF7EE]/85 backdrop-blur-md p-5 sm:p-8 kc-card-shadow">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5EEE8] pb-4 mb-6">
+          <div className="rounded-3xl border border-[#D8D0BE] bg-gradient-to-br from-[#F3EFE4]/85 via-white/90 to-[#F3EFE4]/85 backdrop-blur-md p-5 sm:p-8 kc-card-shadow">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E6E0D2] pb-4 mb-6">
               <div>
                 <h2 className="text-lg font-extrabold text-[#17251E]">
                   {bi('End-to-End Verification Flow (Steps 01 → 06)', 'مکمل تصدیقی عمل (مرحلہ ۰۱ تا ۰۶)')}
                 </h2>
-                <p className="text-xs text-[#78857D]">
+                <p className="text-xs text-[#69726B]">
                   {bi(
                     'Each stage passes validated inputs directly to the next stage with full audit logging.',
                     'ہر مرحلہ مکمل جانچ اور محفوظ ریکارڈ کے ساتھ اگلے مرحلے سے جڑا ہوا ہے۔'
@@ -238,7 +239,7 @@ export function HowItWorksPage() {
                   {renderProcessCard(step)}
                   {idx < row1Steps.length - 1 && (
                     <div className="flex items-center justify-center py-1 lg:py-0 lg:px-1">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#B8E4C7] bg-white text-[#176B4A] shadow-xs">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D8D0BE] bg-white text-[#176B4A] shadow-xs">
                         <ArrowRight className="hidden lg:block h-4 w-4 rtl:rotate-180" />
                         <ArrowDown className="lg:hidden h-4 w-4" />
                       </span>
@@ -250,7 +251,7 @@ export function HowItWorksPage() {
 
             {/* Connector from Step 03 down to Step 04 */}
             <div className="my-4 flex items-center justify-center lg:justify-end lg:pe-14">
-              <div className="flex items-center gap-2.5 rounded-full border border-[#B8E4C7] bg-white/95 px-4 py-1.5 text-xs font-semibold text-[#176B4A] shadow-xs">
+              <div className="flex items-center gap-2.5 rounded-full border border-[#D8D0BE] bg-white/95 px-4 py-1.5 text-xs font-semibold text-[#176B4A] shadow-xs">
                 <ArrowDown className="h-4 w-4 text-[#399B6B]" />
                 <span>
                   {bi(
@@ -268,7 +269,7 @@ export function HowItWorksPage() {
                   {renderProcessCard(step)}
                   {idx < row2Steps.length - 1 && (
                     <div className="flex items-center justify-center py-1 lg:py-0 lg:px-1">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#B8E4C7] bg-white text-[#176B4A] shadow-xs">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D8D0BE] bg-white text-[#176B4A] shadow-xs">
                         <ArrowRight className="hidden lg:block h-4 w-4 rtl:rotate-180" />
                         <ArrowDown className="lg:hidden h-4 w-4" />
                       </span>
@@ -279,19 +280,19 @@ export function HowItWorksPage() {
             </div>
 
             {/* Rubric Decision Gate & Feedback Loop */}
-            <div className="mt-8 rounded-2xl border border-[#B8E4C7] bg-white/80 backdrop-blur-sm p-5">
+            <div className="mt-8 rounded-2xl border border-[#D8D0BE] bg-white/80 backdrop-blur-sm p-5">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#176B4A]">
                 <GitBranch className="h-4 w-4 text-[#399B6B]" />
                 <span>{bi('Step 04 Decision Gate & Feedback Loop', 'مرحلہ ۰۴ کا فیصلہ اور اصلاحی چکر')}</span>
               </div>
 
               <div className="mt-4 grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-                <div className="rounded-2xl border border-[#B8E4C7] bg-[#EAF7EE] p-4 kc-hover-lift">
+                <div className="rounded-2xl border border-[#D8D0BE] bg-[#F3EFE4] p-4 kc-hover-lift">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#17251E]">
                     <FileCheck2 className="h-4 w-4 text-[#176B4A]" />
                     <span>{bi('Assessor Rubric Evaluation', 'ماہر کا معیاری جائزہ')}</span>
                   </div>
-                  <p className="mt-1.5 text-xs text-[#78857D]">
+                  <p className="mt-1.5 text-xs text-[#69726B]">
                     {bi(
                       'Each criterion is scored 0–3; weighted percentage is calculated automatically.',
                       'ہر معیار کو ۰ تا ۳ نمبر ملتے ہیں اور مجموعی فیصد خودکار طور پر حساب ہوتا ہے۔'
@@ -299,7 +300,7 @@ export function HowItWorksPage() {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-[#73C99B] bg-[#DDF3E4]/65 p-4 kc-hover-lift">
+                <div className="rounded-2xl border border-[#C9973A] bg-[#ECE6D7]/65 p-4 kc-hover-lift">
                   <div className="flex items-center justify-between gap-2 text-xs font-bold text-[#176B4A]">
                     <span>{bi('Pass Branch (≥50% & Safe)', 'کامیابی (50% یا زائد اور محفوظ)')}</span>
                     <ArrowRight className="h-4 w-4 rtl:rotate-180" />
@@ -357,7 +358,7 @@ export function HowItWorksPage() {
             <StaggerItem key={card.title}>
               <div className="h-full rounded-3xl kc-glass-card kc-hover-lift p-6 space-y-3">
                 <h2 className="text-lg font-bold text-[#17251E]">{card.title}</h2>
-                <p className="text-sm text-[#78857D] leading-relaxed">{card.body}</p>
+                <p className="text-sm text-[#69726B] leading-relaxed">{card.body}</p>
               </div>
             </StaggerItem>
           ))}
@@ -370,27 +371,27 @@ export function HowItWorksPage() {
               {bi('Competency Rubric Thresholds', 'مہارت کی جانچ کے درجات')}
             </h2>
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-              <div className="rounded-2xl border border-[#E5EEE8] bg-[#F7FAF8] p-4 kc-hover-lift">
+              <div className="rounded-2xl border border-[#E6E0D2] bg-[#F7F4EC] p-4 kc-hover-lift">
                 <p className="font-bold text-[#17251E]">{bi('Level 1 — Basic', 'درجہ ۱ — بنیادی')}</p>
                 <p className="mt-1 font-mono font-semibold text-[#399B6B]">50% – 69.9%</p>
-                <p className="mt-1 text-[#78857D]">
+                <p className="mt-1 text-[#69726B]">
                   {bi(
                     'Core task demonstrated with zero safety failures.',
                     'بنیادی کام حفاظتی اصولوں کی مکمل پابندی کے ساتھ انجام دیا گیا۔'
                   )}
                 </p>
               </div>
-              <div className="rounded-2xl border border-[#B8E4C7] bg-[#F0FAF3] p-4 kc-hover-lift">
+              <div className="rounded-2xl border border-[#D8D0BE] bg-[#F3EFE4] p-4 kc-hover-lift">
                 <p className="font-bold text-[#17251E]">{bi('Level 2 — Competent', 'درجہ ۲ — ماہر')}</p>
                 <p className="mt-1 font-mono font-semibold text-[#176B4A]">70% – 84.9%</p>
-                <p className="mt-1 text-[#78857D]">
+                <p className="mt-1 text-[#69726B]">
                   {bi(
                     'Reliable, consistent workmanship across criteria.',
                     'تمام معیارات پر قابلِ اعتماد اور مستقل معیاری کاریگری۔'
                   )}
                 </p>
               </div>
-              <div className="rounded-2xl border border-[#73C99B] bg-[#DDF3E4]/70 p-4 kc-hover-lift">
+              <div className="rounded-2xl border border-[#C9973A] bg-[#ECE6D7]/70 p-4 kc-hover-lift">
                 <p className="font-bold text-[#17251E]">{bi('Level 3 — Advanced', 'درجہ ۳ — اعلیٰ')}</p>
                 <p className="mt-1 font-mono font-semibold text-[#176B4A]">85% – 100%</p>
                 <p className="mt-1 text-[#17251E]/80">
@@ -415,8 +416,8 @@ export function LegalPage({ type }: { type: 'contact' | 'privacy' | 'terms' }) {
     contact: {
       title: bi('Contact KARIGAR CONNECT', 'کاریگر کنیکٹ سے رابطہ کریں'),
       body: bi(
-        'For platform inquiries, assessor onboarding support, or moderation assistance, reach the KARIGAR CONNECT team at support@karigarconnect.pk or via WhatsApp Support (+92 300 0000000, Islamabad, Pakistan).',
-        'پلیٹ فارم سے متعلق معلومات، ماہرین کی شمولیت، یا معاونت کے لیے کاریگر کنیکٹ ٹیم سے support@karigarconnect.pk یا واٹس ایپ (+92 300 0000000، اسلام آباد، پاکستان) پر رابطہ کریں۔'
+        `For pilot partnerships, assessor onboarding, or platform questions, email the KARIGAR CONNECT team at ${SUPPORT_EMAIL}. We are based in Islamabad, Pakistan.`,
+        `پائلٹ شراکت، ماہرین کی شمولیت، یا پلیٹ فارم سے متعلق سوالات کے لیے کاریگر کنیکٹ ٹیم کو ${SUPPORT_EMAIL} پر ای میل کریں۔ ہم اسلام آباد، پاکستان میں ہیں۔`
       ),
     },
     privacy: {
@@ -447,20 +448,23 @@ export function LegalPage({ type }: { type: 'contact' | 'privacy' | 'terms' }) {
             {type === 'contact' && (
               <div className="flex flex-wrap gap-3">
                 <a
-                  href={
-                    'https://wa.me/923000000000?text=' +
-                    encodeURIComponent('Assalam-o-Alaikum KARIGAR CONNECT Support, I need assistance.')
-                  }
+                  href={`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('Karigar Connect enquiry')}`}
+                  className="inline-flex items-center gap-2 rounded-full bg-[#11221B] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#176B4A]"
+                >
+                  <span>{bi('Email the team', 'ٹیم کو ای میل کریں')}</span>
+                </a>
+                {hasWhatsApp && (<a
+                  href={whatsappLink('Assalam-o-Alaikum KARIGAR CONNECT Support, I need assistance.')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-[#176B4A] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#13563B]"
                 >
-                  <MessageCircle className="h-4 w-4 text-[#B8E4C7]" />
+                  <MessageCircle className="h-4 w-4 text-[#D8D0BE]" />
                   <span>{bi('Message on WhatsApp Support', 'واٹس ایپ پر رابطہ کریں')}</span>
-                </a>
+                </a>)}
                 <Link
                   to="/#faq"
-                  className="inline-flex items-center rounded-full border border-[#73C99B] bg-[#DDF3E4] px-5 py-2.5 text-sm font-semibold text-[#176B4A] hover:bg-[#CBEBD5]"
+                  className="inline-flex items-center rounded-full border border-[#C9973A] bg-[#ECE6D7] px-5 py-2.5 text-sm font-semibold text-[#176B4A] hover:bg-[#E3DCC9]"
                 >
                   {bi('View Bilingual FAQ', 'سوالات و جوابات دیکھیں')}
                 </Link>

@@ -76,7 +76,7 @@ export function WorkerContactRequestsPage() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <h3 className="text-base font-bold text-[#17251E]">{r.companyName}</h3>
-                  <p className="text-xs text-[#78857D]">
+                  <p className="text-xs text-[#69726B]">
                     {r.employerName} · {r.industry || bi('Employer', 'آجِر')} · {r.city} · {bi('Received', 'موصول')}{' '}
                     {formatDate(r.createdAt, lang)}
                   </p>
@@ -85,7 +85,7 @@ export function WorkerContactRequestsPage() {
               </div>
 
               {r.message && (
-                <p className="mt-3 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3 text-sm text-[#17251E]">
+                <p className="mt-3 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3 text-sm text-[#17251E]">
                   “{r.message}”
                 </p>
               )}
@@ -109,7 +109,7 @@ export function WorkerContactRequestsPage() {
                   <button
                     type="button"
                     onClick={() => setConfirmAction({ item: r, status: 'DECLINED' })}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] bg-white px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#F7FAF8]"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] bg-white px-4 py-2 text-xs font-semibold text-[#17251E] hover:bg-[#F7F4EC]"
                   >
                     <X className="h-3.5 w-3.5" />
                     {bi('Decline', 'انکار کریں')}

@@ -192,7 +192,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
             <div>
               <BrandLogo variant="dark" sizeClass="h-10" />
 
-              <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#399B6B]/25 border border-[#73C99B]/40 px-3.5 py-1 text-xs font-bold text-[#B8E4C7]">
+              <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#399B6B]/25 border border-[#C9973A]/40 px-3.5 py-1 text-xs font-bold text-[#D8D0BE]">
                 <RoleIcon className="h-3.5 w-3.5" />
                 <span>{roleShowcase.kicker}</span>
               </div>
@@ -200,21 +200,21 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
               <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-balance leading-snug">
                 {roleShowcase.title}
               </h2>
-              <p className="mt-3 text-sm text-[#DDF3E4]/85 leading-relaxed">
+              <p className="mt-3 text-sm text-[#ECE6D7]/85 leading-relaxed">
                 {roleShowcase.subtitle}
               </p>
 
               <ul className="mt-8 space-y-3">
                 {roleShowcase.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#DDF3E4]">
-                    <CheckCircle2 className="h-4 w-4 text-[#73C99B] shrink-0 mt-0.5" />
+                  <li key={b} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#ECE6D7]">
+                    <CheckCircle2 className="h-4 w-4 text-[#C9973A] shrink-0 mt-0.5" />
                     <span>{b}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="border-t border-white/12 pt-5 text-[11px] text-[#B8E4C7]/75 leading-relaxed">
+            <div className="border-t border-white/12 pt-5 text-[11px] text-[#D8D0BE]/75 leading-relaxed">
               {bi(
                 'Verification badges reflect rubric-based assessment by approved assessors and do not represent government accreditation.',
                 'تصدیق شدہ بیجز منظور شدہ ماہرین کی جانچ پر مبنی ہیں اور سرکاری سند یا لائسنس نہیں ہیں۔'
@@ -237,7 +237,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
               )}
 
               {portalRole === 'EMPLOYER' && (
-                <div className="rounded-2xl border border-[#CFE9D8] bg-[#F5FBF7] p-4 space-y-3">
+                <div className="rounded-2xl border border-[#E2DBCB] bg-[#F3EFE4] p-4 space-y-3">
                   <div>
                     <label className="block text-xs font-bold text-[#17251E] mb-1.5">
                       {bi('Hirer Account Type', 'ہائرر اکاؤنٹ کی نوعیت')}
@@ -249,7 +249,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                         className={`rounded-xl border px-3 py-2 text-xs font-semibold transition-colors ${
                           accountType === 'INDIVIDUAL'
                             ? 'border-[#176B4A] bg-white text-[#176B4A]'
-                            : 'border-[#CFE9D8] bg-[#E8F6EE]/70 text-[#4D6357]'
+                            : 'border-[#E2DBCB] bg-[#F3EFE4]/70 text-[#4D6357]'
                         }`}
                       >
                         {bi('Homeowner / Individual', 'گھریلو صارف / فرد')}
@@ -260,7 +260,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                         className={`rounded-xl border px-3 py-2 text-xs font-semibold transition-colors ${
                           accountType === 'BUSINESS'
                             ? 'border-[#176B4A] bg-white text-[#176B4A]'
-                            : 'border-[#CFE9D8] bg-[#E8F6EE]/70 text-[#4D6357]'
+                            : 'border-[#E2DBCB] bg-[#F3EFE4]/70 text-[#4D6357]'
                         }`}
                       >
                         {bi('Business / Facility', 'کاروبار / ادارہ')}
@@ -277,7 +277,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                         value={companyName}
                         onChange={(e) => setCompanyName(e.target.value)}
                         placeholder={bi('e.g. Margalla Facility Services', 'مثلاً مارگلہ فیسیلٹی سروسز')}
-                        className="w-full rounded-xl border border-[#CFE9D8] bg-white px-3 py-2 text-sm text-[#17251E] focus:border-[#176B4A] focus:outline-none"
+                        className="w-full rounded-xl border border-[#E2DBCB] bg-white px-3 py-2 text-sm text-[#17251E] focus:border-[#176B4A] focus:outline-none"
                       />
                     </div>
                   )}
@@ -285,7 +285,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
               )}
 
               {portalRole === 'WORKER' && (
-                <div className="rounded-2xl border border-[#CFE9D8] bg-[#F5FBF7] p-4 space-y-3">
+                <div className="rounded-2xl border border-[#E2DBCB] bg-[#F3EFE4] p-4 space-y-3">
                   <div>
                     <label className="block text-xs font-bold text-[#17251E] mb-1">
                       {bi('Primary Service Category (optional now)', 'بنیادی سروس کیٹیگری (ابھی یا بعد میں منتخب کریں)')}
@@ -293,7 +293,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                     <select
                       value={selectedTradeId}
                       onChange={(e) => setSelectedTradeId(e.target.value)}
-                      className="w-full rounded-xl border border-[#CFE9D8] bg-white px-3 py-2 text-sm text-[#17251E] focus:border-[#176B4A] focus:outline-none"
+                      className="w-full rounded-xl border border-[#E2DBCB] bg-white px-3 py-2 text-sm text-[#17251E] focus:border-[#176B4A] focus:outline-none"
                     >
                       <option value="">{bi('Choose later from Karigar Dashboard...', 'بعد میں منتخب کریں...')}</option>
                       {SERVICE_GROUPS.map((grp) => {
@@ -316,7 +316,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                       type="checkbox"
                       checked={isFemaleProfessional}
                       onChange={(e) => setIsFemaleProfessional(e.target.checked)}
-                      className="h-4 w-4 rounded border-[#B8E4C7] accent-[#176B4A]"
+                      className="h-4 w-4 rounded border-[#D8D0BE] accent-[#176B4A]"
                     />
                     <span>{bi('I am a Female professional (Women-Safe badge)', 'میں خاتون پروفیشنل ہوں (ویمن سیف بیج)')}</span>
                   </label>
@@ -334,7 +334,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                     onChange={(e) => setFullName(e.target.value)}
                     required
                     placeholder={bi('e.g. Bilal Ahmed', 'مثلاً بلال احمد')}
-                    className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
+                    className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
@@ -356,7 +356,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     placeholder="name@example.com"
-                    className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
+                    className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
@@ -369,7 +369,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                     onChange={(e) => setPhone(e.target.value)}
                     required
                     placeholder="+92-300-1234567"
-                    className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
+                    className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -386,7 +386,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       placeholder={bi('8+ chars, 1 uppercase, 1 number', 'کم از کم ۸ حروف، ۱ بڑا حرف، ۱ نمبر')}
-                      className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] ps-3 pe-9 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
+                      className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] ps-3 pe-9 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
                     />
                     <button
                       type="button"
@@ -406,7 +406,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
-                    className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
+                    className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -416,7 +416,7 @@ export function RegisterPage({ portalRole = 'WORKER' }: RegisterPageProps) {
                   type="checkbox"
                   checked={acceptedTerms}
                   onChange={(e) => setAcceptedTerms(e.target.checked)}
-                  className="mt-0.5 h-4 w-4 rounded border-[#B8E4C7] accent-[#176B4A]"
+                  className="mt-0.5 h-4 w-4 rounded border-[#D8D0BE] accent-[#176B4A]"
                 />
                 <span>
                   {bi('I agree to the', 'میں اتفاق کرتا/کرتی ہوں')}{' '}

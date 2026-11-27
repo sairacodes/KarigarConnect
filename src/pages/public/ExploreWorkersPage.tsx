@@ -117,7 +117,7 @@ export function ExploreWorkersPage() {
   return (
     <PublicLayout>
       <PageTransition className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E5EEE8] pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E6E0D2] pb-6">
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-[#399B6B]">
               {bi('Nationwide Proven Directory', 'ملک گیر تصدیق شدہ ہنرمند ڈائریکٹری')}
@@ -125,7 +125,7 @@ export function ExploreWorkersPage() {
             <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold tracking-tight text-[#17251E]">
               {bi('Explore Skilled Workers Across Pakistan', 'پاکستان بھر میں ہنرمند افراد تلاش کریں')}
             </h1>
-            <p className="mt-1 text-sm text-[#78857D]">
+            <p className="mt-1 text-sm text-[#69726B]">
               {bi(
                 'Filter by 48+ service categories, Pakistani city or province, Karigar Trust Score, customer rating, or female professionals.',
                 '۴۸+ سروسز، پاکستانی شہر یا صوبے، ٹرسٹ اسکور، صارفین کی ریٹنگ یا خواتین پروفیشنلز کے لحاظ سے تلاش کریں۔'
@@ -136,7 +136,7 @@ export function ExploreWorkersPage() {
             <button
               type="button"
               onClick={() => setShowLeaderboard((v) => !v)}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#B8E4C7] bg-[#DDF3E4]/60 px-4 py-2 text-xs font-bold text-[#176B4A] hover:bg-[#DDF3E4]"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#D8D0BE] bg-[#ECE6D7]/60 px-4 py-2 text-xs font-bold text-[#176B4A] hover:bg-[#ECE6D7]"
             >
               <Trophy className="h-3.5 w-3.5" />
               <span>{city ? bi(`Top Karigars in ${city}`, `${city} کے ٹاپ کاریگر`) : bi('City Leaderboard', 'ٹاپ کاریگر لیڈربورڈ')}</span>
@@ -148,7 +148,7 @@ export function ExploreWorkersPage() {
         </div>
 
         {showLeaderboard && (
-          <div className="mt-5 rounded-2xl border border-[#73C99B] bg-[#DDF3E4]/85 p-5">
+          <div className="mt-5 rounded-2xl border border-[#C9973A] bg-[#ECE6D7]/85 p-5">
             <div className="flex items-center justify-between gap-2 mb-3">
               <h2 className="text-sm font-extrabold text-[#17251E] flex items-center gap-2">
                 <Trophy className="h-4 w-4 text-[#176B4A]" />
@@ -166,13 +166,13 @@ export function ExploreWorkersPage() {
                   <Link
                     key={lw.workerProfileId}
                     to={`/workers/${lw.publicId}`}
-                    className="rounded-xl border border-[#B8E4C7] bg-[#F2FAF5] p-3 flex items-center justify-between gap-3 hover:border-[#176B4A]"
+                    className="rounded-xl border border-[#D8D0BE] bg-[#F3EFE4] p-3 flex items-center justify-between gap-3 hover:border-[#176B4A]"
                   >
                     <div className="min-w-0">
                       <p className="text-xs font-bold text-[#17251E] truncate">
                         #{i + 1} {lw.fullName}
                       </p>
-                      <p className="text-[11px] text-[#78857D] truncate">
+                      <p className="text-[11px] text-[#69726B] truncate">
                         {lw.tradeName} · {lw.city}
                       </p>
                     </div>
@@ -187,13 +187,13 @@ export function ExploreWorkersPage() {
         <form onSubmit={handleSearchSubmit} className="mt-6 rounded-2xl kc-glass-card p-4 sm:p-5">
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-6">
             <div className="lg:col-span-2 relative">
-              <Search className="absolute start-3.5 top-3 h-4 w-4 text-[#78857D]" />
+              <Search className="absolute start-3.5 top-3 h-4 w-4 text-[#69726B]" />
               <input
                 type="text"
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 placeholder={bi('Search name, skill, or competency...', 'نام، ہنر یا مہارت تلاش کریں...')}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] ps-9 pe-3 py-2.5 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] ps-9 pe-3 py-2.5 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
 
@@ -205,7 +205,7 @@ export function ExploreWorkersPage() {
                 setCompetencyId('');
                 setPage(1);
               }}
-              className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
             >
               <option value="">{bi('All Service Groups', 'تمام سروس شعبے')}</option>
               {SERVICE_GROUPS.map((g) => (
@@ -222,7 +222,7 @@ export function ExploreWorkersPage() {
                 setCompetencyId('');
                 setPage(1);
               }}
-              className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
+              className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] px-3 py-2.5 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
             >
               <option value="">{bi('All Categories', 'تمام کیٹیگریز')}</option>
               {filteredTrades.map((t) => (
@@ -252,15 +252,15 @@ export function ExploreWorkersPage() {
                 type="button"
                 onClick={handleClear}
                 title={bi('Clear filters', 'فلٹر صاف کریں')}
-                className="rounded-xl border border-[#E5EEE8] px-3 py-2.5 text-sm text-[#78857D] hover:bg-[#F7FAF8] hover:text-[#17251E]"
+                className="rounded-xl border border-[#E6E0D2] px-3 py-2.5 text-sm text-[#69726B] hover:bg-[#F7F4EC] hover:text-[#17251E]"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center gap-3 pt-3 border-t border-[#E5EEE8] text-xs">
-            <span className="inline-flex items-center gap-1 text-[#78857D] font-medium">
+          <div className="mt-3 flex flex-wrap items-center gap-3 pt-3 border-t border-[#E6E0D2] text-xs">
+            <span className="inline-flex items-center gap-1 text-[#69726B] font-medium">
               <SlidersHorizontal className="h-3.5 w-3.5" />
               {bi('Refine:', 'مزید فلٹر:')}
             </span>
@@ -271,7 +271,7 @@ export function ExploreWorkersPage() {
                 setProvince(e.target.value);
                 setPage(1);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5 text-xs text-[#17251E]"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5 text-xs text-[#17251E]"
             >
               <option value="">{bi('All Provinces', 'تمام صوبے')}</option>
               {PAKISTAN_PROVINCE_GROUPS.map((p) => (
@@ -287,7 +287,7 @@ export function ExploreWorkersPage() {
                 setCompetencyId(e.target.value);
                 setPage(1);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5 text-xs text-[#17251E] max-w-[200px]"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5 text-xs text-[#17251E] max-w-[200px]"
             >
               <option value="">{bi('All Competencies', 'تمام مہارتیں')}</option>
               {availableCompetencies.map((c: any) => (
@@ -303,7 +303,7 @@ export function ExploreWorkersPage() {
                 setLevel(e.target.value);
                 setPage(1);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5 text-xs text-[#17251E]"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5 text-xs text-[#17251E]"
             >
               <option value="">{bi('Any Badge Level', 'کوئی بھی بیج درجہ')}</option>
               <option value="BASIC">{bi('Level 1 — Basic', 'درجہ ۱ — بنیادی')}</option>
@@ -317,7 +317,7 @@ export function ExploreWorkersPage() {
                 setMinRating(e.target.value);
                 setPage(1);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5 text-xs text-[#17251E]"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5 text-xs text-[#17251E]"
             >
               <option value="">{bi('Any Rating', 'کوئی بھی ریٹنگ')}</option>
               <option value="4">{bi('4.0★ & up', '4.0★ یا زیادہ')}</option>
@@ -330,7 +330,7 @@ export function ExploreWorkersPage() {
                 setMinExperience(e.target.value);
                 setPage(1);
               }}
-              className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5 text-xs text-[#17251E]"
+              className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5 text-xs text-[#17251E]"
             >
               <option value="">{bi('Any Experience', 'کوئی بھی تجربہ')}</option>
               <option value="1">{bi('1+ yrs', '۱+ سال')}</option>
@@ -338,7 +338,7 @@ export function ExploreWorkersPage() {
               <option value="5">{bi('5+ yrs', '۵+ سال')}</option>
             </select>
 
-            <label className="inline-flex items-center gap-1.5 rounded-lg border border-[#B8E4C7] bg-[#DDF3E4]/40 px-2.5 py-1.5 text-xs font-semibold text-[#176B4A] cursor-pointer">
+            <label className="inline-flex items-center gap-1.5 rounded-lg border border-[#D8D0BE] bg-[#ECE6D7]/40 px-2.5 py-1.5 text-xs font-semibold text-[#176B4A] cursor-pointer">
               <input
                 type="checkbox"
                 checked={femaleOnly}
@@ -357,7 +357,7 @@ export function ExploreWorkersPage() {
                 setSort(e.target.value);
                 setPage(1);
               }}
-              className="ms-auto rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1.5 text-xs text-[#17251E]"
+              className="ms-auto rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1.5 text-xs text-[#17251E]"
             >
               <option value="verified_desc">{bi('Sort: Most Verified', 'ترتیب: زیادہ تصدیق شدہ')}</option>
               <option value="top_rated">{bi('Sort: Top Rated', 'ترتیب: بہترین ریٹنگ')}</option>
@@ -400,7 +400,7 @@ export function ExploreWorkersPage() {
                 >
                   <div>
                     <div className="flex items-start gap-4">
-                      <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-[#E5EEE8] bg-[#DDF3E4] flex items-center justify-center text-base font-bold text-[#176B4A]">
+                      <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-[#E6E0D2] bg-[#ECE6D7] flex items-center justify-center text-base font-bold text-[#176B4A]">
                         {w.avatarUrl ? (
                           <img src={w.avatarUrl} alt={w.fullName} referrerPolicy="no-referrer" className="h-full w-full object-cover" />
                         ) : (
@@ -412,11 +412,11 @@ export function ExploreWorkersPage() {
                           <h3 className="text-base font-bold text-[#17251E] truncate">{w.fullName}</h3>
                           <TrustScoreBadge score={w.trustScore ?? 0} compact />
                         </div>
-                        <p className="text-xs font-medium text-[#78857D] mt-0.5 truncate">
+                        <p className="text-xs font-medium text-[#69726B] mt-0.5 truncate">
                           {isUr && w.tradeUrduName ? w.tradeUrduName : w.tradeName} · {w.yearsExperience}{' '}
                           {bi('yrs exp', 'سال تجربہ')}
                         </p>
-                        <p className="mt-1 flex items-center gap-1 text-xs text-[#78857D]">
+                        <p className="mt-1 flex items-center gap-1 text-xs text-[#69726B]">
                           <MapPin className="h-3.5 w-3.5 shrink-0 text-[#399B6B]" />
                           <span>{w.city}</span>
                           {w.isFemaleProfessional && (
@@ -435,7 +435,7 @@ export function ExploreWorkersPage() {
                       )}
                     </div>
 
-                    <p className="mt-2.5 text-sm text-[#78857D] line-clamp-2">
+                    <p className="mt-2.5 text-sm text-[#69726B] line-clamp-2">
                       {w.bio || bi('Practical tradesperson building verified competency portfolio.', 'تصدیق شدہ مہارتوں کا پورٹ فولیو بنانے والے عملی ہنرمند۔')}
                     </p>
 
@@ -465,7 +465,7 @@ export function ExploreWorkersPage() {
                     </div>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t border-[#B8E4C7]">
+                  <div className="mt-5 pt-3 border-t border-[#D8D0BE]">
                     <Link
                       to={`/workers/${w.publicId}`}
                       className="block w-full rounded-full bg-[#176B4A] px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-[#13563B] transition-colors"

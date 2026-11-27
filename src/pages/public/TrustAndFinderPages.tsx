@@ -96,7 +96,7 @@ export function WhyKarigarConnectPage() {
   return (
     <PublicLayout>
       <PageTransition className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 space-y-10">
-        <div className="rounded-3xl border border-[#B8E4C7] kc-hero-surface p-7 sm:p-11">
+        <div className="rounded-3xl border border-[#D8D0BE] kc-hero-surface p-7 sm:p-11">
           <p className="text-xs font-bold uppercase tracking-wider text-[#176B4A]">
             {bi('Why Karigar Connect', 'کاریگر کنیکٹ ہی کیوں؟')}
           </p>
@@ -133,13 +133,13 @@ export function WhyKarigarConnectPage() {
               return (
                 <div key={layer.num} className="rounded-3xl kc-glass-card kc-hover-lift p-6">
                   <div className="flex items-center justify-between">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#DDF3E4] text-[#176B4A]">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#ECE6D7] text-[#176B4A]">
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="font-mono text-sm font-bold text-[#399B6B]">{layer.num}</span>
                   </div>
                   <h3 className="mt-4 text-lg font-bold text-[#17251E]">{layer.title}</h3>
-                  <p className="mt-2 text-sm text-[#78857D] leading-relaxed">{layer.desc}</p>
+                  <p className="mt-2 text-sm text-[#69726B] leading-relaxed">{layer.desc}</p>
                 </div>
               );
             })}
@@ -152,17 +152,17 @@ export function WhyKarigarConnectPage() {
           </h2>
           <table className="mt-5 w-full text-start text-sm">
             <thead>
-              <tr className="border-b border-[#E5EEE8] text-xs uppercase text-[#78857D]">
+              <tr className="border-b border-[#E6E0D2] text-xs uppercase text-[#69726B]">
                 <th className="py-3 pe-4">{bi('Area', 'پہلو')}</th>
                 <th className="py-3 pe-4">{bi('Traditional Apps / Directories', 'روایتی ایپس / ڈائریکٹریز')}</th>
                 <th className="py-3 text-[#176B4A]">{bi('KARIGAR CONNECT', 'کاریگر کنیکٹ')}</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E5EEE8]">
+            <tbody className="divide-y divide-[#E6E0D2]">
               {comparisonRows.map((row) => (
                 <tr key={row.feature}>
                   <td className="py-3.5 pe-4 font-semibold text-[#17251E]">{row.feature}</td>
-                  <td className="py-3.5 pe-4 text-[#78857D]">{row.traditional}</td>
+                  <td className="py-3.5 pe-4 text-[#69726B]">{row.traditional}</td>
                   <td className="py-3.5 font-medium text-[#176B4A]">
                     <span className="inline-flex items-start gap-1.5">
                       <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5 text-[#399B6B]" />
@@ -175,7 +175,7 @@ export function WhyKarigarConnectPage() {
           </table>
         </section>
 
-        <div className="rounded-2xl border border-[#B8E4C7] bg-[#F7FAF8] p-5 text-xs text-[#78857D] flex items-start gap-3">
+        <div className="rounded-2xl border border-[#D8D0BE] bg-[#F7F4EC] p-5 text-xs text-[#69726B] flex items-start gap-3">
           <ShieldCheck className="h-5 w-5 text-[#176B4A] shrink-0 mt-0.5" />
           <p className="leading-relaxed">
             <strong className="text-[#17251E]">{bi('Verification Scope Disclosure:', 'تصدیق کی وضاحت:')}</strong>{' '}
@@ -270,7 +270,7 @@ export function TrustScoreGuidePage() {
           <h1 className="mt-1.5 text-3xl font-extrabold text-[#17251E]">
             {bi('How the Karigar Trust Score & Tiers Work', 'کاریگر ٹرسٹ اسکور اور درجات کیسے کام کرتے ہیں')}
           </h1>
-          <p className="mt-2 text-sm sm:text-base text-[#78857D] leading-relaxed">
+          <p className="mt-2 text-sm sm:text-base text-[#69726B] leading-relaxed">
             {bi(
               'Every public worker portfolio displays a 0–100 Trust Score calculated from objective rubric results, real completed jobs, and verified customer feedback — never paid boosts.',
               'ہر عوامی پروفائل پر ۰ تا ۱۰۰ ٹرسٹ اسکور نظر آتا ہے جو عملی جانچ کے نتائج، مکمل کاموں اور صارفین کے مصدقہ فیڈبیک سے بنتا ہے — پیسے دے کر رینکنگ نہیں خریدی جا سکتی۔'
@@ -279,12 +279,12 @@ export function TrustScoreGuidePage() {
 
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {scoreWeights.map((w) => (
-              <div key={w.title} className="rounded-2xl border border-[#E5EEE8] bg-[#F7FAF8] p-4">
+              <div key={w.title} className="rounded-2xl border border-[#E6E0D2] bg-[#F7F4EC] p-4">
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-sm font-bold text-[#17251E]">{w.title}</span>
                   <span className="font-mono text-base font-extrabold text-[#176B4A]">{w.weight}</span>
                 </div>
-                <p className="mt-2 text-xs text-[#78857D] leading-relaxed">{w.detail}</p>
+                <p className="mt-2 text-xs text-[#69726B] leading-relaxed">{w.detail}</p>
               </div>
             ))}
           </div>
@@ -294,7 +294,7 @@ export function TrustScoreGuidePage() {
           <h2 className="text-xl font-extrabold text-[#17251E]">
             {bi('Karigar Tier Badges (12-Month Validity & Auto Review)', 'کاریگر درجات (۱۲ ماہ کی معیاد اور خودکار نظرِ ثانی)')}
           </h2>
-          <p className="text-sm text-[#78857D]">
+          <p className="text-sm text-[#69726B]">
             {bi(
               'Eligible workers are queued for Admin approval once thresholds are met. If a worker’s average rating later drops below their tier’s minimum, their tier automatically switches to Under Review.',
               'مطلوبہ معیار پورا ہونے پر ہنرمند ایڈمن منظوری کے لیے قطار میں شامل ہو جاتے ہیں۔ اگر بعد میں ریٹنگ کم ہو جائے تو درجہ خودکار طور پر زیرِ جائزہ ہو جاتا ہے۔'
@@ -302,10 +302,10 @@ export function TrustScoreGuidePage() {
           </p>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {tierLevels.map((item) => (
-              <div key={item.tier} className="rounded-2xl border border-[#E5EEE8] bg-white p-5">
+              <div key={item.tier} className="rounded-2xl border border-[#E6E0D2] bg-white p-5">
                 <TierPill tier={item.tier} />
                 <p className="mt-3 text-xs font-semibold text-[#17251E]">{item.req}</p>
-                <p className="mt-1.5 text-xs text-[#78857D]">{item.benefit}</p>
+                <p className="mt-1.5 text-xs text-[#69726B]">{item.benefit}</p>
               </div>
             ))}
           </div>
@@ -366,7 +366,7 @@ export function VerifyBadgePage() {
           <h1 className="mt-1.5 text-2xl sm:text-3xl font-extrabold text-[#17251E]">
             {bi('Verify a Karigar Badge or Passport', 'کاریگر بیج یا پاسپورٹ کی تصدیق کریں')}
           </h1>
-          <p className="mt-1.5 text-sm text-[#78857D]">
+          <p className="mt-1.5 text-sm text-[#69726B]">
             {bi(
               'Enter a Competency Badge ID, Karigar Passport ID (e.g. KC-PASS-BILAL1), or public portfolio handle to check authenticity and 12-month validity.',
               'اصلیت اور ۱۲ ماہ کی معیاد جانچنے کے لیے بیج آئی ڈی، کاریگر پاسپورٹ آئی ڈی یا پروفائل ہینڈل درج کریں۔'
@@ -375,13 +375,13 @@ export function VerifyBadgePage() {
 
           <form onSubmit={handleSubmit} className="mt-5 flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
-              <Search className="pointer-events-none absolute start-3.5 top-3 h-4 w-4 text-[#78857D]" />
+              <Search className="pointer-events-none absolute start-3.5 top-3 h-4 w-4 text-[#69726B]" />
               <input
                 type="text"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder={bi('e.g. KC-PASS-BILAL1 or badge_bilal_safety', 'مثلاً KC-PASS-BILAL1 یا badge_bilal_safety')}
-                className="w-full rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] ps-10 pe-3.5 py-2.5 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] ps-10 pe-3.5 py-2.5 text-sm text-[#17251E] focus:border-[#399B6B] focus:bg-white focus:outline-none"
               />
             </div>
             <button
@@ -393,7 +393,7 @@ export function VerifyBadgePage() {
             </button>
           </form>
 
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-[#78857D]">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-[#69726B]">
             <span>{bi('Quick demo IDs:', 'نمونہ آئی ڈیز:')}</span>
             {sampleCodes.map((sample) => (
               <button
@@ -404,7 +404,7 @@ export function VerifyBadgePage() {
                   setSearchParams({ code: sample });
                   runLookup(sample);
                 }}
-                className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1 font-mono text-[11px] font-semibold text-[#176B4A] hover:bg-[#DDF3E4]"
+                className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1 font-mono text-[11px] font-semibold text-[#176B4A] hover:bg-[#ECE6D7]"
               >
                 {sample}
               </button>
@@ -426,17 +426,17 @@ export function VerifyBadgePage() {
 
         {result && !loading && (
           <div className="rounded-3xl kc-glass-card p-6 sm:p-8 space-y-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5EEE8] pb-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E6E0D2] pb-4">
               <div>
-                <p className="font-mono text-xs font-bold text-[#78857D]">{result.code}</p>
+                <p className="font-mono text-xs font-bold text-[#69726B]">{result.code}</p>
                 <h2 className="mt-1 text-xl font-extrabold text-[#17251E]">{result.workerName}</h2>
-                <p className="text-sm text-[#78857D]">
+                <p className="text-sm text-[#69726B]">
                   {result.tradeName} · {result.workerCity}
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 {result.status === 'VALID' ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-[#B8E4C7] bg-[#DDF3E4] px-3.5 py-2 text-xs font-bold text-[#176B4A]">
+                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-[#D8D0BE] bg-[#ECE6D7] px-3.5 py-2 text-xs font-bold text-[#176B4A]">
                     <CheckCircle2 className="h-4 w-4" />
                     {bi('VALID & ACTIVE', 'مصدقہ اور فعال')}
                   </span>
@@ -453,28 +453,28 @@ export function VerifyBadgePage() {
               <TierPill tier={result.tier} />
               {typeof result.trustScore === 'number' && <TrustScoreBadge score={result.trustScore} />}
               {result.passportId && (
-                <span className="rounded-lg border border-[#E5EEE8] bg-[#F7FAF8] px-2.5 py-1 font-mono text-xs font-bold text-[#17251E]">
+                <span className="rounded-lg border border-[#E6E0D2] bg-[#F7F4EC] px-2.5 py-1 font-mono text-xs font-bold text-[#17251E]">
                   {result.passportId}
                 </span>
               )}
             </div>
 
             {result.lookupType === 'BADGE' ? (
-              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-2xl border border-[#E5EEE8] bg-[#F7FAF8] p-4 text-sm">
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-2xl border border-[#E6E0D2] bg-[#F7F4EC] p-4 text-sm">
                 <div>
-                  <dt className="text-xs text-[#78857D]">{bi('Competency Verified', 'تصدیق شدہ مہارت')}</dt>
+                  <dt className="text-xs text-[#69726B]">{bi('Competency Verified', 'تصدیق شدہ مہارت')}</dt>
                   <dd className="font-bold text-[#17251E]">{result.competencyTitle}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-[#78857D]">{bi('Verification Level', 'تصدیقی درجہ')}</dt>
+                  <dt className="text-xs text-[#69726B]">{bi('Verification Level', 'تصدیقی درجہ')}</dt>
                   <dd className="font-bold text-[#176B4A]">{formatLevelLabel(result.level, lang)}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-[#78857D]">{bi('Authorized Assessor', 'مجاز ماہرِ جائزہ')}</dt>
+                  <dt className="text-xs text-[#69726B]">{bi('Authorized Assessor', 'مجاز ماہرِ جائزہ')}</dt>
                   <dd className="font-semibold text-[#17251E]">{result.assessorName}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-[#78857D]">{bi('Issued / Valid Until', 'تاریخِ اجراء / معیاد')}</dt>
+                  <dt className="text-xs text-[#69726B]">{bi('Issued / Valid Until', 'تاریخِ اجراء / معیاد')}</dt>
                   <dd className="font-mono text-xs text-[#17251E]">
                     {formatDate(result.issuedAt, lang)} — {formatDate(result.expiresAt, lang)}
                   </dd>
@@ -490,11 +490,11 @@ export function VerifyBadgePage() {
                     {result.badges.map((b: any) => (
                       <div
                         key={b.id}
-                        className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3 text-xs"
+                        className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3 text-xs"
                       >
                         <div>
                           <p className="font-bold text-[#17251E]">{b.competencyTitle}</p>
-                          <p className="text-[#78857D]">
+                          <p className="text-[#69726B]">
                             {formatLevelLabel(b.level, lang)} · {bi('Assessor:', 'ماہر:')} {b.assessorName}
                           </p>
                         </div>
@@ -502,7 +502,7 @@ export function VerifyBadgePage() {
                           <span className={b.status === 'VALID' ? 'text-[#176B4A] font-bold' : 'text-red-700 font-bold'}>
                             {b.status}
                           </span>
-                          <p className="text-[11px] text-[#78857D]">
+                          <p className="text-[11px] text-[#69726B]">
                             {bi('Exp:', 'میعاد:')} {formatDate(b.expiresAt, lang)}
                           </p>
                         </div>
@@ -510,13 +510,13 @@ export function VerifyBadgePage() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-[#78857D]">{bi('No active competency badges on file.', 'کوئی فعال بیج موجود نہیں۔')}</p>
+                  <p className="text-sm text-[#69726B]">{bi('No active competency badges on file.', 'کوئی فعال بیج موجود نہیں۔')}</p>
                 )}
               </div>
             )}
 
             <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-              <p className="text-xs text-[#78857D] max-w-lg">
+              <p className="text-xs text-[#69726B] max-w-lg">
                 {bi(
                   'A verified badge means a competency was assessed by an authorized assessor with a defined rubric. It is NOT government accreditation.',
                   'تصدیقی بیج منظور شدہ ماہرِ جائزہ کی جانچ کی بنیاد پر جاری ہوتا ہے اور یہ سرکاری سند نہیں ہے۔'
@@ -627,13 +627,13 @@ export function AiProblemFinderPage() {
     EMERGENCY: 'border-red-300 bg-red-50 text-red-800',
     HIGH: 'border-orange-300 bg-orange-50 text-orange-800',
     MEDIUM: 'border-amber-300 bg-amber-50 text-amber-800',
-    LOW: 'border-[#B8E4C7] bg-[#DDF3E4] text-[#176B4A]',
+    LOW: 'border-[#D8D0BE] bg-[#ECE6D7] text-[#176B4A]',
   };
 
   return (
     <PublicLayout>
       <PageTransition className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8 space-y-6">
-        <div className="rounded-3xl border border-[#B8E4C7] kc-hero-surface p-6 sm:p-8">
+        <div className="rounded-3xl border border-[#D8D0BE] kc-hero-surface p-6 sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#176B4A]">
               <Sparkles className="h-4 w-4" />
@@ -646,7 +646,7 @@ export function AiProblemFinderPage() {
           <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#17251E]">
             {bi('Describe Your Home Issue in English, Urdu, or Roman Urdu', 'گھر کا مسئلہ انگریزی، اردو یا رومن اردو میں بیان کریں')}
           </h1>
-          <p className="mt-1.5 text-sm text-[#78857D]">
+          <p className="mt-1.5 text-sm text-[#69726B]">
             {bi(
               'Not sure which trade you need? Tell us what went wrong or attach a photo. We will suggest the right service category, urgency level, rough PKR cost range, and matching verified Karigars.',
               'سمجھ نہیں آ رہا کس ماہر کو بلائیں؟ مسئلہ لکھیں یا تصویر لگائیں۔ ہم درست کیٹیگری، ہنگامی نوعیت، پاکستانی روپے میں اندازاً خرچ اور متعلقہ ہنرمند دکھائیں گے۔'
@@ -675,18 +675,18 @@ export function AiProblemFinderPage() {
                   'e.g. Geyser pilot keeps going off, or AC thanda nahi kar raha...',
                   'مثلاً: گیزر کا پائلٹ بند ہو جاتا ہے، یا اے سی ٹھنڈا نہیں کر رہا...'
                 )}
-                className="w-full rounded-2xl border border-[#B8E4C7] bg-white px-4 py-3 text-sm text-[#17251E] focus:border-[#176B4A] focus:outline-none"
+                className="w-full rounded-2xl border border-[#D8D0BE] bg-white px-4 py-3 text-sm text-[#17251E] focus:border-[#176B4A] focus:outline-none"
               />
             </div>
 
             <div className="flex flex-wrap items-center gap-2 text-xs">
-              <span className="text-[#78857D]">{bi('Examples:', 'مثالیں:')}</span>
+              <span className="text-[#69726B]">{bi('Examples:', 'مثالیں:')}</span>
               {quickExamples.map((ex) => (
                 <button
                   key={ex.label}
                   type="button"
                   onClick={() => setDescription(ex.text)}
-                  className="rounded-lg border border-[#E5EEE8] bg-white px-2.5 py-1 font-medium text-[#17251E] hover:border-[#399B6B]"
+                  className="rounded-lg border border-[#E6E0D2] bg-white px-2.5 py-1 font-medium text-[#17251E] hover:border-[#399B6B]"
                 >
                   {ex.label}
                 </button>
@@ -694,7 +694,7 @@ export function AiProblemFinderPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-              <label className="inline-flex items-center gap-2 rounded-xl border border-[#E5EEE8] bg-white px-4 py-2.5 text-xs font-semibold text-[#17251E] cursor-pointer hover:bg-[#F7FAF8]">
+              <label className="inline-flex items-center gap-2 rounded-xl border border-[#E6E0D2] bg-white px-4 py-2.5 text-xs font-semibold text-[#17251E] cursor-pointer hover:bg-[#F7F4EC]">
                 <Camera className="h-4 w-4 text-[#176B4A]" />
                 <span>{imageFile ? imageFile.name : bi('Attach Optional Photo', 'مسئلے کی تصویر شامل کریں (اختیاری)')}</span>
                 <input
@@ -717,7 +717,7 @@ export function AiProblemFinderPage() {
 
             {previewUrl && (
               <div className="flex items-center gap-3 pt-2">
-                <img src={previewUrl} alt="Problem preview" className="h-16 w-20 rounded-xl object-cover border border-[#E5EEE8]" />
+                <img src={previewUrl} alt="Problem preview" className="h-16 w-20 rounded-xl object-cover border border-[#E6E0D2]" />
                 <button
                   type="button"
                   onClick={() => setImageFile(null)}
@@ -732,7 +732,7 @@ export function AiProblemFinderPage() {
 
         {analysis && (
           <div className="rounded-3xl kc-glass-card p-6 sm:p-8 space-y-5">
-            <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[#E5EEE8] pb-4">
+            <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[#E6E0D2] pb-4">
               <div>
                 <p className="text-xs font-semibold text-[#399B6B]">
                   {isUr ? analysis.groupUrduName : analysis.groupName}
@@ -755,20 +755,20 @@ export function AiProblemFinderPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-[#E5EEE8] bg-[#F7FAF8] p-4">
-                <p className="text-xs font-bold uppercase text-[#78857D]">{bi('Likely Cause', 'ممکنہ وجہ')}</p>
+              <div className="rounded-2xl border border-[#E6E0D2] bg-[#F7F4EC] p-4">
+                <p className="text-xs font-bold uppercase text-[#69726B]">{bi('Likely Cause', 'ممکنہ وجہ')}</p>
                 <p className="mt-1.5 text-sm text-[#17251E] leading-relaxed">
                   {isUr ? analysis.likelyCauseUrdu : analysis.likelyCause}
                 </p>
               </div>
-              <div className="rounded-2xl border border-[#B8E4C7] bg-[#DDF3E4]/40 p-4">
+              <div className="rounded-2xl border border-[#D8D0BE] bg-[#ECE6D7]/40 p-4">
                 <p className="text-xs font-bold uppercase text-[#176B4A]">
                   {bi('Rough Fair Price Range (AI estimate only)', 'اندازاً مناسب قیمت (صرف اے آئی اندازہ)')}
                 </p>
                 <p className="mt-1.5 font-mono text-2xl font-extrabold text-[#17251E] tabular-nums">
                   PKR {analysis.roughMinPkr.toLocaleString()} – {analysis.roughMaxPkr.toLocaleString()}
                 </p>
-                <p className="mt-1 text-xs text-[#78857D]">
+                <p className="mt-1 text-xs text-[#69726B]">
                   {bi(
                     'Excludes major spare parts; compare worker quote against Fair Price Guide before hiring.',
                     'بڑے پرزہ جات شامل نہیں؛ بکنگ سے پہلے فیئر پرائس گائیڈ سے موازنہ کریں۔'
@@ -788,7 +788,7 @@ export function AiProblemFinderPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-              <p className="text-xs text-[#78857D]">
+              <p className="text-xs text-[#69726B]">
                 {analysis.source === 'gemini'
                   ? bi('Analyzed via Gemini Vision/Text Problem Finder (AI estimate only).', 'جیمینائی اے آئی سے تجزیہ کردہ (صرف اندازہ)۔')
                   : bi('Analyzed with built-in Urdu & English Fair Price Estimator (AI estimate only).', 'مقامی اردو/انگریزی پرائس ایسٹیمیٹر سے تجزیہ (صرف اندازہ)۔')}

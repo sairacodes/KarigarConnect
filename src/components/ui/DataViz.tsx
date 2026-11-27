@@ -29,7 +29,7 @@ export function StatKpiCard({
       <div className="flex items-start justify-between gap-3">
         <span
           className={`text-sm font-medium ${
-            highlighted ? 'text-[#DDF3E4]' : 'text-[#17251E]'
+            highlighted ? 'text-[#ECE6D7]' : 'text-[#17251E]'
           }`}
         >
           {label}
@@ -38,7 +38,7 @@ export function StatKpiCard({
           className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-colors ${
             highlighted
               ? 'border-white/30 bg-white/95 text-[#176B4A] group-hover:bg-white'
-              : 'border-[#9BD9B4] bg-[#DDF3E4] text-[#176B4A] group-hover:border-[#399B6B] group-hover:bg-[#CBEBD5]'
+              : 'border-[#D8D0BE] bg-[#ECE6D7] text-[#176B4A] group-hover:border-[#399B6B] group-hover:bg-[#E3DCC9]'
           }`}
         >
           <ArrowUpRight className="h-4 w-4 rtl:-scale-x-100" />
@@ -58,12 +58,12 @@ export function StatKpiCard({
           {Icon && (
             <Icon
               className={`h-3.5 w-3.5 shrink-0 ${
-                highlighted ? 'text-[#B8E4C7]' : 'text-[#399B6B]'
+                highlighted ? 'text-[#D8D0BE]' : 'text-[#399B6B]'
               }`}
             />
           )}
           {sublabel && (
-            <span className={highlighted ? 'text-[#DDF3E4]' : 'text-[#78857D]'}>
+            <span className={highlighted ? 'text-[#ECE6D7]' : 'text-[#69726B]'}>
               {sublabel}
             </span>
           )}
@@ -109,7 +109,7 @@ export function AnimatedBarChart({
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-base font-bold text-[#17251E]">{title}</h3>
-          {subtitle && <p className="mt-0.5 text-xs text-[#78857D]">{subtitle}</p>}
+          {subtitle && <p className="mt-0.5 text-xs text-[#69726B]">{subtitle}</p>}
         </div>
         {hoveredIdx !== null && data[hoveredIdx] ? (
           <span className="text-xs font-semibold text-[#176B4A] font-mono tabular-nums">
@@ -129,8 +129,8 @@ export function AnimatedBarChart({
               : bar.variant === 'medium'
                 ? 'bg-[#399B6B]'
                 : bar.variant === 'light'
-                  ? 'bg-[#73C99B]'
-                  : 'kc-hatched-bar border border-[#B8E4C7]/70';
+                  ? 'bg-[#C9973A]'
+                  : 'kc-hatched-bar border border-[#D8D0BE]/70';
 
           return (
             <div
@@ -154,7 +154,7 @@ export function AnimatedBarChart({
                   className={`w-full rounded-2xl transition-transform duration-200 group-hover:scale-[1.03] ${barBg}`}
                 />
               </div>
-              <span className="mt-2.5 text-[11px] font-medium text-[#78857D] truncate max-w-full text-center">
+              <span className="mt-2.5 text-[11px] font-medium text-[#69726B] truncate max-w-full text-center">
                 {bar.shortLabel || bar.label}
               </span>
             </div>
@@ -193,7 +193,7 @@ export function SemiCircleGauge({
           <svg viewBox="0 0 200 110" className="w-full h-full overflow-visible" aria-hidden="true">
             <defs>
               <pattern id="kc-hatch-arc" width="6" height="6" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="0" y2="6" stroke="#B8E4C7" strokeWidth="2.5" />
+                <line x1="0" y1="0" x2="0" y2="6" stroke="#D8D0BE" strokeWidth="2.5" />
               </pattern>
             </defs>
             {/* Background hatched track */}
@@ -208,7 +208,7 @@ export function SemiCircleGauge({
             <path
               d="M 16 100 A 84 84 0 0 1 184 100"
               fill="none"
-              stroke="#DDF3E4"
+              stroke="#ECE6D7"
               strokeOpacity="0.45"
               strokeWidth="22"
               strokeLinecap="round"
@@ -231,17 +231,17 @@ export function SemiCircleGauge({
             <p className="text-3xl font-extrabold text-[#17251E] tabular-nums leading-none">
               {clamped}%
             </p>
-            <p className="mt-1 text-xs font-medium text-[#78857D]">{caption}</p>
+            <p className="mt-1 text-xs font-medium text-[#69726B]">{caption}</p>
           </div>
         </div>
 
-        <div className="mt-5 flex items-center justify-center gap-5 text-xs text-[#78857D]">
+        <div className="mt-5 flex items-center justify-center gap-5 text-xs text-[#69726B]">
           <span className="inline-flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-[#176B4A]" />
             <span>{primaryLabel}</span>
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full kc-hatched-bar border border-[#B8E4C7]" />
+            <span className="h-2.5 w-2.5 rounded-full kc-hatched-bar border border-[#D8D0BE]" />
             <span>{secondaryLabel}</span>
           </span>
         </div>
@@ -263,7 +263,7 @@ export function HorizontalProgressBar({
   const pct = max > 0 ? Math.max(0, Math.min(100, (value / max) * 100)) : 0;
 
   return (
-    <div className={`w-full rounded-full bg-[#DDF3E4] overflow-hidden ${heightClass}`}>
+    <div className={`w-full rounded-full bg-[#ECE6D7] overflow-hidden ${heightClass}`}>
       <motion.div
         initial={prefersReduced ? { width: `${pct}%` } : { width: 0 }}
         whileInView={{ width: `${pct}%` }}

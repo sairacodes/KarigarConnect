@@ -125,12 +125,12 @@ export function WorkerDashboard() {
                   <TrustScoreBadge score={data.trustScoreBreakdown?.total ?? 0} />
                 </Link>
               </div>
-              <p className="mt-1.5 text-sm text-[#78857D] flex flex-wrap items-center gap-x-3 gap-y-1">
+              <p className="mt-1.5 text-sm text-[#69726B] flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span>
                   {bi('Primary Category:', 'بنیادی شعبہ:')}{' '}
                   <span className="font-semibold text-[#17251E]">{tradeDisplay}</span> · {data.city}
                 </span>
-                <span className="font-mono text-xs bg-[#F7FAF8] border border-[#E5EEE8] px-2 py-0.5 rounded-md text-[#176B4A]">
+                <span className="font-mono text-xs bg-[#F7F4EC] border border-[#E6E0D2] px-2 py-0.5 rounded-md text-[#176B4A]">
                   {data.passportId}
                 </span>
               </p>
@@ -150,7 +150,7 @@ export function WorkerDashboard() {
               </Link>
               <Link
                 to="/worker/evidence"
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#B8E4C7] bg-[#DDF3E4]/65 px-4 py-2.5 text-xs font-semibold text-[#176B4A] hover:bg-[#DDF3E4] transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#D8D0BE] bg-[#ECE6D7]/65 px-4 py-2.5 text-xs font-semibold text-[#176B4A] hover:bg-[#ECE6D7] transition-colors whitespace-nowrap"
               >
                 <FolderUp className="h-3.5 w-3.5" />
                 {bi('Upload Evidence', 'ثبوت اپ لوڈ کریں')}
@@ -158,21 +158,21 @@ export function WorkerDashboard() {
               <button
                 type="button"
                 onClick={copyPortfolio}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] kc-glass-card px-4 py-2.5 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50 transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] kc-glass-card px-4 py-2.5 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50 transition-colors whitespace-nowrap"
               >
                 <Copy className="h-3.5 w-3.5 text-[#176B4A]" />
                 {bi('Copy Link', 'لنک کاپی')}
               </button>
               <Link
                 to={`/workers/${data.publicId}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#E5EEE8] kc-glass-card px-4 py-2.5 text-xs font-semibold text-[#17251E] hover:bg-[#DDF3E4]/50 transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D2] kc-glass-card px-4 py-2.5 text-xs font-semibold text-[#17251E] hover:bg-[#ECE6D7]/50 transition-colors whitespace-nowrap"
               >
                 <ExternalLink className="h-3.5 w-3.5 text-[#176B4A]" />
                 {bi('Public Portfolio', 'عوامی پورٹ فولیو')}
               </Link>
               <Link
                 to="/worker/insights"
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#B8E4C7] bg-[#EAF7F0] px-4 py-2.5 text-xs font-bold text-[#11221B] hover:bg-[#DDF3E4] transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#D8D0BE] bg-[#F3EFE4] px-4 py-2.5 text-xs font-bold text-[#11221B] hover:bg-[#ECE6D7] transition-colors whitespace-nowrap"
               >
                 <BarChart3 className="h-3.5 w-3.5 text-[#176B4A]" />
                 {bi('Skill Demand Insights', 'اسکل ڈیمانڈ بصیرت')}
@@ -251,7 +251,7 @@ export function WorkerDashboard() {
                   <h3 className="text-base font-bold text-[#17251E]">
                     {bi('Next Karigar Tier Progress', 'اگلے کاریگر درجے کی پیش رفت')}
                   </h3>
-                  <p className="text-xs text-[#78857D] mt-0.5">
+                  <p className="text-xs text-[#69726B] mt-0.5">
                     {tp?.nextTier
                       ? bi(
                           `Working toward ${tierText(tp.nextTier)} Tier`,
@@ -272,7 +272,7 @@ export function WorkerDashboard() {
                 </div>
               </div>
 
-              <div className="h-3 w-full rounded-full bg-[#E5EEE8] overflow-hidden">
+              <div className="h-3 w-full rounded-full bg-[#E6E0D2] overflow-hidden">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-[#399B6B] to-[#176B4A] transition-all duration-500"
                   style={{ width: `${tp?.progressPercent ?? 0}%` }}
@@ -281,26 +281,26 @@ export function WorkerDashboard() {
 
               {tp?.nextRule && (
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
-                  <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
-                    <p className="text-[11px] text-[#78857D]">{bi('Verified Skills', 'تصدیق شدہ مہارتیں')}</p>
+                  <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
+                    <p className="text-[11px] text-[#69726B]">{bi('Verified Skills', 'تصدیق شدہ مہارتیں')}</p>
                     <p className="mt-1 text-sm font-bold text-[#17251E] tabular-nums">
                       {tp.metrics.verifiedCompetencies} / {tp.nextRule.minVerifiedCompetencies}
                     </p>
                   </div>
-                  <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
-                    <p className="text-[11px] text-[#78857D]">{bi('Avg Rating', 'اوسط ریٹنگ')}</p>
+                  <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
+                    <p className="text-[11px] text-[#69726B]">{bi('Avg Rating', 'اوسط ریٹنگ')}</p>
                     <p className="mt-1 text-sm font-bold text-[#17251E] tabular-nums">
                       {tp.metrics.rating.toFixed(1)} / {tp.nextRule.minRating.toFixed(1)}★
                     </p>
                   </div>
-                  <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
-                    <p className="text-[11px] text-[#78857D]">{bi('Completed Jobs', 'مکمل کام')}</p>
+                  <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
+                    <p className="text-[11px] text-[#69726B]">{bi('Completed Jobs', 'مکمل کام')}</p>
                     <p className="mt-1 text-sm font-bold text-[#17251E] tabular-nums">
                       {tp.metrics.completedJobs} / {tp.nextRule.minCompletedJobs}
                     </p>
                   </div>
-                  <div className="rounded-xl border border-[#E5EEE8] bg-[#F7FAF8] p-3">
-                    <p className="text-[11px] text-[#78857D]">{bi('Active Months', 'فعال مہینے')}</p>
+                  <div className="rounded-xl border border-[#E6E0D2] bg-[#F7F4EC] p-3">
+                    <p className="text-[11px] text-[#69726B]">{bi('Active Months', 'فعال مہینے')}</p>
                     <p className="mt-1 text-sm font-bold text-[#17251E] tabular-nums">
                       {tp.metrics.activeMonths} / {tp.nextRule.minActiveMonths}
                     </p>
@@ -308,7 +308,7 @@ export function WorkerDashboard() {
                 </div>
               )}
 
-              <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs text-[#78857D]">
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs text-[#69726B]">
                 <span>
                   {bi(
                     'When all thresholds & 0 unresolved reports are met, your tier upgrade is queued for Admin verification.',
@@ -367,7 +367,7 @@ export function WorkerDashboard() {
                           {row.pts}/{row.max}
                         </span>
                       </div>
-                      <div className="h-2 rounded-full bg-[#E5EEE8] overflow-hidden">
+                      <div className="h-2 rounded-full bg-[#E6E0D2] overflow-hidden">
                         <div
                           className="h-full rounded-full bg-[#399B6B]"
                           style={{ width: `${Math.round((row.pts / row.max) * 100)}%` }}
@@ -408,7 +408,7 @@ export function WorkerDashboard() {
                     <p className="text-lg font-bold text-[#17251E]">
                       {bi('Choose Your Primary Service', 'اپنا بنیادی شعبہ منتخب کریں')}
                     </p>
-                    <p className="mt-1.5 text-sm text-[#78857D]">
+                    <p className="mt-1.5 text-sm text-[#69726B]">
                       {bi(
                         'Select from 48+ home, repair, beauty, moving, or device categories to unlock your practical checklist.',
                         'اپنی عملی مہارتوں کی فہرست کھولنے کے لیے ۴۸+ شعبوں میں سے اپنا ہنر منتخب کریں۔'
@@ -423,7 +423,7 @@ export function WorkerDashboard() {
                         `${data.stats.pendingJobRequestsCount} نئی کام کی درخواستیں`
                       )}
                     </p>
-                    <p className="mt-1.5 text-sm text-[#78857D]">
+                    <p className="mt-1.5 text-sm text-[#69726B]">
                       {bi(
                         'Review customer job descriptions & photos and send your PKR quote quickly to stay reliable.',
                         'کسٹمر کے کام کی تفصیل دیکھیں اور وقت پر PKR تخمینہ بھیجیں۔'
@@ -435,7 +435,7 @@ export function WorkerDashboard() {
                     <p className="text-lg font-bold text-[#17251E]">
                       {bi(`${data.stats.expiringBadges} Badge Expiring Soon`, `${data.stats.expiringBadges} بیج جلد ختم ہونے والا ہے`)}
                     </p>
-                    <p className="mt-1.5 text-sm text-[#78857D]">
+                    <p className="mt-1.5 text-sm text-[#69726B]">
                       {bi(
                         'Upload updated evidence in your Competency Matrix to renew verification for another 12 months.',
                         'مزید ۱۲ ماہ کے لیے تصدیق کی تجدید کرانے کے لیے مہارتوں کے صفحے پر نیا ثبوت اپ لوڈ کریں۔'
@@ -447,7 +447,7 @@ export function WorkerDashboard() {
                     <p className="text-lg font-bold text-[#17251E]">
                       {bi('Complete Skills Profile', 'اپنا ہنر پروفائل مکمل کریں')}
                     </p>
-                    <p className="mt-1.5 text-sm text-[#78857D]">
+                    <p className="mt-1.5 text-sm text-[#69726B]">
                       {bi(
                         'Add your biography and core skills (you can use Voice input) so customers trust your expertise.',
                         'اپنا تعارف اور بنیادی مہارتیں شامل کریں تاکہ گاہک آپ کے تجربے پر اعتماد کر سکیں۔'
@@ -459,7 +459,7 @@ export function WorkerDashboard() {
                     <p className="text-lg font-bold text-[#17251E]">
                       {bi('Verify More Skills', 'مزید مہارتوں کی تصدیق کرائیں')}
                     </p>
-                    <p className="mt-1.5 text-sm text-[#78857D]">
+                    <p className="mt-1.5 text-sm text-[#69726B]">
                       {bi(
                         `Verify competencies in ${data.tradeName} to rank higher on your city leaderboard.`,
                         `اپنے شہر کے لیڈر بورڈ میں نمایاں ہونے کے لیے ${data.tradeUrduName || data.tradeName} کی مزید مہارتوں کی تصدیق کرائیں۔`
@@ -497,14 +497,14 @@ export function WorkerDashboard() {
 
             <div className="lg:col-span-3 kc-dark-surface rounded-2xl p-5 sm:p-6 text-white flex flex-col justify-between kc-hover-lift">
               <div>
-                <p className="text-xs font-semibold text-[#73C99B]">
+                <p className="text-xs font-semibold text-[#C9973A]">
                   {bi('Karigar Passport & Portfolio', 'کاریگر پاسپورٹ اور پورٹ فولیو')}
                 </p>
                 <p className="mt-2 font-mono text-base font-bold tracking-tight text-white break-all">
                   {data.passportId}
                 </p>
-                <p className="mt-1 font-mono text-xs text-[#73C99B]">{data.publicId}</p>
-                <p className="mt-2 text-xs text-[#B8E4C7]/85 leading-relaxed">
+                <p className="mt-1 font-mono text-xs text-[#C9973A]">{data.publicId}</p>
+                <p className="mt-2 text-xs text-[#D8D0BE]/85 leading-relaxed">
                   {bi(
                     'Show your QR Karigar Passport card to verify badges & completed job trust anywhere.',
                     'کہیں بھی اپنی مہارتوں اور کاموں کی تصدیق کے لیے QR کاریگر پاسپورٹ دکھائیں۔'
@@ -549,7 +549,7 @@ export function WorkerDashboard() {
             </div>
 
             {!data.recentReviews || data.recentReviews.length === 0 ? (
-              <p className="text-sm text-[#78857D]">
+              <p className="text-sm text-[#69726B]">
                 {bi(
                   'Completed customer jobs that receive a Verified Hire review will appear here so you can post a public reply.',
                   'مکمل کاموں پر ملنے والے کسٹمر ریویوز یہاں ظاہر ہوں گے جہاں آپ عوامی جواب دے سکیں گے۔'
@@ -558,16 +558,16 @@ export function WorkerDashboard() {
             ) : (
               <div className="space-y-3">
                 {data.recentReviews.map((rev: any) => (
-                  <div key={rev.id} className="rounded-2xl border border-[#E5EEE8] bg-[#F7FAF8]/80 p-4 space-y-2.5">
+                  <div key={rev.id} className="rounded-2xl border border-[#E6E0D2] bg-[#F7F4EC]/80 p-4 space-y-2.5">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div>
                         <p className="text-sm font-bold text-[#17251E]">
                           {rev.customerName}{' '}
-                          <span className="text-xs font-normal text-[#78857D]">· {rev.jobTitle}</span>
+                          <span className="text-xs font-normal text-[#69726B]">· {rev.jobTitle}</span>
                         </p>
-                        <p className="text-[11px] text-[#78857D]">{formatDate(rev.createdAt, lang)}</p>
+                        <p className="text-[11px] text-[#69726B]">{formatDate(rev.createdAt, lang)}</p>
                       </div>
-                      <span className="rounded-lg bg-[#DDF3E4] px-2.5 py-1 text-xs font-bold text-[#176B4A] tabular-nums">
+                      <span className="rounded-lg bg-[#ECE6D7] px-2.5 py-1 text-xs font-bold text-[#176B4A] tabular-nums">
                         {rev.overallRating.toFixed(1)}★
                       </span>
                     </div>
@@ -577,7 +577,7 @@ export function WorkerDashboard() {
                         {rev.tags.map((tg: string) => (
                           <span
                             key={tg}
-                            className="rounded-md border border-[#B8E4C7] bg-[#DDF3E4] px-2 py-0.5 text-[11px] font-medium text-[#176B4A]"
+                            className="rounded-md border border-[#D8D0BE] bg-[#ECE6D7] px-2 py-0.5 text-[11px] font-medium text-[#176B4A]"
                           >
                             {tg}
                           </span>
@@ -586,7 +586,7 @@ export function WorkerDashboard() {
                     )}
 
                     {rev.workerReply ? (
-                      <div className="rounded-xl border border-[#73C99B] bg-[#DDF3E4]/80 p-3 text-xs">
+                      <div className="rounded-xl border border-[#C9973A] bg-[#ECE6D7]/80 p-3 text-xs">
                         <p className="font-bold text-[#176B4A]">
                           {bi('Your Public Reply:', 'آپ کا عوامی جواب:')}
                         </p>
@@ -599,7 +599,7 @@ export function WorkerDashboard() {
                           value={replyDrafts[rev.id] || ''}
                           onChange={(e) => setReplyDrafts({ ...replyDrafts, [rev.id]: e.target.value })}
                           placeholder={bi('Write a one-time public thank you / reply...', 'ایک مرتبہ کا عوامی شکریہ یا جواب لکھیں...')}
-                          className="flex-1 rounded-xl border border-[#E5EEE8] bg-white px-3 py-2 text-xs focus:border-[#399B6B] focus:outline-none"
+                          className="flex-1 rounded-xl border border-[#E6E0D2] bg-white px-3 py-2 text-xs focus:border-[#399B6B] focus:outline-none"
                         />
                         <button
                           type="button"
@@ -665,15 +665,15 @@ export function WorkerDashboard() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className="flex items-center justify-between rounded-2xl border border-[#B8E4C7] bg-[#E8F6EE] p-3 hover:border-[#399B6B] hover:bg-[#DDF3E4] transition-all kc-hover-lift"
+                    className="flex items-center justify-between rounded-2xl border border-[#D8D0BE] bg-[#F3EFE4] p-3 hover:border-[#399B6B] hover:bg-[#ECE6D7] transition-all kc-hover-lift"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#DDF3E4] border border-[#9BD9B4] text-[#176B4A] shrink-0">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#ECE6D7] border border-[#D8D0BE] text-[#176B4A] shrink-0">
                         <Icon className="h-4 w-4" />
                       </span>
                       <div className="min-w-0">
                         <p className="text-sm font-bold text-[#17251E] truncate">{link.title}</p>
-                        <p className="text-xs text-[#78857D] truncate">{link.sub}</p>
+                        <p className="text-xs text-[#69726B] truncate">{link.sub}</p>
                       </div>
                     </div>
                     <span className="text-xs font-semibold text-[#176B4A] shrink-0 ms-2">
@@ -694,15 +694,15 @@ export function WorkerDashboard() {
                 </Link>
               </div>
               {data.recentActivity.length === 0 ? (
-                <p className="mt-4 text-sm text-[#78857D]">
+                <p className="mt-4 text-sm text-[#69726B]">
                   {bi('No activity recorded yet. Start by uploading evidence.', 'ابھی کوئی سرگرمی ریکارڈ نہیں ہوئی۔ ثبوت اپ لوڈ کر کے آغاز کریں۔')}
                 </p>
               ) : (
-                <ul className="mt-4 divide-y divide-[#E5EEE8]">
+                <ul className="mt-4 divide-y divide-[#E6E0D2]">
                   {data.recentActivity.slice(0, 5).map((act: any) => (
                     <li key={act.id} className="py-3 flex items-start justify-between gap-3 text-xs">
                       <span className="text-[#17251E] leading-snug">{act.description}</span>
-                      <span className="text-[11px] text-[#78857D] font-mono whitespace-nowrap shrink-0 tabular-nums">
+                      <span className="text-[11px] text-[#69726B] font-mono whitespace-nowrap shrink-0 tabular-nums">
                         {formatDate(act.createdAt, lang)}
                       </span>
                     </li>

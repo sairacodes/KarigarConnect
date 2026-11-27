@@ -158,18 +158,18 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
     if (status === 'HIGH_OPPORTUNITY') {
       return {
         label: bi('High Opportunity', 'اعلیٰ موقع'),
-        cls: 'bg-[#11221B] text-[#B8E4C7]',
+        cls: 'bg-[#11221B] text-[#D8D0BE]',
       };
     }
     if (status === 'GROWING_NEED') {
       return {
         label: bi('Growing Demand', 'بڑھتی ہوئی طلب'),
-        cls: 'bg-[#DDF3E4] text-[#176B4A]',
+        cls: 'bg-[#ECE6D7] text-[#176B4A]',
       };
     }
     return {
       label: bi('Balanced Supply', 'متوازن طلب و رسد'),
-      cls: 'bg-[#F2FBF6] border border-[#CFE9D8] text-[#176B4A]',
+      cls: 'bg-[#F3EFE4] border border-[#E2DBCB] text-[#176B4A]',
     };
   };
 
@@ -180,14 +180,14 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
         <div className="rounded-3xl kc-dark-surface text-white p-6 sm:p-8 shadow-sm">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full bg-[#399B6B]/25 border border-[#73C99B]/40 px-3.5 py-1 text-xs font-bold text-[#B8E4C7]">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#399B6B]/25 border border-[#C9973A]/40 px-3.5 py-1 text-xs font-bold text-[#D8D0BE]">
                 <BarChart3 className="h-3.5 w-3.5" />
                 <span>{bi('Live Marketplace Telemetry · Real Database Records', 'لائیو اسکل ڈیمانڈ تجزیات · اصل ڈیٹابیس ریکارڈ')}</span>
               </div>
               <h1 className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                 {bi('Skill Demand Insights', 'مہارتوں کی طلب اور رجحانات (Skill Demand Insights)')}
               </h1>
-              <p className="mt-2 text-sm text-[#DDF3E4]/85 leading-relaxed">
+              <p className="mt-2 text-sm text-[#ECE6D7]/85 leading-relaxed">
                 {isKarigar
                   ? bi(
                       'See which trade skills Hirers are requesting most across Pakistani cities and spot high-opportunity trades with fewer available Karigars.',
@@ -204,7 +204,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               {isKarigar ? (
                 <Link
                   to="/worker/trades"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#DDF3E4] px-5 py-2.5 text-xs font-bold text-[#11221B] hover:bg-[#B8E4C7] transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#ECE6D7] px-5 py-2.5 text-xs font-bold text-[#11221B] hover:bg-[#D8D0BE] transition-colors"
                 >
                   <span>{bi('Update My Trade & Badges', 'میرا ہنر اور بیجز اپ ڈیٹ کریں')}</span>
                   <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
@@ -212,7 +212,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               ) : (
                 <Link
                   to={user?.role === 'EMPLOYER' ? '/employer/search' : '/explore'}
-                  className="inline-flex items-center gap-2 rounded-full bg-[#DDF3E4] px-5 py-2.5 text-xs font-bold text-[#11221B] hover:bg-[#B8E4C7] transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#ECE6D7] px-5 py-2.5 text-xs font-bold text-[#11221B] hover:bg-[#D8D0BE] transition-colors"
                 >
                   <span>{bi('Find Available Karigars', 'دستیاب کاریگر تلاش کریں')}</span>
                   <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
@@ -224,7 +224,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
       )}
 
       {/* Dynamic Filter Controls */}
-      <div className="rounded-3xl bg-white border border-[#CFE9D8] p-4 sm:p-5 shadow-xs">
+      <div className="rounded-3xl bg-white border border-[#E2DBCB] p-4 sm:p-5 shadow-xs">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-4">
             <label className="flex items-center gap-1.5 text-xs font-bold text-[#11221B] mb-1.5">
@@ -234,7 +234,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
             <select
               value={categoryGroup}
               onChange={(e) => setCategoryGroup(e.target.value)}
-              className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3 py-2 text-sm font-medium text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3 py-2 text-sm font-medium text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none"
             >
               <option value="ALL">{bi('All Skill Categories', 'تمام سروس کیٹیگریز')}</option>
               {categoryChoices.map((g) => (
@@ -253,7 +253,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              className="w-full rounded-xl border border-[#CFE9D8] bg-[#F5FBF7] px-3 py-2 text-sm font-medium text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-[#E2DBCB] bg-[#F3EFE4] px-3 py-2 text-sm font-medium text-[#17251E] focus:border-[#176B4A] focus:bg-white focus:outline-none"
             >
               <option value="ALL">{bi('All Cities in Pakistan', 'پاکستان کے تمام شہر')}</option>
               {cityChoices.map((c) => (
@@ -281,7 +281,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
                 </button>
               )}
             </label>
-            <div className="grid grid-cols-4 gap-1 rounded-xl bg-[#EAF7F0] p-1">
+            <div className="grid grid-cols-4 gap-1 rounded-xl bg-[#F3EFE4] p-1">
               {periodOptions.map((opt) => (
                 <button
                   key={opt.value}
@@ -312,20 +312,20 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
           {/* 4 Summary KPI Cards */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-3xl kc-kpi-gradient text-white p-5 shadow-sm">
-              <div className="flex items-center justify-between text-xs font-semibold text-[#DDF3E4]">
+              <div className="flex items-center justify-between text-xs font-semibold text-[#ECE6D7]">
                 <span>{bi('Total Skill Requests', 'کل سکل ڈیمانڈ درخواستیں')}</span>
-                <Briefcase className="h-4 w-4 text-[#B8E4C7]" />
+                <Briefcase className="h-4 w-4 text-[#D8D0BE]" />
               </div>
               <p className="mt-3 font-mono text-3xl font-extrabold tabular-nums">
                 {data.summary.totalDemandRequests.toLocaleString()}
               </p>
-              <p className="mt-2 text-xs text-[#DDF3E4]/90 tabular-nums">
+              <p className="mt-2 text-xs text-[#ECE6D7]/90 tabular-nums">
                 {data.summary.completedBookings} {bi('completed bookings', 'مکمل شدہ کام')} ·{' '}
                 {data.summary.uniqueCitiesWithDemand} {bi('cities active', 'فعال شہر')}
               </p>
             </div>
 
-            <div className="rounded-3xl bg-white border border-[#CFE9D8] p-5 shadow-xs">
+            <div className="rounded-3xl bg-white border border-[#E2DBCB] p-5 shadow-xs">
               <div className="flex items-center justify-between text-xs font-semibold text-[#4D6357]">
                 <span>{bi('Available Karigars', 'دستیاب کاریگر')}</span>
                 <Users className="h-4 w-4 text-[#176B4A]" />
@@ -340,7 +340,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               </p>
             </div>
 
-            <div className="rounded-3xl bg-white border border-[#CFE9D8] p-5 shadow-xs">
+            <div className="rounded-3xl bg-white border border-[#E2DBCB] p-5 shadow-xs">
               <div className="flex items-center justify-between text-xs font-semibold text-[#4D6357]">
                 <span>{bi('Most Requested Skill', 'سب سے زیادہ طلب والا ہنر')}</span>
                 <Flame className="h-4 w-4 text-[#176B4A]" />
@@ -359,7 +359,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               </p>
             </div>
 
-            <div className="rounded-3xl bg-[#E8F7EE] border border-[#B8E4C7] p-5 shadow-xs">
+            <div className="rounded-3xl bg-[#F3EFE4] border border-[#D8D0BE] p-5 shadow-xs">
               <div className="flex items-center justify-between text-xs font-semibold text-[#176B4A]">
                 <span>{bi('Top Skill Opportunity', 'بہترین ہنری موقع')}</span>
                 <Compass className="h-4 w-4 text-[#176B4A]" />
@@ -381,7 +381,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
 
           {/* Row 1: 1. Most In-Demand Skills (Bar Chart) + 2. Trending Skills */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-7 rounded-3xl bg-white border border-[#CFE9D8] p-5 sm:p-6 shadow-xs">
+            <div className="lg:col-span-7 rounded-3xl bg-white border border-[#E2DBCB] p-5 sm:p-6 shadow-xs">
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
                   <h2 className="text-base sm:text-lg font-extrabold text-[#11221B]">
@@ -400,7 +400,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               <InDemandSkillsBarChart data={data.mostInDemandSkills} onSelectTrade={handleSelectTrade} />
             </div>
 
-            <div className="lg:col-span-5 rounded-3xl bg-white border border-[#CFE9D8] p-5 sm:p-6 shadow-xs flex flex-col">
+            <div className="lg:col-span-5 rounded-3xl bg-white border border-[#E2DBCB] p-5 sm:p-6 shadow-xs flex flex-col">
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
                   <h2 className="text-base sm:text-lg font-extrabold text-[#11221B]">
@@ -417,7 +417,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               </div>
 
               {data.trendingSkills.length === 0 ? (
-                <div className="flex-1 flex flex-col items-center justify-center rounded-2xl bg-[#F2FBF6] border border-[#DCEFE3] p-6 text-center">
+                <div className="flex-1 flex flex-col items-center justify-center rounded-2xl bg-[#F3EFE4] border border-[#E2DBCB] p-6 text-center">
                   <Activity className="h-7 w-7 text-[#399B6B] mb-2" />
                   <p className="text-sm font-bold text-[#11221B]">
                     {bi('Steady Demand Velocity', 'مستحکم طلب کی رفتار')}
@@ -436,14 +436,14 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
                       key={item.tradeId}
                       type="button"
                       onClick={() => handleSelectTrade(item.slug)}
-                      className="w-full rounded-2xl bg-[#F2FBF6] border border-[#DCEFE3] p-3.5 text-start hover:bg-[#DDF3E4] transition-colors flex items-center justify-between gap-3"
+                      className="w-full rounded-2xl bg-[#F3EFE4] border border-[#E2DBCB] p-3.5 text-start hover:bg-[#ECE6D7] transition-colors flex items-center justify-between gap-3"
                     >
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-bold text-[#11221B] truncate">
                             {isUr && item.urduName ? item.urduName : item.name}
                           </span>
-                          <span className="rounded-full bg-[#DDF3E4] px-2 py-0.5 font-mono text-[10px] font-extrabold text-[#176B4A] tabular-nums shrink-0">
+                          <span className="rounded-full bg-[#ECE6D7] px-2 py-0.5 font-mono text-[10px] font-extrabold text-[#176B4A] tabular-nums shrink-0">
                             +{item.growthPct}%
                           </span>
                         </div>
@@ -462,7 +462,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
 
           {/* Row 2: 3. Category Distribution (Doughnut Chart) + 5. Monthly Demand Trends (Line Chart) */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-5 rounded-3xl bg-white border border-[#CFE9D8] p-5 sm:p-6 shadow-xs">
+            <div className="lg:col-span-5 rounded-3xl bg-white border border-[#E2DBCB] p-5 sm:p-6 shadow-xs">
               <div className="mb-4">
                 <h2 className="text-base sm:text-lg font-extrabold text-[#11221B]">
                   {bi('3. Category Distribution', '۳۔ پیشہ ورانہ شعبوں میں طلب کی تقسیم')}
@@ -481,7 +481,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               />
             </div>
 
-            <div className="lg:col-span-7 rounded-3xl bg-white border border-[#CFE9D8] p-5 sm:p-6 shadow-xs">
+            <div className="lg:col-span-7 rounded-3xl bg-white border border-[#E2DBCB] p-5 sm:p-6 shadow-xs">
               <div className="mb-4">
                 <h2 className="text-base sm:text-lg font-extrabold text-[#11221B]">
                   {period === '30d'
@@ -501,7 +501,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
 
           {/* Row 3: 4. Location-Based Demand + 6. Skill Opportunities */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-6 rounded-3xl bg-white border border-[#CFE9D8] p-5 sm:p-6 shadow-xs">
+            <div className="lg:col-span-6 rounded-3xl bg-white border border-[#E2DBCB] p-5 sm:p-6 shadow-xs">
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
                   <h2 className="text-base sm:text-lg font-extrabold text-[#11221B]">
@@ -520,7 +520,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               <LocationDemandChart data={data.locationDemand} onSelectCity={(c) => setCity(c)} />
             </div>
 
-            <div className="lg:col-span-6 rounded-3xl bg-[#F2FBF6] border border-[#B8E4C7] p-5 sm:p-6 shadow-xs">
+            <div className="lg:col-span-6 rounded-3xl bg-[#F3EFE4] border border-[#D8D0BE] p-5 sm:p-6 shadow-xs">
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
                   <h2 className="text-base sm:text-lg font-extrabold text-[#11221B]">
@@ -542,7 +542,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
               </div>
 
               {data.skillOpportunities.length === 0 ? (
-                <div className="flex h-60 items-center justify-center rounded-2xl bg-white border border-[#DCEFE3] p-6 text-center text-sm text-[#4D6357]">
+                <div className="flex h-60 items-center justify-center rounded-2xl bg-white border border-[#E2DBCB] p-6 text-center text-sm text-[#4D6357]">
                   {bi(
                     'No active skill demand records match this filter combination.',
                     'اس فلٹر کے مطابق طلب بمقابلہ رسد کا کوئی ریکارڈ نہیں ملا۔'
@@ -556,7 +556,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
                     return (
                       <div
                         key={opp.tradeId}
-                        className="rounded-2xl bg-white border border-[#DCEFE3] p-4 shadow-2xs flex flex-col gap-2.5"
+                        className="rounded-2xl bg-white border border-[#E2DBCB] p-4 shadow-2xs flex flex-col gap-2.5"
                       >
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <div className="min-w-0">
@@ -574,7 +574,7 @@ export function SkillDemandInsightsSection({ embedded = false }: { embedded?: bo
                         </div>
 
                         <div className="flex items-center gap-3">
-                          <div className="flex-1 h-2 rounded-full bg-[#E3F4EA] overflow-hidden">
+                          <div className="flex-1 h-2 rounded-full bg-[#ECE6D7] overflow-hidden">
                             <div
                               style={{ width: `${meterPct}%` }}
                               className="h-full rounded-full bg-gradient-to-r from-[#176B4A] to-[#399B6B]"
